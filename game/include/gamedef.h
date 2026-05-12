@@ -3,42 +3,46 @@
 #ifndef GAMEDEF_H
 #define GAMEDEF_H
 
-enum caracteristicas_tipo_pilha{
-  CARTAS_TODAS_VISIVEIS, // =
-  CARTAS_TODAS_INVISIVEIS, // _
-  SO_MOSTRA_A_CARTA_TOPO // ^
-};
 
 typedef struct{
     char nome_tipo[16]; // TAB e whatnot
-    enum caracteristicas_tipo_pilha caracteristicas;
-    int max_cartas; // -1 = sem limite, 1 = max uma carta 
+    char flags[16]; // ex: "=", "_", "^"
 } TipoPilha;
 
 typedef struct {
-    int isAuto; // 0 = mov, 1 = auto
     char pilha_origem[16];
     char pilha_destino[16];
-    int total_cartas;
-    char flags[32];
+    char flags[32]; // ex: "*", "~", etc.
 } Movimento;
 
+typedef struct{
+    char nome_tipo[16];
+    int num_cartas;
+} VictoryCondition;
+
 typedef struct {
+    char nome_tipo[16];
+    int num_cartas;
+} InitPilha;
+
+typedef struct {
+
+    char nome[64]; // nome do jogo
+    int num_baralhos;
+
     TipoPilha *tipos;
     size_t total_tipos;
 
-    Movimento *autos;
-    size_t total_autos; 
     Movimento *movs;
     size_t total_movs;
+
+    Movimento *autos;
+    size_t total_autos;
+
+    InitPilha *inits;
+    size_t total_inits;
     
-    char nome[64]; // nome do jogo
-    
-    int num_baralhos;
-    
-    // Este comando pode ser utilizado múltiplas vezes ao longo do ficheiro, sendo a regra aplicável a conjunção dos vários comandos WIN.
-    char tipos_win[8][32]; // numeros arbitrarios btw
-    int num_cartas_win[8];
+    VictoryCondition *wins;
     size_t total_wins;
 
 } DefJogo;

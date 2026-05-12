@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "../include/utils.h"
 
 char * aux_string(char *str, char c){
     char *r;
