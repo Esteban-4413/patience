@@ -1,8 +1,11 @@
-//
-// Created by Esteban Yepez Orozco on 10/05/2026.
-//
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
-#ifndef PATIENCE_GAMESTATE_H
-#define PATIENCE_GAMESTATE_H
+typedef struct{
+
+} EstadoJogo;
+
+
+
 
 #endif //PATIENCE_GAMESTATE_H

@@ -10,7 +10,7 @@ enum caracteristicas_tipo_pilha{
 };
 
 typedef struct{
-    char nome_tipo[16];
+    char nome_tipo[16]; // TAB e whatnot
     enum caracteristicas_tipo_pilha caracteristicas;
     int max_cartas; // -1 = sem limite, 1 = max uma carta 
 } TipoPilha;
@@ -20,7 +20,7 @@ typedef struct {
     char pilha_origem[16];
     char pilha_destino[16];
     int total_cartas;
-    char flags[16];
+    char flags[32];
 } Movimento;
 
 typedef struct {
@@ -32,15 +32,15 @@ typedef struct {
     Movimento *movs;
     size_t total_movs;
     
-    char nome[64];
+    char nome[64]; // nome do jogo
     
     int num_baralhos;
     
     // Este comando pode ser utilizado múltiplas vezes ao longo do ficheiro, sendo a regra aplicável a conjunção dos vários comandos WIN.
-    char tipos_win[8][32]; // numeros arbitrarios 
+    char tipos_win[8][32]; // numeros arbitrarios btw
     int num_cartas_win[8];
     size_t total_wins;
 
-} EstadoJogo;
+} DefJogo;
 
 #endif 
