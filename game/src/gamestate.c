@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "../include/gamestate.h"
 #include "../include/card.h"
+#include "../include/utils.h"
+
 
 EstadoJogo setGameState(DefJogo d){
     EstadoJogo e; 
@@ -40,8 +42,8 @@ EstadoJogo setGameState(DefJogo d){
 void set_pilhas (InitPilha d[], int total_inits, PILHA *pilhas){
      
     for(int i=0; i < total_inits; i++){
-        CARTAS *nova_pilha = malloc(30 * sizeof(CARTAS)); // Número arbitrário para ser o máximo de cartas por pilha
-        //nova_pilha->nome_tipo = d[i].nome_tipo; -- COMO VOU FAZER PARA COPIAR O NOME?? Idk... copyString maybe?
+        CARTAS *nova_pilha = malloc(30 * sizeof(CARTAS)); // Número arbitrário para ser o máximo de cartas por pilha 
+        pilhas[i].nome_tipo = d[i].nome_tipo; 
         pilhas[i].tamanho_pilha = 0; 
         pilhas[i].pilha = nova_pilha; 
     }

@@ -11,7 +11,7 @@
 
 
 typedef struct{
-    char nome_tipo[16]; 
+    char *nome_tipo;
     //TipoPilha *tipo_pilha; -- Acho que será desnecessário 
 
     CARTAS *pilha;
