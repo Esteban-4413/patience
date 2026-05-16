@@ -2,6 +2,7 @@
 #include "../ui/display.h"
 #include "../ui/input.h"
 #include "../include/game.h"
+#include "../include/undo.h"
 
 
 void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
@@ -37,9 +38,9 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
     // Click nos botões 
     if (r == e->total_pilhas){
         mvprintw(10,110, "CLICK NO UNDO");
-        //undo(e);
+        undo(e);
         // Atualiza o print de todas as pilhas 
-        //printPilhas(e, end_pilhas, total_pilhas);
+        printPilhas(e, p->end_pilhas, p->total_pilhas);
 
     }
     
@@ -57,7 +58,7 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
     int chegada = e->jog_atual.chegada; 
     if (e->jog_atual.flag  == 1 && pilha != chegada) {
             //joga(pilha, e->jog_atual.coluna, chegada, e->pilhas[chegada].tamanho_pilha, e);
-            //registar_jogada(e);
+            registar_jogada(e);
                 
         } 
             

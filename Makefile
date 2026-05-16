@@ -1,4 +1,4 @@
-jogo: parser.o utils.o gamestate.o card.o game.o display.o input.o game/src/main.c
+jogo: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o game/src/main.c
 	gcc -Wall -g $^ -o $@ -lncursesw
 
 mac: parser.o utils.o game/src/main.c
@@ -19,6 +19,9 @@ card.o: game/src/card.c
 game.o: game/src/game.c
 	gcc -Wall -g $^ -c -o $@
 
+undo.o: game/src/undo.c
+	gcc -Wall -g $^ -c -o $@
+
 display.o: game/ui/display.c
 	gcc -Wall -g $^ -c -o $@
 
@@ -26,4 +29,4 @@ input.o: game/ui/input.c
 	gcc -Wall -g $^ -c -o $@
 
 clean:
-	-rm -f parser.o utils.o gamestate.o card.o game.o display.o input.o jogo
+	-rm -f parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o jogo
