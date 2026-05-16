@@ -3,6 +3,7 @@
 #ifndef GAMEDEF_H
 #define GAMEDEF_H
 
+#include <stddef.h>
 
 typedef struct{
     char nome_tipo[16]; // TAB e whatnot

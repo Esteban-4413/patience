@@ -3,7 +3,7 @@
 
 #include "../include/card.h"
 #include "../include/gamedef.h"
-
+#include <stddef.h>
 
 /** @brief Número máximo de jogadas que ficam guardadas no histórico para o Undo. */
 #define MAX_UNDO 5

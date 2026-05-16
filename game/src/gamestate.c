@@ -88,10 +88,10 @@ void inicializa_naipes(EstadoJogo *e){
      D - Ouros  
      C - Paus
      */
-    e->naipes[0] = 'C';
-    e->naipes[1] = 'E';
-    e->naipes[2] = 'O';
-    e->naipes[3] = 'P';
+    e->naipes[0] = 'H';
+    e->naipes[1] = 'S';
+    e->naipes[2] = 'D';
+    e->naipes[3] = 'C';
 
 }
 

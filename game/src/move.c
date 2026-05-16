@@ -17,7 +17,7 @@ int valida_jogada(EstadoJogo estado, JOGADA jogada){
     return 0;
 }
 
-/* Função que retorna a cor de uma carta (0 para Preto, 1 para Vermelho)*/
+// Função que retorna a cor de uma carta (0 para Preto, 1 para Vermelho)
 int cor(CARTAS carta){
     if (carta.naipe == 'C' || carta.naipe == 'O') return 1;
     return 0;
@@ -128,8 +128,8 @@ int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
 
     if (flag[0]) return 1;
 
-    /*Estas flags precisam de uma pilha existente. Se o tamanho for 0,
-    então imediatamente não é válido*/
+    //Estas flags precisam de uma pilha existente. Se o tamanho for 0,
+    //então imediatamente não é válido
     if (destino->tamanho_pilha == 0){
         if (flag[4] || flag[5] || flag[6] || flag[8]
          || flag[10] || flag[12] || flag[14]) return 0;
@@ -199,3 +199,5 @@ int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
 
     return 1;
 }
+
+
