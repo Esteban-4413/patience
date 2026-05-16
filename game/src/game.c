@@ -27,7 +27,7 @@ void processa_rato(EstadoJogo *e, POINTERS *p){
 
 void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){  
     // Click em alguma das pilhas 
-    if (r >= 0 && r <= 10){
+    if (r >= 0 && r <= e->total_pilhas -1){
         print_jogAtual(e);
 
         naPilha(r, num_carta, e, p);  
@@ -35,7 +35,8 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
     }
 
     // Click nos botões 
-    if (r == 12){
+    if (r == e->total_pilhas){
+        mvprintw(10,110, "CLICK NO UNDO");
         //undo(e);
         // Atualiza o print de todas as pilhas 
         //printPilhas(e, end_pilhas, total_pilhas);

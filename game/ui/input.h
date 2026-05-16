@@ -34,9 +34,10 @@ int verifica_click (EstadoJogo *e, POINTERS *janelas, int *num_carta);
  * @param x Coluna onde ocorreu o click
  * @param y Linha onde ocorreu o click
  * @param janelas Ponteiro para a estrutura que guarda todas as janelas (POINTERS).
+ * @param total_pilhas Número de pilhas existentes no jogo. 
  * @return int Indentifica onde foi feito o click
  */
-int eclickValido(int x, int y, POINTERS *janelas); 
+int eclickValido(int x, int y, POINTERS *janelas, int total_pilhas); 
 
 /**
  * @brief Função específica para verificar se o click foi em alguma das pilhas 
@@ -49,9 +50,10 @@ int eclickValido(int x, int y, POINTERS *janelas);
  * @param x Coluna onde ocorreu o click
  * @param y Linha onde ocorreu o click
  * @param janela_pilha Array onde estão guardados os endereços das janelas das pilhas
+ * @param total_pilhas Número de pilhas existentes no jogo.
  * @return int Retorna o indice da pilha, ou -1 caso o click não se enquandre em nenhuma das pilhas
  */
-int eclicknaPilha(int x, int y, WINDOW *janela_pilha[]);
+int eclicknaPilha(int x, int y, WINDOW *janela_pilha[], int total_pilhas);
 
 /**
  * @brief Verifica se coordenadas estão dentro de uma janela

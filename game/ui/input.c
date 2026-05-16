@@ -7,16 +7,16 @@
 int verifica_click (EstadoJogo *e, POINTERS *janelas, int *num_carta) {
     MEVENT event;
     if (getmouse(&event) == OK) {
-        int r = eclickValido(event.x, event.y, janelas);
+        int r = eclickValido(event.x, event.y, janelas, e->total_pilhas);
         if(r >= 0 && r < 11) *num_carta = coords_para_carta(event.y, r, e);
         return r;
     }
     return -1;
 }
 
-int eclickValido(int x, int y, POINTERS *janelas) {
-    if (eJanela(janelas->end_undo, x, y)) return (12); //total_pilhas -1 ;
-    else return eclicknaPilha(x, y, janelas->end_pilhas); 
+int eclickValido(int x, int y, POINTERS *janelas, int total_pilhas) {
+    if (eJanela(janelas->end_undo, x, y)) return (total_pilhas); 
+    return eclicknaPilha(x, y, janelas->end_pilhas, total_pilhas); 
         // Verifica as pilhas 
         /* 
         Vai passar a dar de o índice da pilha no array de pilhas 
@@ -26,8 +26,8 @@ int eclickValido(int x, int y, POINTERS *janelas) {
 
 }
 
-int eclicknaPilha(int x, int y, WINDOW *janela_pilha[]){
-    for (int i = 0; i < 10; i++) {
+int eclicknaPilha(int x, int y, WINDOW *janela_pilha[], int total_pilhas){
+    for (int i = 0; i < total_pilhas; i++) {
         if (eJanela(janela_pilha[i], x, y)) {
             return i; 
             }

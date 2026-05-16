@@ -3,7 +3,7 @@
 #ifndef GAMEDEF_H
 #define GAMEDEF_H
 
-#include <stddef.h>
+#include <stddef.h> // Para usar o size_t
 
 typedef struct{
     char nome_tipo[16]; // TAB e whatnot
