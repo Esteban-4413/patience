@@ -4,5 +4,9 @@
 
 #ifndef LOADER_H
 #define LOADER_H
+#include "gamedef.h"
+#include <dirent.h>
+
+DefJogo escolhe_paciencia(char *pasta);
 
 #endif //PATIENCE_LOADER_H

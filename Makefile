@@ -1,7 +1,7 @@
-jogo: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o game/src/main.c
+jogo: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o loader.o game/src/main.c
 	gcc -Wall -g $^ -o $@ -lncursesw
 
-mac: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o game/src/main.c
+mac: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o loader.o game/src/main.c
 	gcc -Wall -g $^ -o jogo -lncurses
 
 parser.o: game/dsl/parser.c
@@ -11,6 +11,9 @@ utils.o: game/src/utils.c
 	gcc -Wall -g $^ -c -o $@ 
 
 gamestate.o: game/src/gamestate.c
+	gcc -Wall -g $^ -c -o $@
+
+loader.o: game/dsl/loader.c
 	gcc -Wall -g $^ -c -o $@
 
 card.o: game/src/card.c
@@ -29,4 +32,4 @@ input.o: game/ui/input.c
 	gcc -Wall -g $^ -c -o $@
 
 clean:
-	-rm -f parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o jogo
+	-rm -f parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o loader.o jogo

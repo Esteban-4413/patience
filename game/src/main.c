@@ -7,10 +7,11 @@
 #include "../include/card.h"
 #include "../include/display.h"
 #include "../include/game.h"
+#include "../include/loader.h"
 
 
 int main(){
-    DefJogo jogo = load_paciencia("paciencias/golf.paciencia");
+    DefJogo jogo = escolhe_paciencia("paciencias");
     /*
     printf("Jogo: %s\n", jogo.nome);
     printf("Baralhos: %d\n", jogo.num_baralhos);
