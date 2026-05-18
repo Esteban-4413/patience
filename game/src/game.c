@@ -1,6 +1,6 @@
 #include "../include/gamestate.h"
-#include "../ui/display.h"
-#include "../ui/input.h"
+#include "../include/display.h"
+#include "../include/input.h"
 #include "../include/game.h"
 #include "../include/undo.h"
 

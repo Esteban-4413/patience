@@ -2,10 +2,10 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "../include/gamestate.h"
-#include "../include/card.h"
-#include "../include/utils.h"
-#include "../ui/display.h"
+#include "gamestate.h"
+#include "card.h"
+#include "utils.h"
+#include "display.h"
 
 /**
  * @brief Identifica o evento do rato e o classifica

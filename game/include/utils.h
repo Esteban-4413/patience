@@ -3,6 +3,6 @@
 
 char * aux_string(char *str, char c);
 int comp_strings(char a[], char b[]);
-char *strcpy (char *dest, char source[]); 
+char *copia_string (char *dest, char source[]); 
 
 #endif 

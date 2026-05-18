@@ -18,7 +18,7 @@ int comp_strings(char a[], char b[]){
     return (*a - *b);
 }
 
-char *strcpy (char *dest, char source[]){
+char *copia_string (char *dest, char source[]){
     int i;
     for (i = 0; source[i] != '\0'; i ++){
         dest[i] = source[i];

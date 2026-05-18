@@ -36,7 +36,7 @@ DefJogo load_paciencia(char *ficheiro){
 
 DefJogo incializa_estado(void){
     DefJogo est;
-    est.nome[0] = "\0";
+    est.nome[0] = '\0';
 
     est.tipos = NULL;
     est.total_tipos = 0;

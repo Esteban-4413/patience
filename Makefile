@@ -1,7 +1,7 @@
 jogo: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o game/src/main.c
 	gcc -Wall -g $^ -o $@ -lncursesw
 
-mac: parser.o utils.o game/src/main.c
+mac: parser.o utils.o gamestate.o card.o game.o undo.o display.o input.o game/src/main.c
 	gcc -Wall -g $^ -o jogo -lncurses
 
 parser.o: game/dsl/parser.c

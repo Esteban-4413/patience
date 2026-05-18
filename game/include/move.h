@@ -1,8 +1,9 @@
-//
-// Created by Esteban Yepez Orozco on 10/05/2026.
-//
+#ifndef MOVE_H
+#define MOVE_H
 
-#ifndef PATIENCE_MOVE_H
-#define PATIENCE_MOVE_H
+#include "gamestate.h"
+#include "card.h"
+
+int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada);
 
 #endif //PATIENCE_MOVE_H

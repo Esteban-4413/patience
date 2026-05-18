@@ -5,7 +5,7 @@
 #include "../include/parser.h"
 #include "../include/gamestate.h"
 #include "../include/card.h"
-#include "../ui/display.h"
+#include "../include/display.h"
 #include "../include/game.h"
 
 
@@ -25,6 +25,9 @@ int main(){
     */
 
     EstadoJogo e = setGameState(jogo);
+    print_pilhas(&e);
+    printf("Total pilhas: %d\n", e.total_pilhas);
+    printf("Total inits: %zu\n", jogo.total_inits);
     POINTERS janelas;
     // codificação de caracteres
     setlocale(LC_ALL, ""); 
@@ -36,7 +39,7 @@ int main(){
     loop_principal(&e, &janelas, jogando);
     
     endwin();
-
+    
     return 0;
 
 }

@@ -2,9 +2,9 @@
 #define DISPLAY_H
 
 #include <ncurses.h>
-#include "../include/gamestate.h"
-#include "../include/card.h"
-#include "../include/utils.h"
+#include "gamestate.h"
+#include "card.h"
+#include "utils.h"
 
 
 /**

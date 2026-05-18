@@ -1,4 +1,5 @@
-
+#include <string.h>
+#include <stdlib.h>
 #include "../include/move.h"
 #include "../include/gamestate.h"
 

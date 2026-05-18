@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ncurses.h>
-#include "../ui/input.h"
+#include "../include/input.h"
 
 
 
