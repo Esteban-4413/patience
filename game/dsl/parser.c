@@ -60,6 +60,7 @@ void what_command(char * comando, char *buffer, DefJogo *est){
     if(comp_strings(comando, "JOGO") == 0) sscanf(buffer, "%s %s", comando, est->nome);
 
     else if(comp_strings(comando, "BARALHOS") == 0) sscanf(buffer, "%s %d", comando, &est->num_baralhos);
+    
     else if(comp_strings(comando, "TIPO") == 0){                
     est->total_tipos++;
     est->tipos = realloc(est->tipos, est->total_tipos * sizeof(TipoPilha));

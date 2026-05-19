@@ -42,7 +42,7 @@ EstadoJogo setGameState(DefJogo d){
 void set_pilhas (InitPilha d[], int total_inits, PILHA *pilhas){
      
     for(int i=0; i < total_inits; i++){
-        CARTAS *nova_pilha = malloc(30 * sizeof(CARTAS)); // Número arbitrário para ser o máximo de cartas por pilha 
+        CARTAS *nova_pilha = malloc(32 * sizeof(CARTAS)); // Número arbitrário para ser o máximo de cartas por pilha 
         pilhas[i].nome_tipo = d[i].nome_tipo; 
         pilhas[i].tamanho_pilha = 0; 
         pilhas[i].pilha = nova_pilha; 

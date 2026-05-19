@@ -34,11 +34,14 @@ DefJogo escolhe_paciencia(char *pasta){
    closedir(d);
 
    int escolha = 0;
+   char buff[100];
+   int buul = 0;
    printf("Qual é o jogo que você quer jogar?\n Digite o número\n");
-   //scanf("%d", &escolha); isto era unsafe porque o user podia meter qualquer macacada então vou fazer um while que so aceite coisas logicas
-   while(escolha < 1 || escolha > conta){
-    scanf("%d", &escolha);
-    if(escolha < 1 || escolha > conta) printf("Número invalido. Tenta outra vez (1 a %d)", conta);
+   while(!buul){
+    if(fgets(buff, sizeof(buff), stdin) != NULL){
+        if(sscanf(buff, "%d", &escolha) == 1 && escolha >= 1 && escolha <=conta) buul = 1;
+        else printf("Número invalido. Tenta outra vez men (1 a %d)\n", conta);
+    }
    }
 
    char ruta[256];
