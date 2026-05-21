@@ -202,3 +202,24 @@ int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
 }
 
 
+void joga(EstadoJogo *estado, JOGADA jogada){
+    if (!valida_jogada(*estado, jogada)) return;
+
+    PILHA *origem = &estado->pilhas[jogada.pilha];
+    PILHA *destino = &estado->pilhas[jogada.chegada];
+
+    int inicio = jogada.coluna;
+
+    memmove(&destino->pilha[destino->tamanho_pilha],
+            &origem->pilha[inicio],
+            jogada.n*sizeof(CARTAS));
+
+    destino->tamanho_pilha += jogada.n;
+    origem->tamanho_pilha -= jogada.n;
+
+    estado->jog_atual = jogada;
+
+    if(estado->tamanho_historial < MAX_UNDO){
+        estado->historial[estado->tamanho_historial++] = jogada;
+    }
+}
