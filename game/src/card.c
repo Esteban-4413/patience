@@ -26,13 +26,14 @@ CARTAS le_carta(char *str) {
     else if (str[0] == 'J') c.valor = 11;
     else if (str[0] == 'Q') c.valor = 12;
     else if (str[0] == 'K') c.valor = 13;
-    else {
-        char num_str[3];
-        int i;
-        for (i = 0; i < len - 1; i++) num_str[i] = str[i];
-        num_str[i] = '\0';
-        // strncpy(num_str, str, len - 1); 
-        c.valor = atoi(num_str); //atoi, atoi_l – convert ASCII string to integer
-    }
+    else c.valor = traduz_valor_numerico(str, len);
     return c;
+}
+
+int traduz_valor_numerico(char *str, int len){
+    char num_str[3];
+    int i;
+    for(i = 0; i < len - 1; i ++) num_str[i] = str[i];
+    num_str[i] = '\0';
+    return atoi(num_str);
 }

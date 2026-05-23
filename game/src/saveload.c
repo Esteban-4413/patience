@@ -29,17 +29,20 @@ void save_game(EstadoJogo *e, char *ficheiro_save, char *nome_paciencia_original
     size_t i, j;
     for(i = 0; i < e->total_pilhas; i ++){
         if(e->pilhas[i].tamanho_pilha == 0) fprintf(f, "\n");
-        else
-        {
-            for(j = 0; j < e->pilhas[i].tamanho_pilha; j++){
-                escreve_carta(f, e->pilhas[i].pilha[j]);
-                if(j < e->pilhas[i].tamanho_pilha - 1) fprintf(f, " ");
-            }
-            fprintf(f, "\n");
-        }
+        else escreve_pilha(f, &e->pilhas[i]);
     }
     fclose(f);
 }
+
+void escreve_pilha(FILE *f, PILHA *pilha){
+    size_t j;
+    for(j = 0; j < pilha->tamanho_pilha; j++){
+        escreve_carta(f, pilha->pilha[j]);
+        if(j < pilha->tamanho_pilha - 1) fprintf(f, " ");
+    }
+    fprintf(f, "\n");
+}
+
 
 EstadoJogo load_game(char *ficheiro_save, char *pasta_paciencias){
     EstadoJogo e;
@@ -49,30 +52,37 @@ EstadoJogo load_game(char *ficheiro_save, char *pasta_paciencias){
     FILE *f = fopen(ficheiro_save, "r");
     if(f == NULL) {printf("erro ao carregar o ficherio save"); return e;}
 
+    e = carrega_estado_inicial(f, pasta_paciencias);
+    carrega_pilhas(f, &e);
+    fclose(f);
+    return e;
+}
+
+void carrega_pilhas(FILE *f, EstadoJogo *e){
+    char buffer[128];
+    size_t i = 0;
+    int eof = 0;
+    while (i < e->total_pilhas && !eof){
+        if(fgets(buffer, sizeof(buffer), f) == NULL) eof = 1;
+        else{
+            int len = strlen(buffer);
+            if(len > 0 && buffer[len-1] == '\n') buffer[len-1] = '\0';
+            e->pilhas[i].tamanho_pilha = 0;
+            if(buffer[0] != '\0') parse_linha_pilha(buffer, &e->pilhas[i]);
+        }
+        i++;
+    }
+}
+
+EstadoJogo carrega_estado_inicial(FILE *f, char *pasta_paciencias){
     char buffer[128];
     char ruta[256];
     fgets(buffer, sizeof(buffer), f);
     int len = strlen(buffer);
-    if(len > 0 && buffer[len - 1] == '\n') buffer[len-1] = '\0';
-
+    if(len > 0 && buffer[len-1] == '\n') buffer[len-1] = '\0';
     sprintf(ruta, "%s/%s", pasta_paciencias, buffer);
     DefJogo *regras = load_paciencia(ruta);
-    e = setGameState(regras);
-    
-    size_t i = 0;
-    int eof = 0; //end of file. Mesmo trque que usei noutra qualuqer função: a boolean flag haha
-    while (i < e.total_pilhas && !eof){
-        if(fgets(buffer, sizeof(buffer), f) == NULL) eof = 1;
-        else{
-            int len = strlen(buffer);
-            if(len > 0 && buffer[len - 1] == '\n') buffer[len - 1] = '\0';
-            e.pilhas[i].tamanho_pilha = 0;
-            if(buffer[0] != '\0') parse_linha_pilha(buffer, &e.pilhas[i]);
-        }
-        i++;    
-    }
-    fclose(f);
-    return e;
+    return setGameState(regras);
 }
 
 void parse_linha_pilha(char *buffer, PILHA *pilha){
@@ -87,3 +97,4 @@ void parse_linha_pilha(char *buffer, PILHA *pilha){
         pos += leidos;
     }
 }
+
