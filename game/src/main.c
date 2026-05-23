@@ -11,7 +11,7 @@
 
 
 int main(){
-    DefJogo jogo = escolhe_paciencia("paciencias");
+    DefJogo *jogo = escolhe_paciencia("paciencias");
     /*
     printf("Jogo: %s\n", jogo.nome);
     printf("Baralhos: %d\n", jogo.num_baralhos);
@@ -28,7 +28,7 @@ int main(){
     EstadoJogo e = setGameState(jogo);
     print_pilhas(&e);
     printf("Total pilhas: %d\n", e.total_pilhas);
-    printf("Total inits: %zu\n", jogo.total_inits);
+    printf("Total inits: %zu\n", jogo->total_inits);
     POINTERS janelas;
     // codificação de caracteres
     setlocale(LC_ALL, ""); 

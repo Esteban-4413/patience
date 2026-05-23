@@ -7,6 +7,6 @@
 #include "gamedef.h"
 #include <dirent.h>
 
-DefJogo escolhe_paciencia(char *pasta);
+DefJogo* escolhe_paciencia(char *pasta);
 
 #endif //PATIENCE_LOADER_H

@@ -6,8 +6,8 @@
 
 
 
-DefJogo load_paciencia(char *ficheiro){
-    DefJogo estado = incializa_estado();
+DefJogo* load_paciencia(char *ficheiro){
+    DefJogo *estado = incializa_estado();
     FILE * paciencia = fopen(ficheiro, "r");
     char buffer[255];
 
@@ -26,7 +26,7 @@ DefJogo load_paciencia(char *ficheiro){
  
             // sscanf devolve um int que é a quantidade de elementos que consiguio ler.
             // Neste caso só interessa se conseguio ler a primeira string ou não (nesse caso devolve 0).
-            if (sscanf(buffer, "%s", comando) == 1) what_command(comando, buffer, &estado);// sscanf lê uma string e extrai as palavras, muito fixe.
+            if (sscanf(buffer, "%s", comando) == 1) what_command(comando, buffer, estado);// sscanf lê uma string e extrai as palavras, muito fixe.
         }
         fclose(paciencia);
         return estado;
@@ -34,25 +34,25 @@ DefJogo load_paciencia(char *ficheiro){
     return estado;
 }
 
-DefJogo incializa_estado(void){
-    DefJogo est;
-    est.nome[0] = '\0';
+DefJogo* incializa_estado(void){
+    DefJogo *est = malloc(sizeof(DefJogo)); // Adicionei (Fernanda) isso para converter para um pointer.
+    est->nome[0] = '\0';
 
-    est.tipos = NULL;
-    est.total_tipos = 0;
+    est->tipos = NULL;
+    est->total_tipos = 0;
 
-    est.total_wins = 0;
+    est->total_wins = 0;
 
-    est.movs = NULL;
-    est.total_movs = 0;
+    est->movs = NULL;
+    est->total_movs = 0;
 
-    est.autos = NULL;
-    est.total_autos = 0;
+    est->autos = NULL;
+    est->total_autos = 0;
 
-    est.total_inits = 0;
-    est.inits = NULL;
+    est->total_inits = 0;
+    est->inits = NULL;
 
-    est.wins = NULL;
+    est->wins = NULL;
     return est;
 }
 

@@ -21,8 +21,29 @@ typedef struct {
 } POINTERS ; 
 
 
-
+/**
+ * @brief Função chamada após ser definida uma nova jogada
+ * reponsável por chamar as funções, que vai por a piscar a selecionada a piscar 
+ * ou fazer com que a mesma deixe de piscar. 
+ * 
+ * @param e Ponteiro para o estado atual do jogo.
+ * @param janelas Pointer onde estão guadados os endereços das janelas.
+ */
 void update_pilha(EstadoJogo *e, POINTERS *janelas);
+
+/**
+ * @brief Função auxiliar da update_pilha.
+ * Determina o lim que é o índice até onde as cartas vão ser mostradas
+ * sem piscar, para depois na função print_pilha, ser usado esse valor.
+ * 
+ * @param win Endereço da janela da pilha.
+ * @param x Posição relativa dentro da janela para a coluna do print. 
+ * @param y Posição relativa dentro da janela para a linha do print.
+ * @param nome Array com o nome do tipo da pilha. 
+ * @param pilha Array de cartas da correspondente pilha.
+ * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ * @param lim Coluna onde foi feito o click, i.e., a partir de onde as cartas ficam em destaque. 
+ */
 void pilha_negrito(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int tamanho_pilha, int lim);
 
 
@@ -63,17 +84,48 @@ void setPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas);
  */
 void printPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas);
 
+int checkFlags_pilha(EstadoJogo *e, char nome_tipo[]);
+
 /**
  * @brief Função que vai fazer o print de TODAS as CARTAS da pilha.
+ * Explicação do parâmetro "r": 
+ * Se r = 1 -> Todas as cartas da pilha são visíveis.
+ * Ser r = 2 -> Nenhuma carta da pilha é visível. 
+ * Se r = 3 -> Apenas a carta do topo é visível.
  * 
  * @param win Endereço da janela da pilha.
  * @param x Posição relativa dentro da janela para a coluna do print. 
  * @param y Posição relativa dentro da janela para a linha do print.
+ * @param r Índice recebido da printPilhas, indica qual o tipo de print será feito. 
  * @param nome Array com o nome do tipo da pilha. 
  * @param pilha Array de cartas da correspondente pilha.
  * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
  */
-void wprint_pilha(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int tamanho_pilha);
+void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha);
+
+/**
+ * @brief Loop que faz o print de todas as cartas da pilha vísiveis. 
+ * 
+ * @param win Endereço da janela da pilha.
+ * @param x Posição relativa dentro da janela para a coluna do print. 
+ * @param y  Posição relativa dentro da janela para a linha do print.
+ * @param pilha Array de cartas da correspondente pilha.
+ * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ */
+void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha);
+
+/**
+ * @brief Loop que ou faz o print de todas as cartas, como invisíveis, 
+ * ou todas invisíveis e a do topo virada para cima(visível). 
+ * 
+ * @param win Endereço da janela da pilha.
+ * @param x Posição relativa dentro da janela para a coluna do print. 
+ * @param y Posição relativa dentro da janela para a linha do print.
+ * @param r Índice recebido da printPilhas, indica qual o tipo de print será feito. 
+ * @param pilha Array de cartas da correspondente pilha.
+ * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ */
+void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha);
 
 /**
  * @brief Função geral que faz print de uma carta numa janela 

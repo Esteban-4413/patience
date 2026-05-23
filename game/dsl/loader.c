@@ -8,14 +8,15 @@
 
 
 
-DefJogo escolhe_paciencia(char *pasta){
-   DefJogo r;
+DefJogo* escolhe_paciencia(char *pasta){
+   DefJogo *r;
     DIR *d = opendir(pasta);
 
    if (d == NULL){
     printf("'%s'...?...?...?...?...?...?...?...?...?...?...?...? não existe\n ", pasta);
-    DefJogo vazio;
-    vazio.nome[0] = '\0';
+    DefJogo *vazio = malloc(sizeof(DefJogo));
+    vazio->nome[0] = '\0';
+
     r = vazio;
     return r;
    }
