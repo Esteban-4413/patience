@@ -1,7 +1,8 @@
 #include <string.h>
 #include <stdlib.h>
-#include "../include/move.h"
+
 #include "../include/gamestate.h"
+#include "../include/move.h"
 
 int valida_jogada(EstadoJogo *estado, JOGADA jogada){
     PILHA origem = estado->pilhas[jogada.pilha];
@@ -115,8 +116,8 @@ int verifica_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
         }
     }
 
-    PILHA *origem = estado->pilhas[jogada.pilha];
-    PILHA *destino = estado->pilhas[jogada.chegada];
+    PILHA *origem = &(estado->pilhas[jogada.pilha]);
+    PILHA *destino = &(estado->pilhas[jogada.chegada]);
 
     int inicio = jogada.coluna;
     int fim = origem->tamanho_pilha-1;
@@ -202,8 +203,8 @@ int verifica_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
 
 
 void joga(EstadoJogo *estado, JOGADA jogada){
-    PILHA *origem = estado->pilhas[jogada.pilha];
-    PILHA *destino = estado->pilhas[jogada.chegada];
+    PILHA *origem = &(estado->pilhas[jogada.pilha]);
+    PILHA *destino = &(estado->pilhas[jogada.chegada]);
 
     int inicio = jogada.coluna;
 

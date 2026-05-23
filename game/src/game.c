@@ -3,6 +3,7 @@
 #include "../include/input.h"
 #include "../include/game.h"
 #include "../include/undo.h"
+#include "../include/move.h"
 
 
 void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
@@ -57,8 +58,9 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
     int pilha = e->jog_atual.pilha;
     int chegada = e->jog_atual.chegada; 
     if (e->jog_atual.flag  == 1 && pilha != chegada) {
-            //joga(pilha, e->jog_atual.coluna, chegada, e->pilhas[chegada].tamanho_pilha, e);
-            registar_jogada(e);
+        joga(e, e->jog_atual); 
+        registar_jogada(e);
+            // MOVIMENTOS AUTOMATICOS 
                 
         } 
             
@@ -81,9 +83,8 @@ void define_jogAtual(int r, int num_carta, EstadoJogo *e){
         //mvprintw(2, 60 , "COLUNA :  %d      .                                  ", num_carta);
         if (num_carta >= 0 ) { // && Valida tamanho da sequencia é válido 
             e->jog_atual.flag = 0;
-            // e->jog_atual.n = tamanho_sequencia(e->jog_atual.coluna, e->jog_atual.pilha, e);
         } 
-        else e->jog_atual.flag = -1;
+        else e->jog_atual.flag = 0;
         
     }
     else if (e->jog_atual.flag == 0) jogAtual_segClick(r, e);
@@ -92,15 +93,10 @@ void define_jogAtual(int r, int num_carta, EstadoJogo *e){
 
 void jogAtual_segClick(int r, EstadoJogo *e){
     e->jog_atual.chegada = r;
-    //int v1 = valida_jogada_origem(e->jog_atual.pilha, e->jog_atual.coluna, e);
-    //int v2 = valida_jogada_destino(e);
+    int v = valida_jogada(e, e->jog_atual); 
+
     if (r == e->jog_atual.pilha) e->jog_atual.flag = 1;
-    // preciso que no caso da chegada = saída de 1 também. 
-    /*
-    else if (v1 && v2) {
-    e->jog_atual.flag = 1;
-    } 
-    */
+    else if (v) e->jog_atual.flag = 1; 
     else e->jog_atual.flag = -1; 
     
 }
