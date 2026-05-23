@@ -16,17 +16,17 @@ void update_pilha(EstadoJogo *e, POINTERS *janelas){
 
     if (e->jog_atual.flag == 0 && e->jog_atual.pilha != (-1)) {
         int lim = e->jog_atual.coluna; 
-        pilha_negrito(janelas->end_pilhas[s], 2, 1, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha, lim);
+        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha, 1, lim); 
     }
     else if (e->jog_atual.flag == 1 && e->jog_atual.coluna != (-1)){  
         int c = e->jog_atual.chegada; // índice da pilha de chegada 
         
         int rc = checkFlags_pilha(e, (e->pilhas[c].nome_tipo));
-        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA
-        wprint_pilha(janelas->end_pilhas[c], 2, 1, rc, e->pilhas[c].nome_tipo, e->pilhas[c].pilha, e->pilhas[c].tamanho_pilha ); // CHEGADA
+        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha, 0, 0); // SAIDA
+        wprint_pilha(janelas->end_pilhas[c], 2, 1, rc, e->pilhas[c].nome_tipo, e->pilhas[c].pilha, e->pilhas[c].tamanho_pilha, 0, 0); // CHEGADA
                
     } else {
-        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA // TIRA O QUE TAVA EM NEGRITO - jogada inválida
+        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha, 0, 0); // SAIDA // TIRA O QUE TAVA EM NEGRITO - jogada inválida
    
     } 
 }
@@ -45,6 +45,7 @@ void pilha_negrito(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int ta
         wattroff(win, A_BOLD | A_BLINK);
         
         x += 2; // EMPILHAMENTO VERTICAL 
+        wrefresh(win);
     }
 
 }
@@ -105,7 +106,7 @@ void printPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas){
     for (int i = 0; i < total_pilhas; i++){           
         r = checkFlags_pilha(e, e->pilhas[i].nome_tipo);
 
-        wprint_pilha(end_pilhas[i], x_local, y_local, r, e->pilhas[i].nome_tipo, e->pilhas[i].pilha, e->pilhas[i].tamanho_pilha);
+        wprint_pilha(end_pilhas[i], x_local, y_local, r, e->pilhas[i].nome_tipo, e->pilhas[i].pilha, e->pilhas[i].tamanho_pilha, 0, 0);
     } 
     
 }
@@ -136,17 +137,18 @@ int checkFlags_pilha(EstadoJogo *e, char nome_tipo[]){
 }
 
 // ------- PRINT DE UMA PILHA -------
-void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha){
-
+void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha, int flag, int lim){
+     int f = 0; 
+     if (flag) f = 1;
     werase(win);
 
     if(r == 1){  
-        print_todas(win, x, y, pilha, tamanho_pilha);
+        print_todas(win, x, y, pilha, tamanho_pilha, f, lim);
         // Borda da janela 
         box(win, 0, 0);
     }
     else if (r == 2 || r == 3) {
-        print_pilhaTopInv(win, x, y, r, pilha, tamanho_pilha); 
+        print_pilhaTopInv(win, x, y, r, pilha, tamanho_pilha, f, lim); 
     }
     // Fraz print do nome/tipo da pilha
     wattron(win, COLOR_PAIR(3));
@@ -158,29 +160,48 @@ void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, 
 }
 
 // TODAS as cartas visíveis
-void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha){
+void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha, int flag, int lim){
+
     for(int i = 0; i<tamanho_pilha; i++){
+        if (flag && i >= lim) { 
+                wattron(win, A_BOLD | A_BLINK);
+            }
         wprint_carta(win, x, y, pilha[i]);
+
+        // Desliga IMEDIATAMENTE após imprimir a carta para não pintar o fundo da janela
+        wattroff(win, A_BOLD | A_BLINK);
+
         x+= 2;
     }
 
 }
 
-// Apenas a do TOPO visível ou NENHUMA VISÍVEL
-void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha){
+// Apenas a do TOPO visível ou NENHUMA vísivel
+void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha, int flag, int lim){
     int i;
     int j = 0; 
     if (r==3) j = 1; 
     // Print de cada uma das "invisíveis"
     for(i = 0; i<tamanho_pilha - j ; i++){
+        if (flag && i >= lim) { 
+                wattron(win, A_BOLD | A_BLINK);
+            }
         mvwprintw(win, x, y, "[%-2s%s]", "?", "?");
+
+        // Desliga IMEDIATAMENTE após imprimir a carta para não pintar o fundo da janela
+        wattroff(win, A_BOLD | A_BLINK);
         x+= 2;
     }
 
     // Faz print da carta do topo 
-    if (r == 3 && tamanho_pilha>1) wprint_carta(win, x, y, pilha[i]);
+    if (r == 3 && tamanho_pilha>1) {
+        if (flag){
+            wattron(win, A_BOLD | A_BLINK);
+        }
 
-
+        wprint_carta(win, x, y, pilha[i]);
+        wattroff(win, A_BOLD | A_BLINK);
+    }
 }
 
 // ------- PRINT DA CARTA -------

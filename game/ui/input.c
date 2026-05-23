@@ -60,13 +60,12 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax) {
 // ------- DEFINE COLUNA DO CLIQUE ------- 
 int coords_para_carta(int x, int pilha, EstadoJogo *e){
     const int offset = 5;
-    const int comprimento_cabeca_carta = 1;
-    const int comprimento_carta = 1;
+    const int comprimento = 2;
     
     if (x < offset) {
         return -1; /*< Clique fora da pilha (em cima dela)*/
     }
-    int idx = (x - offset);
+    int idx = (x - offset) / comprimento;
     
     
     if (idx >= e->pilhas[pilha].tamanho_pilha - 1){

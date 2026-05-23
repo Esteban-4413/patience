@@ -84,14 +84,22 @@ void setPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas);
  */
 void printPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas);
 
+/**
+ * @brief Função que vai verificar as flags do tipo da pilha 
+ * atribuindo um int que corresponde ao tipo de print a ser feito. 
+ * Se r = 1 -> Todas as cartas da pilha são visíveis.
+ * Ser r = 2 -> Nenhuma carta da pilha é visível. 
+ * Se r = 3 -> Apenas a carta do topo é visível.
+ * 
+ * @param e Ponteiro para o estado atual do jogo.
+ * @param nome_tipo NOme do tipo da pilha que queremos fazer o print. 
+ * @return int Flag que indica o tipo de print 
+ */
 int checkFlags_pilha(EstadoJogo *e, char nome_tipo[]);
 
 /**
  * @brief Função que vai fazer o print de TODAS as CARTAS da pilha.
- * Explicação do parâmetro "r": 
- * Se r = 1 -> Todas as cartas da pilha são visíveis.
- * Ser r = 2 -> Nenhuma carta da pilha é visível. 
- * Se r = 3 -> Apenas a carta do topo é visível.
+ * 
  * 
  * @param win Endereço da janela da pilha.
  * @param x Posição relativa dentro da janela para a coluna do print. 
@@ -100,8 +108,10 @@ int checkFlags_pilha(EstadoJogo *e, char nome_tipo[]);
  * @param nome Array com o nome do tipo da pilha. 
  * @param pilha Array de cartas da correspondente pilha.
  * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ * @param flag Flag que indica se devemos por a negrito as cartas clicadas da pilha. 
+ * @param lim coluna onde foi feito o click (só ussado se flag é 1);
  */
-void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha);
+void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha, int flag, int lim);
 
 /**
  * @brief Loop que faz o print de todas as cartas da pilha vísiveis. 
@@ -111,8 +121,10 @@ void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, 
  * @param y  Posição relativa dentro da janela para a linha do print.
  * @param pilha Array de cartas da correspondente pilha.
  * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ * @param flag Flag que indica se devemos por a negrito as cartas clicadas da pilha. 
+ * @param lim coluna onde foi feito o click (só ussado se flag é 1);
  */
-void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha);
+void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha, int flag, int lim );
 
 /**
  * @brief Loop que ou faz o print de todas as cartas, como invisíveis, 
@@ -124,8 +136,11 @@ void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha);
  * @param r Índice recebido da printPilhas, indica qual o tipo de print será feito. 
  * @param pilha Array de cartas da correspondente pilha.
  * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
+ * @param flag Flag que indica se devemos por a negrito as cartas clicadas da pilha. 
+ * @param lim coluna onde foi feito o click (só ussado se flag é 1);
+
  */
-void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha);
+void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha, int flag, int lim);
 
 /**
  * @brief Função geral que faz print de uma carta numa janela 
