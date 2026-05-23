@@ -3,12 +3,12 @@
 #include "../include/move.h"
 #include "../include/gamestate.h"
 
-int valida_jogada(EstadoJogo estado, JOGADA jogada){
-    PILHA origem = estado.pilhas[jogada.pilha];
-    PILHA destino = estado.pilhas[jogada.chegada];
+int valida_jogada(EstadoJogo *estado, JOGADA jogada){
+    PILHA origem = estado->pilhas[jogada.pilha];
+    PILHA destino = estado->pilhas[jogada.chegada];
 
-    for (int i = 0; i < estado.def_jogo->total_movs; i++){
-        Movimento mov = estado.def_jogo->movs[i];
+    for (int i = 0; i < estado->def_jogo->total_movs; i++){
+        Movimento mov = estado->def_jogo->movs[i];
 
         if (strcmp(mov.pilha_origem, origem.nome_tipo) == 0
             &&  strcmp(mov.pilha_destino, destino.nome_tipo) == 0){
@@ -25,7 +25,7 @@ int cor(CARTAS carta){
 }
 
 
-int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
+int verifica_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
 
     int flag[20] = {0};
 
@@ -115,18 +115,17 @@ int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
         }
     }
 
-    PILHA *origem = &estado.pilhas[jogada.pilha];
-    PILHA *destino = &estado.pilhas[jogada.chegada];
+    PILHA *origem = estado->pilhas[jogada.pilha];
+    PILHA *destino = estado->pilhas[jogada.chegada];
 
     int inicio = jogada.coluna;
-    int fim = jogada.coluna + jogada.n - 1;
+    int fim = origem->tamanho_pilha-1;
 
     CARTAS topo_origem = origem->pilha[fim];
     CARTAS fundo_origem = origem->pilha[inicio];
 
     CARTAS topo_destino;
     if (destino->tamanho_pilha > 0) topo_destino = destino->pilha[destino->tamanho_pilha - 1];
-
     if (flag[0]) return 1;
 
     //Estas flags precisam de uma pilha existente. Se o tamanho for 0,
@@ -203,16 +202,10 @@ int verifica_flags(char flags[32], EstadoJogo estado, JOGADA jogada){
 
 
 void joga(EstadoJogo *estado, JOGADA jogada){
-    if (!valida_jogada(*estado, jogada)) return;
-
-    PILHA *origem = &estado->pilhas[jogada.pilha];
-    PILHA *destino = &estado->pilhas[jogada.chegada];
+    PILHA *origem = estado->pilhas[jogada.pilha];
+    PILHA *destino = estado->pilhas[jogada.chegada];
 
     int inicio = jogada.coluna;
-
-    memmove(&destino->pilha[destino->tamanho_pilha],
-            &origem->pilha[inicio],
-            jogada.n*sizeof(CARTAS));
 
     destino->tamanho_pilha += jogada.n;
     origem->tamanho_pilha -= jogada.n;
@@ -223,3 +216,10 @@ void joga(EstadoJogo *estado, JOGADA jogada){
         estado->historial[estado->tamanho_historial++] = jogada;
     }
 }
+
+//tratar do caso em que destino->tamanho_pilha = 0 AFINAL JA ESTAVA FEITO
+//int fim pode ser escrito de maneira mais simples (é sempre o topo da pilha) FEITO
+//memmove não é preciso FEITO
+
+//condicao de vitoria
+//movimentos automaticos
