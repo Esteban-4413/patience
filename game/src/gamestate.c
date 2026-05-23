@@ -6,29 +6,29 @@
 #include "../include/utils.h"
 
 
-EstadoJogo setGameState(DefJogo d){
+EstadoJogo setGameState(DefJogo *d){
     EstadoJogo e; 
     
     inicializa_naipes(&e); 
     inicializa_jogAtual(&e);
     e.tamanho_historial = 0; 
-    e.def_jogo = (&d); 
+    e.def_jogo = d; 
 
     // ----- Inicilizando os baralhos -----
-    int tamanho_baralho = 52 * (d.num_baralhos);
+    int tamanho_baralho = 52 * (d->num_baralhos);
     CARTAS *baralho = malloc(tamanho_baralho * sizeof(CARTAS)); // Aloca a memória do array do baralho 
 
-    inicializa_baralhos(baralho, d.num_baralhos, e.naipes); 
+    inicializa_baralhos(baralho, d->num_baralhos, e.naipes); 
     e.tamanho_baralho = tamanho_baralho;
     e.baralho = baralho; 
     print_baralho_grid(&e); 
 
     // ----- Inicilizando as pilhas -----
 
-    PILHA *pilhas = malloc(d.total_inits * sizeof(PILHA)); // Aloca a memória do array das pilhas 
-    e.total_pilhas = d.total_inits; 
+    PILHA *pilhas = malloc(d->total_inits * sizeof(PILHA)); // Aloca a memória do array das pilhas 
+    e.total_pilhas = d->total_inits; 
 
-    set_pilhas(d.inits, d.total_inits,pilhas);
+    set_pilhas(d->inits, d->total_inits,pilhas);
     e.pilhas = pilhas; 
     inicializa_pilhas(&e);
 

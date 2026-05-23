@@ -59,7 +59,7 @@ typedef struct{
 
 
 
-EstadoJogo setGameState(DefJogo d); 
+EstadoJogo setGameState(DefJogo *d); 
 
 void inicializa_naipes(EstadoJogo *e);
 void inicializa_jogAtual(EstadoJogo *e); 
