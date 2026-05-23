@@ -37,12 +37,14 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
     }
 
     // Click nos botões 
-    if (r == e->total_pilhas){
+    else if (r == e->total_pilhas){
         undo(e);
         // Atualiza o print de todas as pilhas 
         printPilhas(e, p->end_pilhas, p->total_pilhas);
 
     }
+
+    // else if (r == e->total_pilhas +1) savegame();
     
     
 }

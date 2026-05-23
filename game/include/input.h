@@ -27,6 +27,7 @@ int verifica_click (EstadoJogo *e, POINTERS *janelas, int *num_carta);
  *  ( Ou seja, um número de 0 a total_pilhas -1 )
  *  Se for:
  *  Botão Undo -> total_pilhas (número total de pilhas que existe no jogo) 
+ *  Botão Save -> total_pilhas + 1; 
  *  
  * Definindo se o click se enquadra, ou não, em alguma destas janelas 
  * com o auxilio da função eclicknaPilha.

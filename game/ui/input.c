@@ -16,6 +16,7 @@ int verifica_click (EstadoJogo *e, POINTERS *janelas, int *num_carta) {
 
 int eclickValido(int x, int y, POINTERS *janelas, int total_pilhas) {
     if (eJanela(janelas->end_undo, x, y)) return (total_pilhas); 
+    else if (eJanela(janelas->end_save, x, y)) return (total_pilhas + 1); 
     return eclicknaPilha(x, y, janelas->end_pilhas, total_pilhas); 
         // Verifica as pilhas 
         /* 

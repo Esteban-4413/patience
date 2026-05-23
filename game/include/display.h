@@ -16,7 +16,7 @@ typedef struct {
     WINDOW **end_pilhas;     /**< Ponteiro para o array com os endereços das janelas das pilhas da mesa. */
     size_t total_pilhas;    /**Tamanho do array de endereços de pilhas */
     WINDOW *end_undo;       /**< Endereço da janela do botão Undo. */
-    WINDOW *end_ngame;      /**< Endereço da janela do botão New Game. */
+    WINDOW *end_save;      /**< Endereço da janela do botão Save. */
 
 } POINTERS ; 
 
@@ -31,20 +31,6 @@ typedef struct {
  */
 void update_pilha(EstadoJogo *e, POINTERS *janelas);
 
-/**
- * @brief Função auxiliar da update_pilha.
- * Determina o lim que é o índice até onde as cartas vão ser mostradas
- * sem piscar, para depois na função print_pilha, ser usado esse valor.
- * 
- * @param win Endereço da janela da pilha.
- * @param x Posição relativa dentro da janela para a coluna do print. 
- * @param y Posição relativa dentro da janela para a linha do print.
- * @param nome Array com o nome do tipo da pilha. 
- * @param pilha Array de cartas da correspondente pilha.
- * @param tamanho_pilha Quantas cartas há na pilha,i.e., quantos elementos há no array.
- * @param lim Coluna onde foi feito o click, i.e., a partir de onde as cartas ficam em destaque. 
- */
-void pilha_negrito(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int tamanho_pilha, int lim);
 
 
 /**
@@ -60,9 +46,17 @@ void setPointers(EstadoJogo *e, POINTERS *janelas);
  * @brief Define a janela do botão undo 
  * É criada a janela,e depois feito print do nome do botão. 
  * 
- * @return WINDOW* Endereço da janela do botão
+ * @return WINDOW* Endereço da janela do botão.
  */
 WINDOW* defineButtonUndo();
+
+/**
+ * @brief Define a janela do botão save 
+ * É criada a janela,e depois feito print do nome do botão.  
+ * 
+ * @return WINDOW* Endereço da janela do botão.
+ */
+WINDOW* defineButtonSave();
 
 /**
  * @brief Preenche o array de do struct Pointers, com os endereços de cada uma 

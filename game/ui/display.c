@@ -7,7 +7,6 @@
 #include "../include/gamedef.h"
 
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NÃO TESTADO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ------- ATUALIZA JANELAS -------
 void update_pilha(EstadoJogo *e, POINTERS *janelas){
@@ -31,27 +30,6 @@ void update_pilha(EstadoJogo *e, POINTERS *janelas){
     } 
 }
 
-void pilha_negrito(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int tamanho_pilha, int lim){
-    int ultCarta = tamanho_pilha - 1;
-
-    for(int j = 0; j <= ultCarta; j++) {
-        // Se a carta atual (j) for igual ou maior que o limite clicado, ativa o destaque
-        if (j >= lim) { 
-            wattron(win, A_BOLD | A_BLINK);
-        }
-        wprint_carta(win, x, y, pilha[j]);
-
-        // Desliga IMEDIATAMENTE após imprimir a carta para não pintar o fundo da janela
-        wattroff(win, A_BOLD | A_BLINK);
-        
-        x += 2; // EMPILHAMENTO VERTICAL 
-        wrefresh(win);
-    }
-
-}
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TESTADO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ------- INICILIZA JANELAS -------
 void setPointers(EstadoJogo *e, POINTERS *janelas){
@@ -66,6 +44,9 @@ void setPointers(EstadoJogo *e, POINTERS *janelas){
 
     // UNDO 
     janelas->end_undo = defineButtonUndo(); 
+
+    // SAVE 
+    janelas->end_save = defineButtonSave();
     
     
 }
@@ -80,6 +61,20 @@ WINDOW* defineButtonUndo(){
         wattroff(janela_undo, COLOR_PAIR(3));
 
         return janela_undo; 
+
+}
+
+// -------  BOTÃO SAVE -------
+WINDOW* defineButtonSave(){ 
+        WINDOW *janela_save;
+        janela_save = newwin(3, 10, 1, 40);    
+        box(janela_save, 0, 0);
+        wattron(janela_save, COLOR_PAIR(3));
+        mvwprintw(janela_save, 1, 1, "  SAVE");
+        wrefresh(janela_save);
+        wattroff(janela_save, COLOR_PAIR(3));
+
+        return janela_save; 
 
 }
 
