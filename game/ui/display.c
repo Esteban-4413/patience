@@ -4,6 +4,7 @@
 #include <ncurses.h>
 #include "../include/display.h"
 #include "../include/utils.h"
+#include "../include/gamedef.h"
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NÃO TESTADO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,6 +12,7 @@
 // ------- ATUALIZA JANELAS -------
 void update_pilha(EstadoJogo *e, POINTERS *janelas){
     int s = e->jog_atual.pilha; // índice da pilha de saida
+    int rs = checkFlags_pilha(e, (e->pilhas[s].nome_tipo));
 
     if (e->jog_atual.flag == 0 && e->jog_atual.pilha != (-1)) {
         int lim = e->jog_atual.coluna; 
@@ -18,12 +20,13 @@ void update_pilha(EstadoJogo *e, POINTERS *janelas){
     }
     else if (e->jog_atual.flag == 1 && e->jog_atual.coluna != (-1)){  
         int c = e->jog_atual.chegada; // índice da pilha de chegada 
-
-        wprint_pilha(janelas->end_pilhas[s], 2, 1, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA
-        wprint_pilha(janelas->end_pilhas[c], 2, 1, e->pilhas[c].nome_tipo, e->pilhas[c].pilha, e->pilhas[c].tamanho_pilha ); // CHEGADA
+        
+        int rc = checkFlags_pilha(e, (e->pilhas[c].nome_tipo));
+        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA
+        wprint_pilha(janelas->end_pilhas[c], 2, 1, rc, e->pilhas[c].nome_tipo, e->pilhas[c].pilha, e->pilhas[c].tamanho_pilha ); // CHEGADA
                
     } else {
-        wprint_pilha(janelas->end_pilhas[s], 2, 1, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA // TIRA O QUE TAVA EM NEGRITO - jogada inválida
+        wprint_pilha(janelas->end_pilhas[s], 2, 1, rs, e->pilhas[s].nome_tipo, e->pilhas[s].pilha, e->pilhas[s].tamanho_pilha ); // SAIDA // TIRA O QUE TAVA EM NEGRITO - jogada inválida
    
     } 
 }
@@ -94,40 +97,95 @@ void setPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas){
 
 // ------- PRINT DE TODAS AS PILHAS -------
 void printPilhas(EstadoJogo *e, WINDOW *end_pilhas[], size_t total_pilhas){
+    int r = 0; 
+    //int rAnt = 0; 
+
     int y_local = 1; 
     int x_local = 2;
-    for (int i = 0; i < total_pilhas; i++){
-        wprint_pilha(end_pilhas[i], x_local, y_local, e->pilhas[i].nome_tipo, e->pilhas[i].pilha, e->pilhas[i].tamanho_pilha);
+    for (int i = 0; i < total_pilhas; i++){           
+        r = checkFlags_pilha(e, e->pilhas[i].nome_tipo);
+
+        wprint_pilha(end_pilhas[i], x_local, y_local, r, e->pilhas[i].nome_tipo, e->pilhas[i].pilha, e->pilhas[i].tamanho_pilha);
     } 
     
 }
 
-// Adicionar a print_pilha que vai clasificar qual o tipo de print de pilha que uma pilha específica 
-// vai ter que fazer, porque tem as flags específicas para tal. 
+int checkFlags_pilha(EstadoJogo *e, char nome_tipo[]){
+    char *f;
+
+    int lim = e->def_jogo->total_tipos ; // Total de tipos de pilhas existentes 
+    int i = 0;
+
+    while ( i < lim && (comp_strings(nome_tipo, e->def_jogo->tipos[i].nome_tipo))){
+        i++;
+    }
+
+    if (i < lim) {
+    f = e->def_jogo->tipos[i].flags;
+
+    for(int j = 0; j < 2; j++){ 
+        if ( f[j] == '=') return 1; 
+        else if (f[j] == '_') return 2;
+        else if ( f[j] == '^') return 3;
+        } 
+    }
+    
+
+    return (-1);
+    
+}
 
 // ------- PRINT DE UMA PILHA -------
-void wprint_pilha(WINDOW *win, int x, int y, char nome[], CARTAS *pilha, int tamanho_pilha){
+void wprint_pilha(WINDOW *win, int x, int y, int r, char nome[], CARTAS *pilha, int tamanho_pilha){
 
     werase(win);
 
-    // Borda da janela 
-    box(win, 0, 0);
-
+    if(r == 1){  
+        print_todas(win, x, y, pilha, tamanho_pilha);
+        // Borda da janela 
+        box(win, 0, 0);
+    }
+    else if (r == 2 || r == 3) {
+        print_pilhaTopInv(win, x, y, r, pilha, tamanho_pilha); 
+    }
     // Fraz print do nome/tipo da pilha
     wattron(win, COLOR_PAIR(3));
     mvwprintw(win, 0, 0,"%s", nome);
-    wattroff(win, COLOR_PAIR(3));
-
-    // Print de cada uma das cartas 
-    for(int i = 0; i<tamanho_pilha; i++){
-        wprint_carta(win, x, y, pilha[i]);
-        y++;
-    }
+    wattroff(win, COLOR_PAIR(3));  
 
     wrefresh(win);
+
+}
+
+// TODAS as cartas visíveis
+void print_todas(WINDOW *win, int x, int y, CARTAS *pilha, int tamanho_pilha){
+    for(int i = 0; i<tamanho_pilha; i++){
+        wprint_carta(win, x, y, pilha[i]);
+        x+= 2;
+    }
+
+}
+
+// Apenas a do TOPO visível ou NENHUMA VISÍVEL
+void print_pilhaTopInv(WINDOW *win, int x, int y, int r, CARTAS *pilha, int tamanho_pilha){
+    int i;
+    int j = 0; 
+    if (r==3) j = 1; 
+    // Print de cada uma das "invisíveis"
+    for(i = 0; i<tamanho_pilha - j ; i++){
+        mvwprintw(win, x, y, "[%-2s%s]", "?", "?");
+        x+= 2;
+    }
+
+    // Faz print da carta do topo 
+    if (r == 3 && tamanho_pilha>1) wprint_carta(win, x, y, pilha[i]);
+
+
 }
 
 // ------- PRINT DA CARTA -------
+
+// Carta vísivel 
 void wprint_carta(WINDOW *win, int x, int y,  CARTAS c){
 
         char valor[3]; // guarda o valor da carta 
@@ -143,7 +201,7 @@ void wprint_carta(WINDOW *win, int x, int y,  CARTAS c){
         
 
 
-        mvwprintw(win, y, x, "[%-2s%s]", valor, s);
+        mvwprintw(win, x, y, "[%-2s%s]", valor, s);
 
         refresh();
 
