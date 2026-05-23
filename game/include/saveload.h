@@ -37,5 +37,13 @@ void save_game(EstadoJogo *e, char *ficheiro_save, char *nome_paciencia_original
  */
 EstadoJogo load_game(char *ficheiro_save, char *pasta_paciencias);
 
+/**
+ * @brief 
+ * 
+ * @param buffer 
+ * @param pilha 
+ */
+void parse_linha_pilha(char *buffer, PILHA *pilha);
+
 
 #endif 
