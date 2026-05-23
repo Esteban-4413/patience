@@ -232,19 +232,6 @@ const char* traduzsimbolo(char naipe) {
     }
 }
 
-void traduzvalor(char *valor, char v){
-        switch(v){
-                case 1:  copia_string(valor, "A"); return;
-                case 11: copia_string(valor, "J"); return;
-                case 12: copia_string(valor, "Q"); return;
-                case 13: copia_string(valor, "K"); return;
-                case 0 : copia_string(valor, "?"); return;
-                default:
-                sprintf(valor, "%d", v); return;
-        }
-        
-}
-
 
 // ------- ATIVA NCURSES -------
 void ativaNcurses(){

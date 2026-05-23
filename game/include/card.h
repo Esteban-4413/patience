@@ -14,4 +14,20 @@ typedef struct {
     char naipe; /**< Carácter que representa o naipe da carta (ex: 'P' paus, 'O' ouros, 'C' copas, 'E' espadas). */
 } CARTAS;
 
+/**
+ * @brief 
+ * 
+ * @param valor 
+ * @param v 
+ */
+void traduzvalor(char *valor, char v);
+
+/**
+ * @brief 
+ * 
+ * @param str 
+ * @return CARTAS 
+ */
+CARTAS le_carta(char *str);
+
 #endif
