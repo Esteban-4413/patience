@@ -38,7 +38,6 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
 
     // Click nos botões 
     if (r == e->total_pilhas){
-        mvprintw(10,110, "CLICK NO UNDO");
         undo(e);
         // Atualiza o print de todas as pilhas 
         printPilhas(e, p->end_pilhas, p->total_pilhas);
@@ -80,6 +79,7 @@ void define_jogAtual(int r, int num_carta, EstadoJogo *e){
     if(e->jog_atual.flag == -2){
         e->jog_atual.pilha = r;
         e->jog_atual.coluna = num_carta; 
+        e->jog_atual.n = e->pilhas[r].tamanho_pilha - num_carta;
         //mvprintw(2, 60 , "COLUNA :  %d      .                                  ", num_carta);
         if (num_carta >= 0 ) { // && Valida tamanho da sequencia é válido 
             e->jog_atual.flag = 0;

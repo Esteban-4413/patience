@@ -204,18 +204,20 @@ int verifica_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
 
 void joga(EstadoJogo *estado, JOGADA jogada){
     PILHA *origem = &(estado->pilhas[jogada.pilha]);
+    int tamanho_origem = origem->tamanho_pilha;
+
     PILHA *destino = &(estado->pilhas[jogada.chegada]);
+    int tamanho_destino = destino->tamanho_pilha;
+
 
     int inicio = jogada.coluna;
-
-    destino->tamanho_pilha += jogada.n;
-    origem->tamanho_pilha -= jogada.n;
-
-    estado->jog_atual = jogada;
-
-    if(estado->tamanho_historial < MAX_UNDO){
-        estado->historial[estado->tamanho_historial++] = jogada;
+    
+    for( int i = 0; i < tamanho_origem - jogada.coluna; i++){
+        destino->pilha[tamanho_destino] = origem->pilha[tamanho_origem -1];
+        origem->tamanho_pilha --;
+        destino->tamanho_pilha ++;
     }
+
 }
 
 //tratar do caso em que destino->tamanho_pilha = 0 AFINAL JA ESTAVA FEITO

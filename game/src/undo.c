@@ -54,8 +54,7 @@ void aux_undo(EstadoJogo *e){
 
     //O Loop de Devolução
     for (int i = 0; i < n; i++) {
-        e->pilhas[origem].pilha[pos_original + 1] = e->pilhas[chegada].pilha[pos_atual_chegada + i];
-        //matriz[origem][pos_original + i] = e->matriz[chegada][pos_atual_chegada + i];
+        e->pilhas[origem].pilha[pos_original + i] = e->pilhas[chegada].pilha[pos_atual_chegada + i];
     }
 
     // Ajustar os contadores de tamanho
