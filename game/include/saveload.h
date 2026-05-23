@@ -1,8 +1,15 @@
-//
-// Created by Esteban Yepez Orozco on 10/05/2026.
-//
+#ifndef SAVELOAD_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <dirent.h>
+#include "../include/utils.h"
+#include "../include/parser.h"
+#include "../include/loader.h"
+#include "../include/gamestate.h"
+#include "../include/gamedef.h"
+#define SAVELOAD_H
 
-#ifndef PATIENCE_SAVELOAD_H
-#define PATIENCE_SAVELOAD_H
+void save_game(EstadoJogo *e, char *ficheiro);
 
-#endif //PATIENCE_SAVELOAD_H
+#endif 

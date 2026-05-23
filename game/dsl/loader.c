@@ -13,7 +13,7 @@ DefJogo escolhe_paciencia(char *pasta){
     DIR *d = opendir(pasta);
 
    if (d == NULL){
-    printf("esquizofrenico, essa pasta '%s'? não existe lol\n ", pasta);
+    printf("'%s'...?...?...?...?...?...?...?...?...?...?...?...? não existe\n ", pasta);
     DefJogo vazio;
     vazio.nome[0] = '\0';
     r = vazio;
@@ -34,7 +34,7 @@ DefJogo escolhe_paciencia(char *pasta){
    closedir(d);
 
    int escolha = 0;
-   char buff[100];
+   char buff[128];
    int buul = 0;
    printf("Qual é o jogo que você quer jogar?\n Digite o número\n");
    while(!buul){

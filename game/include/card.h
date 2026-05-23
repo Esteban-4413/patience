@@ -2,8 +2,8 @@
 // Created by Esteban Yepez Orozco on 10/05/2026.
 //
 
-#ifndef PATIENCE_CARD_H
-#define PATIENCE_CARD_H
+#ifndef CARD_H
+#define CARD_H
 
 /**
  * @brief Estrutura que representa uma única carta do baralho.
@@ -14,4 +14,4 @@ typedef struct {
     char naipe; /**< Carácter que representa o naipe da carta (ex: 'P' paus, 'O' ouros, 'C' copas, 'E' espadas). */
 } CARTAS;
 
-#endif //PATIENCE_CARD_H
+#endif

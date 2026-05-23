@@ -1,5 +1,3 @@
-
-
 #ifndef GAMEDEF_H
 #define GAMEDEF_H
 
