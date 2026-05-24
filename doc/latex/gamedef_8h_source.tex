@@ -1,0 +1,57 @@
+\doxysection{gamedef.\+h}
+\hypertarget{gamedef_8h_source}{}\label{gamedef_8h_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/gamedef.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/gamedef.h}}
+\doxymbox{\hyperlink{gamedef_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ GAMEDEF\_H}}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00012}00012\ \textcolor{preprocessor}{\#define\ GAMEDEF\_H}}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ \textcolor{comment}{//\ Para\ usar\ o\ size\_t}}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00022}\doxymbox{\hyperlink{struct_tipo_pilha}{00022}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00023}\doxymbox{\hyperlink{struct_tipo_pilha_a0fcad6fabf6dd4c660f0da297de2220e}{00023}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_tipo_pilha_a0fcad6fabf6dd4c660f0da297de2220e}{nome\_tipo}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00024}\doxymbox{\hyperlink{struct_tipo_pilha_a12ee872ef50a67a4d4f5a0faf942fdd6}{00024}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_tipo_pilha_a12ee872ef50a67a4d4f5a0faf942fdd6}{flags}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00025}00025\ \}\ \doxymbox{\hyperlink{struct_tipo_pilha}{TipoPilha}};}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00034}\doxymbox{\hyperlink{struct_movimento}{00034}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00035}\doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{00035}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\_origem}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00036}\doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{00036}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\_destino}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00037}\doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{00037}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}}[32];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00038}00038\ \}\ \doxymbox{\hyperlink{struct_movimento}{Movimento}};}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00046}\doxymbox{\hyperlink{struct_victory_condition}{00046}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00047}\doxymbox{\hyperlink{struct_victory_condition_af5d351e78113b7017fa74cc91573d744}{00047}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_victory_condition_af5d351e78113b7017fa74cc91573d744}{nome\_tipo}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00048}\doxymbox{\hyperlink{struct_victory_condition_a0edd3d08ec17653008d31914e332af22}{00048}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_victory_condition_a0edd3d08ec17653008d31914e332af22}{num\_cartas}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00049}00049\ \}\ \doxymbox{\hyperlink{struct_victory_condition}{VictoryCondition}};}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00058}\doxymbox{\hyperlink{struct_init_pilha}{00058}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00059}\doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{00059}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{nome\_tipo}}[16];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00060}\doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{00060}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{num\_cartas}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00061}00061\ \}\ \doxymbox{\hyperlink{struct_init_pilha}{InitPilha}};}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00070}\doxymbox{\hyperlink{struct_def_jogo}{00070}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00072}\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{00072}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}}[64];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00073}\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{00073}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}}[64];\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00074}\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{00074}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00076}\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{00076}}\ \ \ \ \ \doxymbox{\hyperlink{struct_tipo_pilha}{TipoPilha}}\ *\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00077}\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{00077}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00079}\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{00079}}\ \ \ \ \ \doxymbox{\hyperlink{struct_movimento}{Movimento}}\ *\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00080}\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{00080}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00082}\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{00082}}\ \ \ \ \ \doxymbox{\hyperlink{struct_movimento}{Movimento}}\ *\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00083}\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{00083}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00085}\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{00085}}\ \ \ \ \ \doxymbox{\hyperlink{struct_init_pilha}{InitPilha}}\ *\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00086}\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{00086}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00088}\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{00088}}\ \ \ \ \ \doxymbox{\hyperlink{struct_victory_condition}{VictoryCondition}}\ *\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00089}\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{00089}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}};\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00091}00091\ \}\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}};}
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{gamedef_8h_source_l00093}00093\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

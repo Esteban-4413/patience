@@ -1,3 +1,13 @@
+/**
+ * @file display.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2026-05-24
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef DISPLAY_H
 #define DISPLAY_H
 

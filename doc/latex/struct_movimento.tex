@@ -1,0 +1,69 @@
+\doxysection{Movimento Struct Reference}
+\hypertarget{struct_movimento}{}\label{struct_movimento}\index{Movimento@{Movimento}}
+
+
+Estrutura que define uma regra de movimento manual ou automático (comandos MOV ou AUTO).  
+
+
+
+
+{\ttfamily \+\#include $<$gamedef.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\+\_\+origem}} \+[16]\+
+\item 
+char \doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\+\_\+destino}} \+[16]\+
+\item 
+char \doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}} \+[32]\+
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estrutura que define uma regra de movimento manual ou automático (comandos MOV ou AUTO). 
+
+Determina de que tipo de pilha as cartas podem sair e para que tipo de pilha podem ir, bem como as restrições desse movimento. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00034}{34}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_movimento_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}\index{Movimento@{Movimento}!flags@{flags}}
+\index{flags@{flags}!Movimento@{Movimento}}
+\doxysubsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily \label{struct_movimento_ad79d05e64ec92402d9f5966532b03ede} 
+char Movimento::\+flags\+[32]\+}
+
+Flags de restrição do movimento (ex:\+ "{}\texorpdfstring{$\ast$}{*}"{} qualquer, "{}\texorpdfstring{$\sim$}{\string~}"{} alternada, "{}v"{} descrescente). 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}\index{Movimento@{Movimento}!pilha\_destino@{pilha\_destino}}
+\index{pilha\_destino@{pilha\_destino}!Movimento@{Movimento}}
+\doxysubsubsection{\texorpdfstring{pilha\_destino}{pilha\_destino}}
+{\footnotesize\ttfamily \label{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63} 
+char Movimento::\+pilha\+\_\+destino\+[16]\+}
+
+Nome do tipo da pilha para onde a carta vai. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00036}{36}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}\index{Movimento@{Movimento}!pilha\_origem@{pilha\_origem}}
+\index{pilha\_origem@{pilha\_origem}!Movimento@{Movimento}}
+\doxysubsubsection{\texorpdfstring{pilha\_origem}{pilha\_origem}}
+{\footnotesize\ttfamily \label{struct_movimento_a5e9abdbea164353c1c0a1808b087c185} 
+char Movimento::\+pilha\+\_\+origem\+[16]\+}
+
+Nome do tipo da pilha de onde a carta sai. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+\doxymbox{\hyperlink{gamedef_8h}{gamedef.\+h}}\end{DoxyCompactItemize}

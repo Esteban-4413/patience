@@ -1,0 +1,57 @@
+\doxysection{display.\+h}
+\hypertarget{display_8h_source}{}\label{display_8h_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/display.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/display.h}}
+\doxymbox{\hyperlink{display_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ DISPLAY\_H}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00012}00012\ \textcolor{preprocessor}{\#define\ DISPLAY\_H}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <ncurses.h>}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00025}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{00025}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00026}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a0fcd9f22442b9fe1a7ae2d27c21730a5}{00026}}\ \ \ \ \ WINDOW\ **\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a0fcd9f22442b9fe1a7ae2d27c21730a5}{end\_pilhas}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\_pilhas;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00028}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{00028}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00029}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_af949cc6980c91361ee59d938cb77c666}{00029}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_af949cc6980c91361ee59d938cb77c666}{end\_save}};\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00031}00031\ \}\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ ;\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00042}00042\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a5010ecb49d66526bc88246844964b9b1}{update\_pilha}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00053}00053\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a7012c9a58b70149fc7ae69edb39f32fc}{setPointers}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00061}00061\ WINDOW*\ \doxymbox{\hyperlink{display_8h_a5e459375cc71242bd0edaf48ac42ce25}{defineButtonUndo}}();}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00069}00069\ WINDOW*\ \doxymbox{\hyperlink{display_8h_a7401ebe2cf797eea522ba23d05d996ad}{defineButtonSave}}();}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00080}00080\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a1a93a348450c6a1cf4a3b920a30c4888}{setPilhas}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ WINDOW\ *end\_pilhas[],\ \textcolor{keywordtype}{size\_t}\ total\_pilhas);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00089}00089\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a35eb3f28968375d9948ea5bb789b9488}{printPilhas}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ WINDOW\ *end\_pilhas[],\ \textcolor{keywordtype}{size\_t}\ total\_pilhas);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00102}00102\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{display_8h_af2595f7b3d6f20f443253094b3e7032a}{checkFlags\_pilha}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \textcolor{keywordtype}{char}\ nome\_tipo[]);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00118}00118\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a2053b08052dda596102d8f45cb17c8fb}{wprint\_pilha}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r,\ \textcolor{keywordtype}{char}\ nome[],\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *pilha,\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ \textcolor{keywordtype}{int}\ flag,\ \textcolor{keywordtype}{int}\ lim);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00131}00131\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a754db1b5c58df8ae73ba1f32d110915b}{print\_todas}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *pilha,\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ \textcolor{keywordtype}{int}\ flag,\ \textcolor{keywordtype}{int}\ lim\ );}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00147}00147\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a3c0b3cb399103b68b3ef0214ee6d58cb}{print\_pilhaTopInv}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ r,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *pilha,\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ \textcolor{keywordtype}{int}\ flag,\ \textcolor{keywordtype}{int}\ lim);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00159}00159\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_adf8e7eaa336e8114dbca85bf964ba95c}{wprint\_carta}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00170}00170\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{display_8h_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(\textcolor{keywordtype}{char}\ naipe);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00180}00180\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(\textcolor{keywordtype}{char}\ *valor,\ \textcolor{keywordtype}{char}\ v);\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00187}00187\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{display_8h_a898a19b23e6f24ad630671b91a1b7959}{ativaNcurses}}();}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00189}00189\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//DISPLAY\_H}}
+
+\end{DoxyCode}

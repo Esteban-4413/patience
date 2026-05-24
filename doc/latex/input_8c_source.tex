@@ -1,0 +1,84 @@
+\doxysection{input.\+c}
+\hypertarget{input_8c_source}{}\label{input_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/ui/input.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/ui/input.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <ncurses.h>}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{input_8h}{../include/input.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00007}\doxymbox{\hyperlink{input_8h_aef8558ab33bc841ff5e519c5412bf5d6}{00007}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{input_8h_aef8558ab33bc841ff5e519c5412bf5d6}{verifica\_click}}\ (\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas,\ \textcolor{keywordtype}{int}\ *num\_carta)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00008}00008\ \ \ \ \ MEVENT\ event;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (getmouse(\&event)\ ==\ OK)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00010}00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \doxymbox{\hyperlink{input_8h_af45cf53b44cb5ca14ff18282694dcdef}{eclickValido}}(event.x,\ event.y,\ janelas,\ e-\/>total\_pilhas);}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r\ >=\ 0\ \&\&\ r\ <\ 11)\ *num\_carta\ =\ \doxymbox{\hyperlink{input_8h_a15c974def26179f75f5fcea0baae2233}{coords\_para\_carta}}(event.y,\ r,\ e);}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00017}\doxymbox{\hyperlink{input_8h_af45cf53b44cb5ca14ff18282694dcdef}{00017}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{input_8h_af45cf53b44cb5ca14ff18282694dcdef}{eclickValido}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas,\ \textcolor{keywordtype}{int}\ total\_pilhas)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{input_8h_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (total\_pilhas);\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{input_8h_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_af949cc6980c91361ee59d938cb77c666}{end\_save}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (total\_pilhas\ +\ 1);\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{input_8h_a8da40c5b984f71014f307f1dffc3faa5}{eclicknaPilha}}(x,\ y,\ janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a0fcd9f22442b9fe1a7ae2d27c21730a5}{end\_pilhas}},\ total\_pilhas);\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verifica\ as\ pilhas\ }}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00023}00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ Vai\ passar\ a\ dar\ de\ o\ índice\ da\ pilha\ no\ array\ de\ pilhas\ }}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00024}00024\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00030}\doxymbox{\hyperlink{input_8h_a8da40c5b984f71014f307f1dffc3faa5}{00030}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{input_8h_a8da40c5b984f71014f307f1dffc3faa5}{eclicknaPilha}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ total\_pilhas)\{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ total\_pilhas;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{input_8h_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janela\_pilha[i],\ x,\ y))\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00039}\doxymbox{\hyperlink{input_8h_a0fdad2fe95c7cc85cf5c55e93594cbf7}{00039}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{input_8h_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{int}\ xmin,\ xmax,\ ymin,\ ymax;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{input_8h_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}}(win,\ \&xmin,\ \&xmax,\ \&ymin,\ \&ymax);}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00042}00042\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ x\ tem\ de\ estar\ ENTRE\ o\ min\ e\ o\ max}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ >=\ xmin)\ \&\&\ (x\ <=\ xmax)\ \&\&\ (y\ >=\ ymin)\ \&\&\ (y\ <=\ ymax))\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00048}\doxymbox{\hyperlink{input_8h_adb962a066bc9f2db379ce6268470620f}{00048}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{input_8h_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ *xmin,\ \textcolor{keywordtype}{int}\ *xmax,\ \textcolor{keywordtype}{int}\ *ymin,\ \textcolor{keywordtype}{int}\ *ymax)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{int}\ altura,\ largura;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ guarda\ no\ x\ e\ no\ y\ as\ coordenadas\ onde\ se\ encontra\ o\ ponto\ superior\ esquerdo\ da\ janela}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00052}00052\ \ \ \ \ getbegyx(win,\ *ymin,\ *xmin);\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//guarda\ no\ x\ e\ no\ y\ as\ dimensões\ da\ janela}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00055}00055\ \ \ \ \ getmaxyx(win,\ altura,\ largura);\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00057}00057\ \ \ \ \ *ymax\ =\ *ymin\ +\ altura\ -\/\ 1;\ \textcolor{comment}{//\ -\/1\ porque\ as\ coordenadas\ são\ inclusivas}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00058}00058\ \ \ \ \ *xmax\ =\ *xmin\ +\ largura\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00061}00061\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/\ DEFINE\ COLUNA\ DO\ CLIQUE\ -\/-\/-\/-\/-\/-\/-\/\ }}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00062}\doxymbox{\hyperlink{input_8h_a15c974def26179f75f5fcea0baae2233}{00062}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{input_8h_a15c974def26179f75f5fcea0baae2233}{coords\_para\_carta}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ pilha,\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ comprimento\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ offset)\ \{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;\ \textcolor{comment}{/*<\ Clique\ fora\ da\ pilha\ (em\ cima\ dela)*/}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ (x\ -\/\ offset)\ /\ comprimento;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00071}00071\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ e-\/>pilhas[pilha].tamanho\_pilha\ -\/\ 1)\{}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (e-\/>pilhas[pilha].tamanho\_pilha\ -\/1);}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00075}00075\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00076}00076\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return}\ idx;}
+\DoxyCodeLine{\Hypertarget{input_8c_source_l00078}00078\ \}}
+
+\end{DoxyCode}

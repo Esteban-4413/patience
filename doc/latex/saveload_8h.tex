@@ -1,0 +1,358 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+saveload.h File Reference}
+\hypertarget{saveload_8h}{}\label{saveload_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/saveload.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/saveload.h}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$dirent.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+include/\+utils.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+include/\+parser.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+include/\+loader.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+include/\+gamestate.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+include/\+gamedef.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\+\_\+carta}} (FILE \texorpdfstring{$\ast$}{*}f, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} c)
+\begin{DoxyCompactList}\small\item\em Escreve uma única carta num ficheiro, no formato requerido (ex:\+ "{}\+AC"{}, "{}10\+S"{}). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\+\_\+game}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e, char \texorpdfstring{$\ast$}{*}ficheiro\+\_\+save, char \texorpdfstring{$\ast$}{*}nome\+\_\+paciencia\+\_\+original)
+\begin{DoxyCompactList}\small\item\em Guarda o estado atual do jogo num ficheiro de texto (.txt). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \doxymbox{\hyperlink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\+\_\+game}} (char \texorpdfstring{$\ast$}{*}ficheiro\+\_\+save, char \texorpdfstring{$\ast$}{*}pasta\+\_\+paciencias)
+\begin{DoxyCompactList}\small\item\em Carrega um jogo previamente guardado e reconstrói o \doxylink{struct_estado_jogo}{Estado\+Jogo}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\+\_\+linha\+\_\+pilha}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}pilha)
+\begin{DoxyCompactList}\small\item\em Analisa uma linha de texto do ficheiro de save e preenche uma pilha. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\+\_\+pilha}} (FILE \texorpdfstring{$\ast$}{*}f, \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}pilha)
+\begin{DoxyCompactList}\small\item\em Escreve todas as cartas de uma pilha numa linha do ficheiro. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\+\_\+estado\+\_\+inicial}} (FILE \texorpdfstring{$\ast$}{*}f, char \texorpdfstring{$\ast$}{*}pasta\+\_\+paciencias)
+\begin{DoxyCompactList}\small\item\em Função auxiliar que inicializa o estado base a partir da leitura do ficheiro de save. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\+\_\+pilhas}} (FILE \texorpdfstring{$\ast$}{*}f, \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Função auxiliar que percorre as linhas restantes do ficheiro para preencher as pilhas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{saveload_8h_source}{saveload.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{saveload_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}\index{saveload.h@{saveload.h}!carrega\_estado\_inicial@{carrega\_estado\_inicial}}
+\index{carrega\_estado\_inicial@{carrega\_estado\_inicial}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{carrega\_estado\_inicial()}{carrega\_estado\_inicial()}}
+{\footnotesize\ttfamily \label{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7} 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} carrega\+\_\+estado\+\_\+inicial (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{pasta\+\_\+paciencias}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar que inicializa o estado base a partir da leitura do ficheiro de save. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para o ficheiro de save aberto. \\
+\hline
+{\em pasta\+\_\+paciencias} & Caminho para a pasta das regras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_estado_jogo}{Estado\+Jogo} Estado do jogo alocado e configurado com as regras bases.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\+\_\+game()} 
+
+\doxylink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\+\_\+carta()}
+
+load\+\_\+paciencia() 
+
+\doxylink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{set\+Game\+State()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00077}{77}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[128];}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{char}\ ruta[256];}
+\DoxyCodeLine{00080\ \ \ \ \ fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ f);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(buffer);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}(len\ >\ 0\ \&\&\ buffer[len-\/1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ buffer[len-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00083\ \ \ \ \ sprintf(ruta,\ \textcolor{stringliteral}{"{}\%s/\%s"{}},\ pasta\_paciencias,\ buffer);}
+\DoxyCodeLine{00084\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *regras\ =\ load\_paciencia(ruta);}
+\DoxyCodeLine{00085\ \ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(regras-\/>\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}},\ buffer);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{setGameState}}(regras);}
+\DoxyCodeLine{00087\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_adf2129be3fac5b397759bde15c667288}\index{saveload.h@{saveload.h}!carrega\_pilhas@{carrega\_pilhas}}
+\index{carrega\_pilhas@{carrega\_pilhas}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{carrega\_pilhas()}{carrega\_pilhas()}}
+{\footnotesize\ttfamily \label{saveload_8h_adf2129be3fac5b397759bde15c667288} 
+void carrega\+\_\+pilhas (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar que percorre as linhas restantes do ficheiro para preencher as pilhas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para o ficheiro de save aberto. \\
+\hline
+{\em e} & Ponteiro para o \doxylink{struct_estado_jogo}{Estado\+Jogo} recém-\/criado que receberá as cartas.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\+\_\+game()}
+
+\doxylink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\+\_\+linha\+\_\+pilha()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00061}{61}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[128];}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ eof\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ e-\/>total\_pilhas\ \&\&\ !eof)\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ f)\ ==\ NULL)\ eof\ =\ 1;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(buffer);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(len\ >\ 0\ \&\&\ buffer[len-\/1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ buffer[len-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].tamanho\_pilha\ =\ 0;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(buffer[0]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})\ \doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\_linha\_pilha}}(buffer,\ \&e-\/>pilhas[i]);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_ad85744cc29fce63633984f5fc07b4076}\index{saveload.h@{saveload.h}!escreve\_carta@{escreve\_carta}}
+\index{escreve\_carta@{escreve\_carta}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{escreve\_carta()}{escreve\_carta()}}
+{\footnotesize\ttfamily \label{saveload_8h_ad85744cc29fce63633984f5fc07b4076} 
+void escreve\+\_\+carta (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Escreve uma única carta num ficheiro, no formato requerido (ex:\+ "{}\+AC"{}, "{}10\+S"{}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Ponteiro para o ficheiro aberto onde a carta será escrita. \\
+\hline
+{\em c} & Estrutura da carta a ser escrita.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\+\_\+pilha()}
+
+\doxylink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00014}{14}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{char}\ var\_str[4];\ \textcolor{comment}{//\ arr\ para\ guardar\ "{}A"{},\ "{}10"{}\ etc}}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(var\_str,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\%s\%c"{}},\ var\_str,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{00020\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}\index{saveload.h@{saveload.h}!escreve\_pilha@{escreve\_pilha}}
+\index{escreve\_pilha@{escreve\_pilha}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{escreve\_pilha()}{escreve\_pilha()}}
+{\footnotesize\ttfamily \label{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7} 
+void escreve\+\_\+pilha (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}}]{pilha}{}\end{DoxyParamCaption})}
+
+
+
+Escreve todas as cartas de uma pilha numa linha do ficheiro. 
+
+Separa as cartas por um espaço, não deixando espaço no final da linha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & \\
+\hline
+{\em pilha} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\+\_\+game()}
+
+\doxylink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\+\_\+carta()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ pilha-\/>tamanho\_pilha;\ j++)\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\_carta}}(f,\ pilha-\/>pilha[j]);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ pilha-\/>tamanho\_pilha\ -\/\ 1)\ fprintf(f,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_a0a1de54191df80858f419c83194b2369}\index{saveload.h@{saveload.h}!load\_game@{load\_game}}
+\index{load\_game@{load\_game}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{load\_game()}{load\_game()}}
+{\footnotesize\ttfamily \label{saveload_8h_a0a1de54191df80858f419c83194b2369} 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} load\+\_\+game (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{ficheiro\+\_\+save}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{pasta\+\_\+paciencias}{}\end{DoxyParamCaption})}
+
+
+
+Carrega um jogo previamente guardado e reconstrói o \doxylink{struct_estado_jogo}{Estado\+Jogo}. 
+
+Lê a primeira linha para identificar o jogo original e carrega as suas regras. Em seguida, reconstrói o tabuleiro lendo as cartas guardadas linha a linha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ficheiro\+\_\+save} & Caminho para o ficheiro de save que pretendemos ler. \\
+\hline
+{\em pasta\+\_\+paciencias} & Pasta onde se encontram os ficheiros originais das regras (.paciencia). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_estado_jogo}{Estado\+Jogo} O estado do jogo totalmente carregado e pronto a jogar.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\+\_\+game()}
+
+\doxylink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\+\_\+estado\+\_\+inicial()} 
+
+\doxylink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\+\_\+pilhas()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00047}{47}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;}
+\DoxyCodeLine{00049\ \ \ \ \ e.total\_pilhas\ =\ 0;}
+\DoxyCodeLine{00050\ \ \ \ \ e.def\_jogo\ =\ NULL;}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ FILE\ *f\ =\ fopen(ficheiro\_save,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}(f\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}erro\ ao\ carregar\ o\ ficherio\ save"{}});\ \textcolor{keywordflow}{return}\ e;\}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ e\ =\ \doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\_estado\_inicial}}(f,\ pasta\_paciencias);}
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\_pilhas}}(f,\ \&e);}
+\DoxyCodeLine{00057\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ e;}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}\index{saveload.h@{saveload.h}!parse\_linha\_pilha@{parse\_linha\_pilha}}
+\index{parse\_linha\_pilha@{parse\_linha\_pilha}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{parse\_linha\_pilha()}{parse\_linha\_pilha()}}
+{\footnotesize\ttfamily \label{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4} 
+void parse\+\_\+linha\+\_\+pilha (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}}]{pilha}{}\end{DoxyParamCaption})}
+
+
+
+Analisa uma linha de texto do ficheiro de save e preenche uma pilha. 
+
+Corta a string recebida (buffer) nos espaços, traduz cada parte numa carta e adiciona-\/a ao array da pilha correspondente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha de texto lida do ficheiro (ex:\+ "{}\+AC 10\+S 2\+H"{}). \\
+\hline
+{\em pilha} & Ponteiro para a pilha onde as cartas serão guardadas.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\+\_\+pilhas()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00089}{89}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{char}\ token[4];}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ leidos;}
+\DoxyCodeLine{00093\ \ \ \ \ pilha-\/>tamanho\_pilha\ =\ 0;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{while}\ (sscanf(buffer\ +\ pos,\ \textcolor{stringliteral}{"{}\%s\%n"{}},\ token,\ \&leidos)\ ==\ 1)\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c\ =\ \doxymbox{\hyperlink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{le\_carta}}(token);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ pilha-\/>pilha[pilha-\/>tamanho\_pilha]\ =\ c;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ pilha-\/>tamanho\_pilha++;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ pos\ +=\ leidos;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \}}
+
+\end{DoxyCode}
+\Hypertarget{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}\index{saveload.h@{saveload.h}!save\_game@{save\_game}}
+\index{save\_game@{save\_game}!saveload.h@{saveload.h}}
+\doxysubsubsection{\texorpdfstring{save\_game()}{save\_game()}}
+{\footnotesize\ttfamily \label{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33} 
+void save\+\_\+game (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{ficheiro\+\_\+save}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+paciencia\+\_\+original}{}\end{DoxyParamCaption})}
+
+
+
+Guarda o estado atual do jogo num ficheiro de texto (.txt). 
+
+O ficheiro gerado segue as regras da DSL:\+ a primeira linha é o nome do ficheiro da paciência, e as seguintes representam o estado de cada pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para o estado atual do jogo \\
+\hline
+{\em ficheiro\+\_\+save} & Caminho/\+\+Nome do ficheiro onde o jogo será guardado. \\
+\hline
+{\em nome\+\_\+paciencia\+\_\+original} & Nome do ficheiro da paciência (ex:\+ "{}golf.\+paciencia"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\+\_\+game()}
+
+\doxylink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\+\_\+pilha()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{saveload_8c_source_l00023}{23}} of file \doxymbox{\hyperlink{saveload_8c_source}{saveload.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ FILE\ *f\ =\ fopen(ficheiro\_save,\ \textcolor{stringliteral}{"{}w"{}});\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{if}(f\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}erro\ a\ criar\ o\ ficheiro\ save"{}});\ \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ nome\_paciencia\_original);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i,\ j;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ e-\/>total\_pilhas;\ i\ ++)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e-\/>pilhas[i].tamanho\_pilha\ ==\ 0)\ fprintf(f,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\_pilha}}(f,\ \&e-\/>pilhas[i]);}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}

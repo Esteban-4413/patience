@@ -1,0 +1,172 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+card.h File Reference}
+\hypertarget{card_8h}{}\label{card_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/card.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/card.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}
+\begin{DoxyCompactList}\small\item\em Estrutura que representa uma única carta do baralho. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}} (char \texorpdfstring{$\ast$}{*}valor, char v)
+\begin{DoxyCompactList}\small\item\em Converte o valor numérico de uma carta para a sua representação em texto. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \doxymbox{\hyperlink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{le\+\_\+carta}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Converte uma string (ex:\+ "{}10\+S"{}, "{}\+AC"{}) numa estrutura \doxylink{struct_c_a_r_t_a_s}{CARTAS}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{card_8h_a07d7c232c72d42e86a2c713372889259}{traduz\+\_\+valor\+\_\+numerico}} (char \texorpdfstring{$\ast$}{*}str, int len)
+\begin{DoxyCompactList}\small\item\em Função auxiliar para extrair o valor numérico de uma string de carta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{card_8h_source}{card.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{card_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{card_8h_a08e86eee8e53bc70c9e944de584160e6}\index{card.h@{card.h}!le\_carta@{le\_carta}}
+\index{le\_carta@{le\_carta}!card.h@{card.h}}
+\doxysubsubsection{\texorpdfstring{le\_carta()}{le\_carta()}}
+{\footnotesize\ttfamily \label{card_8h_a08e86eee8e53bc70c9e944de584160e6} 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} le\+\_\+carta (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Converte uma string (ex:\+ "{}10\+S"{}, "{}\+AC"{}) numa estrutura \doxylink{struct_c_a_r_t_a_s}{CARTAS}. 
+
+
+\begin{DoxyItemize}
+\item Lê a string, identifica o naipe (o último carácter) e o valor (os restantes).
+\item Faz o processo inverso da função traduzvalor.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String que contém a representação textual da carta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_c_a_r_t_a_s}{CARTAS} A estrutura da carta preenchida com o valor e o naipe correspondentes.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+parsel\+\_\+linha\+\_\+pilha 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{card_8c_source_l00023}{23}} of file \doxymbox{\hyperlink{card_8c_source}{card.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(str);}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ str[len\ -\/\ 1];\ }
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'A'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 1;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'J'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 11;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'Q'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 12;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'K'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 13;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{else}\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ \doxymbox{\hyperlink{card_8h_a07d7c232c72d42e86a2c713372889259}{traduz\_valor\_numerico}}(str,\ len);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
+\Hypertarget{card_8h_a07d7c232c72d42e86a2c713372889259}\index{card.h@{card.h}!traduz\_valor\_numerico@{traduz\_valor\_numerico}}
+\index{traduz\_valor\_numerico@{traduz\_valor\_numerico}!card.h@{card.h}}
+\doxysubsubsection{\texorpdfstring{traduz\_valor\_numerico()}{traduz\_valor\_numerico()}}
+{\footnotesize\ttfamily \label{card_8h_a07d7c232c72d42e86a2c713372889259} 
+int traduz\+\_\+valor\+\_\+numerico (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{int}]{len}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar para extrair o valor numérico de uma string de carta. 
+
+
+\begin{DoxyItemize}
+\item Lê os caracteres numéricos (ignorando o naipe no final) e converte-\/os para um inteiro.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String que contém a representação textual da carta (ex:\+ "{}10\+S"{}). \\
+\hline
+{\em len} & Tamanho total da string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O valor numérico extraído (ex:\+ 10).
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{le\+\_\+carta()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{card_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{card_8c_source}{card.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{char}\ num\_str[3];}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ len\ -\/\ 1;\ i\ ++)\ num\_str[i]\ =\ str[i];}
+\DoxyCodeLine{00041\ \ \ \ \ num\_str[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{return}\ atoi(num\_str);}
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+\Hypertarget{card_8h_a89f100a551d60e5a4c77484940f8987f}\index{card.h@{card.h}!traduzvalor@{traduzvalor}}
+\index{traduzvalor@{traduzvalor}!card.h@{card.h}}
+\doxysubsubsection{\texorpdfstring{traduzvalor()}{traduzvalor()}}
+{\footnotesize\ttfamily \label{card_8h_a89f100a551d60e5a4c77484940f8987f} 
+void traduzvalor (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{valor}{, }\item[{char}]{v}{}\end{DoxyParamCaption})}
+
+
+
+Converte o valor numérico de uma carta para a sua representação em texto. 
+
+
+\begin{DoxyItemize}
+\item Transforma os valores especiais (1, 11, 12, 13) nas respetivas letras ("{}\+A"{}, "{}\+J"{}, "{}\+Q"{}, "{}\+K"{}).
+\item Os valores de 2 a 10 são mantidos como números, mas convertidos para formato string. 
+\begin{DoxyParams}{Parameters}
+{\em valor} & Ponteiro para a string (buffer) onde o resultado será guardado. \\
+\hline
+{\em v} & Valor numérico da carta que pretendemos traduzir.\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\+\_\+carta()} 
+\end{DoxySeeAlso}
+
+\end{DoxyItemize}
+
+Definition at line \doxymbox{\hyperlink{card_8c_source_l00010}{10}} of file \doxymbox{\hyperlink{card_8c_source}{card.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(v)\{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}A"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}J"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}Q"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}K"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0\ :\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}?"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(valor,\ \textcolor{stringliteral}{"{}\%d"{}},\ v);\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}

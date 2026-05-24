@@ -1,0 +1,49 @@
+\doxysection{card.\+c}
+\hypertarget{card_8c_source}{}\label{card_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/card.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/card.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}string.h"{}}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00010}\doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{00010}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(\textcolor{keywordtype}{char}\ *valor,\ \textcolor{keywordtype}{char}\ v)\{}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(v)\{}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}A"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}J"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}Q"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}K"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0\ :\ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(valor,\ \textcolor{stringliteral}{"{}?"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(valor,\ \textcolor{stringliteral}{"{}\%d"{}},\ v);\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00023}\doxymbox{\hyperlink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{00023}}\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ \doxymbox{\hyperlink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{le\_carta}}(\textcolor{keywordtype}{char}\ *str)\ \{}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(str);}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00027}00027\ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ str[len\ -\/\ 1];\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'A'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'J'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 11;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'Q'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 12;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (str[0]\ ==\ \textcolor{charliteral}{'K'})\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 13;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{else}\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ \doxymbox{\hyperlink{card_8h_a07d7c232c72d42e86a2c713372889259}{traduz\_valor\_numerico}}(str,\ len);}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ c;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00037}\doxymbox{\hyperlink{card_8h_a07d7c232c72d42e86a2c713372889259}{00037}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{card_8h_a07d7c232c72d42e86a2c713372889259}{traduz\_valor\_numerico}}(\textcolor{keywordtype}{char}\ *str,\ \textcolor{keywordtype}{int}\ len)\{}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{char}\ num\_str[3];}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ len\ -\/\ 1;\ i\ ++)\ num\_str[i]\ =\ str[i];}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00041}00041\ \ \ \ \ num\_str[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{return}\ atoi(num\_str);}
+\DoxyCodeLine{\Hypertarget{card_8c_source_l00043}00043\ \}}
+
+\end{DoxyCode}

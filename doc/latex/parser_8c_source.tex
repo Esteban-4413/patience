@@ -1,0 +1,121 @@
+\doxysection{parser.\+c}
+\hypertarget{parser_8c_source}{}\label{parser_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/dsl/parser.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/dsl/parser.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamedef_8h}{../include/gamedef.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00009}\doxymbox{\hyperlink{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda}{00009}}\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}*\ load\_paciencia(\textcolor{keywordtype}{char}\ *ficheiro)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00010}00010\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *estado\ =\ \doxymbox{\hyperlink{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}{incializa\_estado}}();}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00011}00011\ \ \ \ \ FILE\ *\ paciencia\ =\ fopen(ficheiro,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[255];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{if}(paciencia\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}nao\ existe"{}});\ \textcolor{keywordflow}{return}\ estado;\}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(fgets(buffer,\ 255,\ paciencia)\ !=\ NULL)\ processa\_linha(buffer,\ estado);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ fclose(paciencia);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ estado;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{return}\ estado;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00026}\doxymbox{\hyperlink{parser_8h_ab400c0c1319b4c7ba16e74a621d9d207}{00026}}\ \textcolor{keywordtype}{int}\ processa\_linha(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{char}\ *comentario\ =\ \doxymbox{\hyperlink{utils_8h_a66ab0a2ef907de8058bd46126bf9cd8c}{aux\_string}}(buffer,\ \textcolor{charliteral}{'\#'});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (comentario\ !=\ NULL)\ *comentario\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ vamo'\ identificar\ o\ comando\ }}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{char}\ comando[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00032}00032\ \ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ sscanf\ devolve\ um\ int\ que\ é\ a\ quantidade\ de\ elementos\ que\ consiguio\ ler.}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Neste\ caso\ só\ interessa\ se\ conseguio\ ler\ a\ primeira\ string\ ou\ não\ (nesse\ caso\ devolve\ 0).}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s"{}},\ comando)\ ==\ 1)\ what\_command(comando,\ buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\textcolor{comment}{//\ sscanf\ lê\ uma\ string\ e\ extrai\ as\ palavras,\ muito\ fixe.}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00039}\doxymbox{\hyperlink{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}{00039}}\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}*\ \doxymbox{\hyperlink{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}{incializa\_estado}}(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est\ =\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}));\ \textcolor{comment}{//\ Adicionei\ (Fernanda)\ isso\ para\ converter\ para\ um\ pointer.}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00041}00041\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}}[0]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00043}00043\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00044}00044\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00046}00046\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00048}00048\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00049}00049\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00051}00051\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00052}00052\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00054}00054\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00055}00055\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00057}00057\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ est;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00061}\doxymbox{\hyperlink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{00061}}\ \textcolor{keywordtype}{void}\ what\_command(\textcolor{keywordtype}{char}\ *\ comando,\ \textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}JOGO"{}})\ ==\ 0)\ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s"{}},\ comando,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}BARALHOS"{}})\ ==\ 0)\ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%d"{}},\ comando,\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}TIPO"{}})\ ==\ 0)\ cmd\_tipo(buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}MOV"{}})\ ==\ 0)\ cmd\_mov(buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}AUTO"{}})\ ==\ 0)\ cmd\_auto(buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}INIT"{}})\ ==\ 0)\ cmd\_init(buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}WIN"{}})\ ==\ 0)\ cmd\_win(buffer,\ est);}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00077}\doxymbox{\hyperlink{parser_8h_ae63614d43d038583780c03af9776dc86}{00077}}\ \textcolor{keywordtype}{void}\ cmd\_tipo(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00078}00078\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}++;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00079}00079\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_tipo_pilha}{TipoPilha}}));}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00082}00082\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}[idx].\doxymbox{\hyperlink{struct_tipo_pilha_a0fcad6fabf6dd4c660f0da297de2220e}{nome\_tipo}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}[idx].\doxymbox{\hyperlink{struct_tipo_pilha_a12ee872ef50a67a4d4f5a0faf942fdd6}{flags}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00085}\doxymbox{\hyperlink{parser_8h_a5c936eaeaef5594a2d8c0104430d059e}{00085}}\ \textcolor{keywordtype}{void}\ cmd\_mov(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00086}00086\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}++;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00087}00087\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_movimento}{Movimento}}));}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}-\/1;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00090}00090\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\_origem}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\_destino}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00093}\doxymbox{\hyperlink{parser_8h_ac6bcbf667ff13bf19b4bee14faf6e4f2}{00093}}\ \textcolor{keywordtype}{void}\ cmd\_auto(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00094}00094\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}++;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00095}00095\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_movimento}{Movimento}}));}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}-\/1;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00098}00098\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\_origem}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\_destino}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00101}\doxymbox{\hyperlink{parser_8h_a1e25d4ea7ba396b344cd9d80fc92b70b}{00101}}\ \textcolor{keywordtype}{void}\ cmd\_init(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00102}00102\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}++;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00103}00103\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_init_pilha}{InitPilha}}));}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}-\/1;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00106}00106\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%d"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[idx].\doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{nome\_tipo}},\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[idx].\doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{num\_cartas}});}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00109}\doxymbox{\hyperlink{parser_8h_a6697e0a364b8a176177c7e790cfc81dc}{00109}}\ \textcolor{keywordtype}{void}\ cmd\_win(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est)\{}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00110}00110\ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}++;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00111}00111\ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_victory_condition}{VictoryCondition}}));}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00112}00112\ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00113}00113\ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00114}00114\ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%d"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}[idx].\doxymbox{\hyperlink{struct_victory_condition_af5d351e78113b7017fa74cc91573d744}{nome\_tipo}},\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}[idx].\doxymbox{\hyperlink{struct_victory_condition_a0edd3d08ec17653008d31914e332af22}{num\_cartas}});\ }
+\DoxyCodeLine{\Hypertarget{parser_8c_source_l00115}00115\ \}}
+
+\end{DoxyCode}

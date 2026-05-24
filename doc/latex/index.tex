@@ -1,0 +1,151 @@
+\chapter{Patience — Laboratórios de Informática II }
+\hypertarget{index}{}\label{index}\index{Patience — Laboratórios de Informática II@{Patience — Laboratórios de Informática II}}
+\label{index_md__2_users_2estebanyepezorozco_2vault_2universidade_21ano_22semestre_2_l_p_i_i_2project_2fase3_2patience_2_r_e_a_d_m_e}%
+\Hypertarget{index_md__2_users_2estebanyepezorozco_2vault_2universidade_21ano_22semestre_2_l_p_i_i_2project_2fase3_2patience_2_r_e_a_d_m_e}%
+
+
+Projeto desenvolvido no âmbito da unidade curricular {\bfseries{Laboratórios de Informática II}} da Universidade do Minho.
+
+{\bfseries{Autores:\+}}
+\begin{DoxyItemize}
+\item Esteban Yepez (a116272)
+\item Fernanda Cidrim (a116274)
+\item Martim Sousa (a113572)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Descrição}{Descrição}}\label{index_autotoc_md2}
+Implementação de um motor genérico de jogos de paciência em C. O programa lê a definição de qualquer paciência a partir de ficheiros de texto (DSL própria), permitindo ao utilizador escolher o jogo, jogar, desfazer jogadas, guardar e carregar partidas.
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md4}{}\doxysection{\texorpdfstring{Estrutura do Projeto}{Estrutura do Projeto}}\label{index_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{patience/}
+\DoxyCodeLine{├──\ paciencias/}
+\DoxyCodeLine{│\ \ \ ├──\ golf.paciencia}
+\DoxyCodeLine{│\ \ \ ├──\ simpleSimon.paciencia}
+\DoxyCodeLine{│\ \ \ └──\ freeCell.paciencia}
+\DoxyCodeLine{│}
+\DoxyCodeLine{├──\ game/}
+\DoxyCodeLine{│\ \ \ ├──\ dsl/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ parser.c\ \ \ \ \ \ \ \ ←\ lê\ ficheiros\ .paciencia\ e\ constrói\ DefJogo}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ loader.c\ \ \ \ \ \ \ \ ←\ lista\ paciências\ disponíveis\ e\ menu\ de\ seleção}
+\DoxyCodeLine{│\ \ \ │}
+\DoxyCodeLine{│\ \ \ ├──\ src/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ main.c\ \ \ \ \ \ \ \ \ \ ←\ ponto\ de\ entrada}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ card.c\ \ \ \ \ \ \ \ \ \ ←\ carta:\ valor\ +\ naipe}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ gamedef.c\ \ \ \ \ \ \ ←\ funções\ auxiliares\ sobre\ DefJogo}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ gamestate.c\ \ \ \ \ ←\ criação\ e\ inicialização\ do\ estado\ do\ jogo}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ game.c\ \ \ \ \ \ \ \ \ \ ←\ loop\ principal\ e\ lógica\ de\ jogada}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ move.c\ \ \ \ \ \ \ \ \ \ ←\ validação\ e\ execução\ de\ movimentos}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ undo.c\ \ \ \ \ \ \ \ \ \ ←\ histórico\ de\ jogadas\ (desfazer)}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ saveload.c\ \ \ \ \ \ ←\ guardar\ e\ carregar\ partidas}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ utils.c\ \ \ \ \ \ \ \ \ ←\ funções\ auxiliares\ gerais}
+\DoxyCodeLine{│\ \ \ │}
+\DoxyCodeLine{│\ \ \ ├──\ ui/}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ display.c\ \ \ \ \ \ \ ←\ interface\ gráfica\ (ncurses)}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ input.c\ \ \ \ \ \ \ \ \ ←\ deteção\ de\ cliques\ do\ rato}
+\DoxyCodeLine{│\ \ \ │}
+\DoxyCodeLine{│\ \ \ └──\ include/\ \ \ \ \ \ \ \ \ \ \ \ ←\ ficheiros\ de\ cabeçalho\ (.h)}
+\DoxyCodeLine{│}
+\DoxyCodeLine{└──\ Makefile}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md6}{}\doxysection{\texorpdfstring{Requisitos}{Requisitos}}\label{index_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Compilador GCC ou Clang
+\item Biblioteca ncurses ({\ttfamily libncurses})
+\item Sistema operativo:\+ mac\+OS ou Linux
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md8}{}\doxysection{\texorpdfstring{Compilação}{Compilação}}\label{index_autotoc_md8}
+A partir da pasta raiz do projeto ({\ttfamily patience/\+}):\+
+
+{\bfseries{mac\+OS:\+}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ mac}
+
+\end{DoxyCode}
+
+
+{\bfseries{Linux:\+}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ jogo}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md10}{}\doxysection{\texorpdfstring{Execução}{Execução}}\label{index_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./jogo}
+
+\end{DoxyCode}
+
+
+O programa irá listar as paciências disponíveis na pasta {\ttfamily paciencias/\+} e pedir ao utilizador que escolha uma.
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md12}{}\doxysection{\texorpdfstring{Como Jogar}{Como Jogar}}\label{index_autotoc_md12}
+
+\begin{DoxyItemize}
+\item {\bfseries{Clique}} numa carta para a selecionar
+\item {\bfseries{Clique}} noutra pilha para tentar mover a carta
+\item {\bfseries{Botão UNDO}} — desfaz a última jogada
+\item {\bfseries{Tecla {\ttfamily q}}} — sair do jogo
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md14}{}\doxysection{\texorpdfstring{Guardar e Carregar}{Guardar e Carregar}}\label{index_autotoc_md14}
+O formato dos ficheiros de save é o seguinte:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{golf.paciencia}
+\DoxyCodeLine{2C\ 7D\ 3H\ AS}
+\DoxyCodeLine{10S}
+\DoxyCodeLine{}
+\DoxyCodeLine{6D\ 3H}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item A primeira linha é o nome do ficheiro da paciência
+\item Cada linha seguinte corresponde a uma pilha (vazia se a linha estiver em branco)
+\item As cartas são representadas como {\ttfamily \texorpdfstring{$<$}{<}valor\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}naipe\texorpdfstring{$>$}{>}} (ex:\+ {\ttfamily AS}, {\ttfamily 10C}, {\ttfamily KH})
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md16}{}\doxysection{\texorpdfstring{DSL das Paciências}{DSL das Paciências}}\label{index_autotoc_md16}
+Cada paciência é descrita num ficheiro de texto com os seguintes comandos:\+
+
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Comando  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Descrição  \\
+{\ttfamily JOGO \texorpdfstring{$<$}{<}nome\texorpdfstring{$>$}{>}}  &Nome da paciência  \\
+{\ttfamily BARALHOS \texorpdfstring{$<$}{<}n\texorpdfstring{$>$}{>}}  &Número de baralhos  \\
+{\ttfamily TIPO \texorpdfstring{$<$}{<}tipo\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}flags\texorpdfstring{$>$}{>}}  &Define um tipo de pilha  \\
+{\ttfamily INIT \texorpdfstring{$<$}{<}tipo\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}n\texorpdfstring{$>$}{>}}  &Cria uma pilha com n cartas iniciais  \\
+{\ttfamily MOV \texorpdfstring{$<$}{<}orig\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}dest\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}flags\texorpdfstring{$>$}{>}}  &Define um movimento válido  \\
+{\ttfamily AUTO \texorpdfstring{$<$}{<}orig\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}dest\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}flags\texorpdfstring{$>$}{>}}  &Define um movimento automático  \\
+{\ttfamily WIN \texorpdfstring{$<$}{<}tipo\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}n\texorpdfstring{$>$}{>}}  &Condição de vitória  \\
+\end{DoxyTable}
+
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md18}{}\doxysection{\texorpdfstring{Limpar}{Limpar}}\label{index_autotoc_md18}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean}
+
+\end{DoxyCode}
+ 

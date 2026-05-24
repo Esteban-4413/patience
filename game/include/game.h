@@ -99,26 +99,53 @@ void jogAtual_segClick(int r, EstadoJogo *e);
 int verifica_vitoria(EstadoJogo *estado);
 
 /**
- * @brief 
+ * @brief Verifica se um determinado ficheiro de save existe no disco.
  * 
- * @param ficheiro 
- * @return int 
+ * Tenta abrir o ficheiro em modo de leitura ("r"). É utilizado no arranque
+ * do programa para decidir se o menu de retoma de jogo deve ser apresentado ao utilizador.
+ * 
+ * @param ficheiro Caminho ou nome do ficheiro de save (ex: "save.txt").
+ * @return int Retorna 1 se o ficheiro existir e puder ser lido, 0 caso contrário.
+ * 
+ * @see menu()
+ * 
  */
 int existe_save(char *ficheiro);
 
 /**
- * @brief 
+ * @brief Gere o menu de arranque e inicializa o estado base do jogo.
  * 
- * @param pasta 
- * @param save 
- * @return EstadoJogo 
+ * Se existir um ficheiro de save, interage com o utilizador para decidir se
+ * pretende continuar a partida (opção 1) ou começar um jogo novo (opção 2).
+ * Dependendo da escolha, carrega o estado do ficheiro ou invoca o loader
+ * para selecionar uma nova paciência.
+ * 
+ * @param pasta Caminho para a pasta que contém as definições dos jogos (ex: "paciencias").
+ * @param save Caminho para o ficheiro de save a verificar/carregar (ex: "save.txt").
+ * @return EstadoJogo A estrutura do jogo totalmente inicializada e pronta a ser jogada.
+ * 
+ * @see main()
+ * 
+ * @see existe_save()
+ * @see input_menu()
+ * @see load_game()
+ * @see setGameState()
+ * @see escolhe_paciencia()
+ * 
  */
 EstadoJogo menu(char *pasta, char *save);
 
 /**
- * @brief 
+ * @brief Pede e valida a escolha do utilizador no menu inicial de retoma de jogo.
  * 
- * @return int 
+ * Apresenta as opções (1 - Continuar, 2 - Novo Jogo) no terminal e utiliza
+ * um ciclo blindado (com fgets e sscanf) para garantir que o utilizador insere
+ * uma opção estritamente válida, rejeitando letras ou outros números sem bloquear o programa
+ * 
+ * @return int A escolha validada do utilizador (garantidamente 1 ou 2).
+ * 
+ * @see menu()
+ * 
  */
 int input_menu(void); 
 

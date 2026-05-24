@@ -1,0 +1,57 @@
+\doxysection{move.\+h}
+\hypertarget{move_8h_source}{}\label{move_8h_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/move.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/move.h}}
+\doxymbox{\hyperlink{move_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ MOVE\_H}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00012}00012\ \textcolor{preprocessor}{\#define\ MOVE\_H}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <locale.h>}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamedef_8h}{../include/gamedef.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{display_8h}{../include/display.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{game_8h}{../include/game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{loader_8h}{../include/loader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{saveload_8h}{../include/saveload.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00024}00024\ \textcolor{comment}{/*Função\ que\ verifica\ se\ a\ jogada\ é\ válida,\ consoante\ as\ flags\ que\ existem*/}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00025}00025\ \textcolor{keywordtype}{int}\ valida\_jogada(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *estado,\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00026}00026\ \textcolor{comment}{/*\ Função\ que\ retorna\ a\ cor\ de\ uma\ carta\ (0\ para\ Preto,\ 1\ para\ Vermelho)\ */}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00027}00027\ \textcolor{keywordtype}{int}\ cor(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ carta);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00028}00028\ \textcolor{comment}{/*\ Função\ que\ identifica\ as\ flags\ presentes\ e\ ativam\ os\ elementos\ certos\ no\ array\ flag*/}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00029}00029\ \textcolor{keywordtype}{int}\ ativa\_flags(\textcolor{keywordtype}{char}\ flags[32],\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *estado,\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00030}00030\ \textcolor{keywordtype}{int}\ verifica\_pilha\_origem\_aux2(\textcolor{keywordtype}{int}\ flag[20],\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *origem,\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada,\ \textcolor{keywordtype}{int}\ inicio,\ \textcolor{keywordtype}{int}\ fim,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ fundo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00031}00031\ \textcolor{keywordtype}{int}\ verifica\_pilha\_origem\_aux(\textcolor{keywordtype}{int}\ flag[20],}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *origem,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inicio,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ fim,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ fundo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00038}00038\ \textcolor{comment}{/*\ Função\ que\ verifica\ se\ as\ condições\ das\ flags\ que\ se\ relacionam\ à\ pilha}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ de\ origem\ estão\ a\ ser\ cumpridas*/}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00040}00040\ \textcolor{keywordtype}{int}\ verifica\_pilha\_origem(\textcolor{keywordtype}{int}\ flag[20],}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *origem,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inicio,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ fim,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem,}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ fundo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00047}00047\ \textcolor{keywordtype}{int}\ verifica\_pilha\_destino\_aux2(\textcolor{keywordtype}{int}\ flag[20],\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *destino,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00048}00048\ \textcolor{keywordtype}{int}\ verifica\_pilha\_destino\_aux(\textcolor{keywordtype}{int}\ flag[20],\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *destino,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00049}00049\ \textcolor{comment}{/*\ Função\ que\ verifica\ se\ as\ condições\ das\ flags\ que\ se\ relacionam\ à\ pilha}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ de\ destino\ estão\ a\ ser\ cumpridas*/}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00051}00051\ \textcolor{keywordtype}{int}\ verifica\_pilha\_destino(\textcolor{keywordtype}{int}\ flag[20],\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *destino,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ topo\_origem);}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00052}00052\ \textcolor{comment}{/*\ Função\ que\ executa\ a\ jogada*/}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00053}00053\ \textcolor{keywordtype}{void}\ joga(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *estado,\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ jogada);\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00064}00064\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{move_8h_a7761ab4159e23e7258e01673229ae8e5}{loop}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ *jog,\ \doxymbox{\hyperlink{struct_movimento}{Movimento}}\ mov);\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00071}00071\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{move_8h_a27cc09e840eea54cb5f38d51b2c570ec}{movAutos}}\ (\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e);\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00073}00073\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{move_8h_source_l00074}00074\ }
+
+\end{DoxyCode}

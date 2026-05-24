@@ -1,0 +1,39 @@
+\doxysection{test\+\_\+cards.\+c}
+\hypertarget{test__cards_8c_source}{}\label{test__cards_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/tests/test\_cards.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/tests/test\_cards.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <CUnit/CUnit.h>}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../game/include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00004}00004\ \textcolor{comment}{//\ -\/-\/-\/\ Figuras\ e\ Ás\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00005}00005\ \textcolor{keywordtype}{void}\ test\_traduzvalor\_especiais(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00006}00006\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[10];\ \textcolor{comment}{//\ Buffer\ para\ guardar\ o\ resultado\ do\ mapeamento}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Testar\ o\ Ás\ (1)}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00009}00009\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(buffer,\ 1);}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00010}00010\ \ \ \ \ CU\_ASSERT\_STRING\_EQUAL(buffer,\ \textcolor{stringliteral}{"{}A"{}});}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Testar\ o\ Valete\ (11)}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00013}00013\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(buffer,\ 11);}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00014}00014\ \ \ \ \ CU\_ASSERT\_STRING\_EQUAL(buffer,\ \textcolor{stringliteral}{"{}J"{}}\ );}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Testar\ a\ Dama\ (12)}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(buffer,\ 12);}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00018}00018\ \ \ \ \ CU\_ASSERT\_STRING\_EQUAL(buffer,\ \textcolor{stringliteral}{"{}Q"{}}\ );}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Testar\ o\ Rei\ (13)}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00021}00021\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(buffer,\ 13);}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00022}00022\ \ \ \ \ CU\_ASSERT\_STRING\_EQUAL(buffer,\ \textcolor{stringliteral}{"{}K"{}}\ );}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00025}00025\ \textcolor{comment}{//\ -\/-\/-\/\ Carta\ Oculta\ /\ Desconhecida\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00026}00026\ \textcolor{keywordtype}{void}\ test\_traduzvalor\_oculta(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[10];}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Testar\ o\ valor\ 0\ (costuma\ representar\ cartas\ viradas\ para\ baixo\ ou\ lixo)}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(buffer,\ 0);}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00031}00031\ \ \ \ \ CU\_ASSERT\_STRING\_EQUAL(buffer,\ \textcolor{stringliteral}{"{}?"{}}\ );}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{test__cards_8c_source_l00033}00033\ }
+
+\end{DoxyCode}

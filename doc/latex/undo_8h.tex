@@ -1,0 +1,163 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+undo.h File Reference}
+\hypertarget{undo_8h}{}\label{undo_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/undo.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/undo.h}}
+
+
+Lógica do botão undo.  
+
+
+{\ttfamily \+\#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+include/\+gamestate.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f}{registar\+\_\+jogada}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Regista uma jogada no histórico para permitir o "{}\+Desfazer"{} (Undo). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7}{undo}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Desfaz a última jogada realizada pelo jogador. Verifica se é possível voltar atrás a jogada-\/ se não retorna uma mensagem, e se for possível chama a aux\+\_\+undo que faz toda a parte de devolver as cartas de onde vieram. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{undo_8h_a51abdaba82e01465c0fe6bec41bb9247}{aux\+\_\+undo}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Auxiliar do undo Onde está a lógica do undo, para o caso de ser possível retroceder uma jogada, Lê a última() entrada do histórico e reverte o movimento da(s) carta(s), devolvendo-\/a à sua posição original. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lógica do botão undo. 
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{undo_8h_source}{undo.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{undo_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{undo_8h_a51abdaba82e01465c0fe6bec41bb9247}\index{undo.h@{undo.h}!aux\_undo@{aux\_undo}}
+\index{aux\_undo@{aux\_undo}!undo.h@{undo.h}}
+\doxysubsubsection{\texorpdfstring{aux\_undo()}{aux\_undo()}}
+{\footnotesize\ttfamily \label{undo_8h_a51abdaba82e01465c0fe6bec41bb9247} 
+void aux\+\_\+undo (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Auxiliar do undo Onde está a lógica do undo, para o caso de ser possível retroceder uma jogada, Lê a última() entrada do histórico e reverte o movimento da(s) carta(s), devolvendo-\/a à sua posição original. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{undo_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{undo_8c_source}{undo.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Acede\ à\ última\ jogada}}
+\DoxyCodeLine{00040\ \ \ \ \ (e-\/>tamanho\_historial)-\/-\/;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ ultimo\_mov\ =\ e-\/>historial[e-\/>tamanho\_historial];}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ origem\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_original\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};\ \textcolor{comment}{//\ Onde\ elas\ estavam\ na\ origem}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Localiza\ as\ cartas\ na\ chegada}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_atual\_chegada\ =\ e-\/>pilhas[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}].tamanho\_pilha\ -\/\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//O\ Loop\ de\ Devolução}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ i++)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ e-\/>pilhas[origem].pilha[pos\_original\ +\ i]\ =\ e-\/>pilhas[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}].pilha[pos\_atual\_chegada\ +\ i];}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Ajustar\ os\ contadores\ de\ tamanho}}
+\DoxyCodeLine{00057\ \ \ \ \ e-\/>pilhas[origem].tamanho\_pilha\ +=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00058\ \ \ \ \ e-\/>pilhas[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}].tamanho\_pilha\ -\/=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f}\index{undo.h@{undo.h}!registar\_jogada@{registar\_jogada}}
+\index{registar\_jogada@{registar\_jogada}!undo.h@{undo.h}}
+\doxysubsubsection{\texorpdfstring{registar\_jogada()}{registar\_jogada()}}
+{\footnotesize\ttfamily \label{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f} 
+void registar\+\_\+jogada (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Regista uma jogada no histórico para permitir o "{}\+Desfazer"{} (Undo). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{undo_8c_source_l00005}{5}} of file \doxymbox{\hyperlink{undo_8c_source}{undo.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00006\ \ \ \ }
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//para\ meter\ as\ jogadas\ mais\ recentes\ então\ empurramos\ as\ mais\ velhas\ fora\ do\ array\ (Se\ o\ histórico\ estiver\ cheio,\ apaga\ a\ jogada\ mais\ antiga)}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>tamanho\_historial\ ==\ \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}})\{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}}\ -\/\ 1;\ i\ ++)}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>historial[i]\ =\ e-\/>historial[i\ +\ 1];}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ (e-\/>tamanho\_historial)-\/-\/;}
+\DoxyCodeLine{00012\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ \ \ \ \ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Guarda\ os\ dados\ da\ nova\ jogada}}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ tamanho\_historial\ =\ e-\/>tamanho\_historial;}
+\DoxyCodeLine{00016\ \ \ \ \ e-\/>historial[tamanho\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00017\ \ \ \ \ e-\/>historial[tamanho\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};}
+\DoxyCodeLine{00018\ \ \ \ \ e-\/>historial[tamanho\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{00019\ \ \ \ \ e-\/>historial[tamanho\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ (e-\/>tamanho\_historial)++;}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}
+\Hypertarget{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7}\index{undo.h@{undo.h}!undo@{undo}}
+\index{undo@{undo}!undo.h@{undo.h}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7} 
+void undo (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Desfaz a última jogada realizada pelo jogador. Verifica se é possível voltar atrás a jogada-\/ se não retorna uma mensagem, e se for possível chama a aux\+\_\+undo que faz toda a parte de devolver as cartas de onde vieram. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{undo_8c_source_l00025}{25}} of file \doxymbox{\hyperlink{undo_8c_source}{undo.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ há\ jogadas\ para\ desfazer}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>tamanho\_historial\ ==\ 0)\{\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ mvprintw(0,\ 2,\ \textcolor{stringliteral}{"{}oh\ men\ para\ retroceder\ tanto\ no\ tempo\ é\ mais\ fácil\ comprar\ uma\ máquina\ do\ tempo.\(\backslash\)n"{}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Faz\ o\ undo\ }}
+\DoxyCodeLine{00034\ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a51abdaba82e01465c0fe6bec41bb9247}{aux\_undo}}(e);}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \}}
+
+\end{DoxyCode}

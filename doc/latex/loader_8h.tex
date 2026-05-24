@@ -1,0 +1,230 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+loader.h File Reference}
+\hypertarget{loader_8h}{}\label{loader_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/loader.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/loader.h}}
+{\ttfamily \+\#include "{}gamedef.\+h"{}}\newline
+{\ttfamily \+\#include $<$dirent.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}{escolhe\+\_\+paciencia}} (char \texorpdfstring{$\ast$}{*}pasta)
+\begin{DoxyCompactList}\small\item\em Função principal que orquestra a listagem, seleção e carregamento de uma paciência. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{loader_8h_a2300fe406799b886fe88d599379bf0a1}{input\+\_\+escolha}} (int conta)
+\begin{DoxyCompactList}\small\item\em Pede e valida a escolha numérica do utilizador de forma segura. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{loader_8h_a51d7b15f989bb93894914e0784eec2aa}{lista\+\_\+ficheiros}} (DIR \texorpdfstring{$\ast$}{*}d, char ficheiros\+[$\,$]\+\+[256]\+)
+\begin{DoxyCompactList}\small\item\em Lê e lista todos os ficheiros válidos dentro de uma diretoria. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{loader_8h_aed678a7adb8a5020968083eced4aca48}{carrega\+\_\+escolha}} (char \texorpdfstring{$\ast$}{*}pasta, char ficheiros\+[$\,$]\+\+[256]\+, int escolha)
+\begin{DoxyCompactList}\small\item\em Constrói o caminho completo do ficheiro escolhido e delega o seu carregamento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{loader_8h_source}{loader.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{loader_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{loader_8h_aed678a7adb8a5020968083eced4aca48}\index{loader.h@{loader.h}!carrega\_escolha@{carrega\_escolha}}
+\index{carrega\_escolha@{carrega\_escolha}!loader.h@{loader.h}}
+\doxysubsubsection{\texorpdfstring{carrega\_escolha()}{carrega\_escolha()}}
+{\footnotesize\ttfamily \label{loader_8h_aed678a7adb8a5020968083eced4aca48} 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} carrega\+\_\+escolha (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{pasta}{, }\item[{char}]{ficheiros}{\+[$\,$]\+\+[256]\+, }\item[{int}]{escolha}{}\end{DoxyParamCaption})}
+
+
+
+Constrói o caminho completo do ficheiro escolhido e delega o seu carregamento. 
+
+Junta a string da pasta com o nome do ficheiro selecionado (baseado no índice escolhido) utilizando sprintf, e passa a string final para o parser (load\+\_\+paciencia) processar as regras.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pasta} & String com o nome/\+caminho da diretoria (ex:\+ "{}paciencias"{}). \\
+\hline
+{\em ficheiros} & Matriz que contém todos os nomes dos ficheiros encontrados. \\
+\hline
+{\em escolha} & O número da opção selecionada pelo utilizador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Def\+Jogo\texorpdfstring{$\ast$}{*} Ponteiro para a definição do jogo carregado a partir do ficheiro escolhido.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}{escolhe\+\_\+paciencia()} 
+
+load\+\_\+paciencia() 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{loader_8c_source_l00035}{35}} of file \doxymbox{\hyperlink{loader_8c_source}{loader.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \textcolor{keywordtype}{char}\ ruta[256];}
+\DoxyCodeLine{00037\ \ \ \ sprintf(ruta,\ \textcolor{stringliteral}{"{}\%s/\%s"{}},\ pasta,\ ficheiros[escolha-\/1]);\ }
+\DoxyCodeLine{00038\ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *j\ =\ load\_paciencia(ruta);}
+\DoxyCodeLine{00039\ \ \ \ printf(\textcolor{stringliteral}{"{}pessima\ escolha\ mas\ pronto\ vou\ carrega-\/la\ por\ você:\ \%s..\(\backslash\)n"{}},\ ruta);}
+\DoxyCodeLine{00040\ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(j-\/>\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}},\ ficheiros[escolha-\/1]);}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordflow}{return}\ j;}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+\Hypertarget{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}\index{loader.h@{loader.h}!escolhe\_paciencia@{escolhe\_paciencia}}
+\index{escolhe\_paciencia@{escolhe\_paciencia}!loader.h@{loader.h}}
+\doxysubsubsection{\texorpdfstring{escolhe\_paciencia()}{escolhe\_paciencia()}}
+{\footnotesize\ttfamily \label{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10} 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} escolhe\+\_\+paciencia (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{pasta}{}\end{DoxyParamCaption})}
+
+
+
+Função principal que orquestra a listagem, seleção e carregamento de uma paciência. 
+
+Abre a diretoria especificada, mostra os ficheiros disponíveis e solicita ao utilizador que escolha um. Em caso de erro na abertura da diretoria, devolve uma estrutura \doxylink{struct_def_jogo}{Def\+Jogo} alocada mas vazia, para evitar crashar o programa.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pasta} & String com o caminho para a diretoria onde os ficheiros .paciencia estão guardados \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Def\+Jogo\texorpdfstring{$\ast$}{*} Ponteiro para a estrutura com as regras do jogo escolhido, ou estado vazio em caso de erro.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{loader_8h_a51d7b15f989bb93894914e0784eec2aa}{lista\+\_\+ficheiros()} 
+
+\doxylink{loader_8h_a2300fe406799b886fe88d599379bf0a1}{input\+\_\+escolha()} 
+
+\doxylink{loader_8h_aed678a7adb8a5020968083eced4aca48}{carrega\+\_\+escolha()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{loader_8c_source_l00011}{11}} of file \doxymbox{\hyperlink{loader_8c_source}{loader.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *r;}
+\DoxyCodeLine{00013\ \ \ \ \ DIR\ *d\ =\ opendir(pasta);}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \textcolor{keywordflow}{if}\ (d\ ==\ NULL)\{}
+\DoxyCodeLine{00016\ \ \ \ \ printf(\textcolor{stringliteral}{"{}'\%s'...?...?...?...?...?...?...?...?...?...?...?...?\ não\ existe\(\backslash\)n\ "{}},\ pasta);}
+\DoxyCodeLine{00017\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *vazio\ =\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}));}
+\DoxyCodeLine{00018\ \ \ \ \ vazio-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}}[0]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ r\ =\ vazio;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00022\ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \textcolor{keywordtype}{char}\ ficheiros[50][256];\ }
+\DoxyCodeLine{00025\ \ \ \ \textcolor{keywordtype}{int}\ conta\ =\ lista\_ficheiros(d,\ ficheiros);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \textcolor{keywordtype}{int}\ escolha\ =\ input\_escolha(conta);}
+\DoxyCodeLine{00029\ \ \ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ r\ =\ carrega\_escolha(pasta,\ ficheiros,\ escolha);}
+\DoxyCodeLine{00032\ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{loader_8h_a2300fe406799b886fe88d599379bf0a1}\index{loader.h@{loader.h}!input\_escolha@{input\_escolha}}
+\index{input\_escolha@{input\_escolha}!loader.h@{loader.h}}
+\doxysubsubsection{\texorpdfstring{input\_escolha()}{input\_escolha()}}
+{\footnotesize\ttfamily \label{loader_8h_a2300fe406799b886fe88d599379bf0a1} 
+int input\+\_\+escolha (\begin{DoxyParamCaption}\item[{int}]{conta}{}\end{DoxyParamCaption})}
+
+
+
+Pede e valida a escolha numérica do utilizador de forma segura. 
+
+Utiliza um ciclo blindado com fgets e sscanf (com boolean flag) para garantir que o utilizador insere um número inteiro válido que esteja entre 1 e o número total de opções. Rejeita letras, símbolos ou números fora dos limites sem bloquear o terminal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em conta} & O número total de opções disponíveis (o limite máximo aceite). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O número inteiro correspondente à escolha válida do utilizador.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}{escolhe\+\_\+paciencia()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{loader_8c_source_l00058}{58}} of file \doxymbox{\hyperlink{loader_8c_source}{loader.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \textcolor{keywordtype}{int}\ escolha\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \textcolor{keywordtype}{char}\ buff[128];}
+\DoxyCodeLine{00061\ \ \ \ \textcolor{keywordtype}{int}\ buul\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ printf(\textcolor{stringliteral}{"{}Qual\ é\ o\ jogo\ que\ você\ quer\ jogar?\(\backslash\)n\ Digite\ o\ número\(\backslash\)n"{}});}
+\DoxyCodeLine{00063\ \ \ \ \textcolor{keywordflow}{while}(!buul)\{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}(fgets(buff,\ \textcolor{keyword}{sizeof}(buff),\ stdin)\ !=\ NULL)\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(sscanf(buff,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&escolha)\ ==\ 1\ \&\&\ escolha\ >=\ 1\ \&\&\ escolha\ <=conta)\ buul\ =\ 1;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ printf(\textcolor{stringliteral}{"{}Número\ invalido.\ Tenta\ outra\ vez\ men\ (1\ a\ \%d)\(\backslash\)n"{}},\ conta);}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \textcolor{keywordflow}{return}\ escolha;}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+\Hypertarget{loader_8h_a51d7b15f989bb93894914e0784eec2aa}\index{loader.h@{loader.h}!lista\_ficheiros@{lista\_ficheiros}}
+\index{lista\_ficheiros@{lista\_ficheiros}!loader.h@{loader.h}}
+\doxysubsubsection{\texorpdfstring{lista\_ficheiros()}{lista\_ficheiros()}}
+{\footnotesize\ttfamily \label{loader_8h_a51d7b15f989bb93894914e0784eec2aa} 
+int lista\+\_\+ficheiros (\begin{DoxyParamCaption}\item[{DIR \texorpdfstring{$\ast$}{*}}]{d}{, }\item[{char}]{ficheiros}{\+[$\,$]\+\+[256]\+}\end{DoxyParamCaption})}
+
+
+
+Lê e lista todos os ficheiros válidos dentro de uma diretoria. 
+
+Percorre a diretoria, ignorando ficheiros ocultos ou de sistema (que começam por \textquotesingle{}.\textquotesingle{}). Imprime os nomes no ecrã acompanhados de um índice numérico e guarda as strings na matriz.
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Ponteiro para a diretoria aberta através de opendir(). \\
+\hline
+{\em ficheiros} & Matriz bidimensional de caracteres onde os nomes dos ficheiros serão guardados. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int O número total de ficheiros de paciências encontrados e listados.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}{escolhe\+\_\+paciencia()} 
+
+\doxylink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\+\_\+string()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{loader_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{loader_8c_source}{loader.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }dirent\ *entrada;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ conta\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{while}\ ((entrada\ =\ readdir(d))\ !=\ NULL)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entrada-\/>d\_name[0]\ !=\ \textcolor{charliteral}{'.'})\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(ficheiros[conta],\ entrada-\/>d\_name);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d.\ \%s\(\backslash\)n"{}},\ conta+1,\ entrada-\/>d\_name);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ conta++;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ conta;}
+\DoxyCodeLine{00056\ \}}
+
+\end{DoxyCode}

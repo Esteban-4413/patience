@@ -1,0 +1,317 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+gamestate.h File Reference}
+\hypertarget{gamestate_8h}{}\label{gamestate_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/gamestate.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/gamestate.h}}
+{\ttfamily \+\#include "{}../\+include/\+card.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+include/\+gamedef.\+h"{}}\newline
+{\ttfamily \+\#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}
+\item 
+struct \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}
+\item 
+struct \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\+\_\+\+UNDO}}~5
+\begin{DoxyCompactList}\small\item\em Número máximo de jogadas que ficam guardadas no histórico para o Undo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gamestate_8h_a9287f0063a4fefc8c4c64101813a5754}\label{gamestate_8h_a9287f0063a4fefc8c4c64101813a5754} 
+typedef struct JOGADA {\bfseries JOGADA}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{set\+Game\+State}} (\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}d)
+\begin{DoxyCompactList}\small\item\em Set the Game State object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}{inicializa\+\_\+naipes}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\item 
+void \doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{inicializa\+\_\+jog\+Atual}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\item 
+void \doxymbox{\hyperlink{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}{set\+\_\+pilhas}} (\doxymbox{\hyperlink{struct_init_pilha}{Init\+Pilha}} d\+[$\,$]\+, int total\+\_\+inits, \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}pilhas)
+\begin{DoxyCompactList}\small\item\em Set the pilhas object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}{inicializa\+\_\+baralhos}} (\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \texorpdfstring{$\ast$}{*}baralho, int num\+\_\+baralhos, char naipes\+[4]\+)
+\item 
+void \doxymbox{\hyperlink{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}{inicializa\+\_\+pilhas}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+your name (\href{mailto:you@domain.com}{\texttt{you@domain.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{gamestate_8h_source}{gamestate.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{gamestate_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}\index{gamestate.h@{gamestate.h}!MAX\_UNDO@{MAX\_UNDO}}
+\index{MAX\_UNDO@{MAX\_UNDO}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_UNDO}{MAX\_UNDO}}
+{\footnotesize\ttfamily \label{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c} 
+\+\#define MAX\+\_\+\+UNDO~5}
+
+
+
+Número máximo de jogadas que ficam guardadas no histórico para o Undo. 
+
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8h_source_l00019}{19}} of file \doxymbox{\hyperlink{gamestate_8h_source}{gamestate.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{gamestate_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}\index{gamestate.h@{gamestate.h}!inicializa\_baralhos@{inicializa\_baralhos}}
+\index{inicializa\_baralhos@{inicializa\_baralhos}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_baralhos()}{inicializa\_baralhos()}}
+{\footnotesize\ttfamily \label{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520} 
+void inicializa\+\_\+baralhos (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \texorpdfstring{$\ast$}{*}}]{baralho}{, }\item[{int}]{num\+\_\+baralhos}{, }\item[{char}]{naipes}{\+[4]\+}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em baralho} & \\
+\hline
+{\em num\+\_\+baralhos} & \\
+\hline
+{\em naipes} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00105}{105}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\ =\ 0;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{while}\ (num\_baralhos\ !=\ 0)\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Para\ cada\ naipe,\ percorre\ as\ cartas\ com\ valores\ de\ 1\ a\ 13.}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <=\ 13;\ j++)\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baralho[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ j;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baralho[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ naipes[i];}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indice++;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ num\_baralhos-\/-\/;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \}}
+
+\end{DoxyCode}
+\Hypertarget{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}\index{gamestate.h@{gamestate.h}!inicializa\_jogAtual@{inicializa\_jogAtual}}
+\index{inicializa\_jogAtual@{inicializa\_jogAtual}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_jogAtual()}{inicializa\_jogAtual()}}
+{\footnotesize\ttfamily \label{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0} 
+void inicializa\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00098}{98}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ (-\/1);}
+\DoxyCodeLine{00100\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ (-\/1);}
+\DoxyCodeLine{00101\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/2;\ \textcolor{comment}{//número\ que\ não\ corresponde\ a\ nenhuma\ das\ condições\ definidas\ }}
+\DoxyCodeLine{00102\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ -\/1;}
+\DoxyCodeLine{00103\ \}}
+
+\end{DoxyCode}
+\Hypertarget{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}\index{gamestate.h@{gamestate.h}!inicializa\_naipes@{inicializa\_naipes}}
+\index{inicializa\_naipes@{inicializa\_naipes}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_naipes()}{inicializa\_naipes()}}
+{\footnotesize\ttfamily \label{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748} 
+void inicializa\+\_\+naipes (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00082}{82}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ \ Inicialização\ dos\ naipes}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ \ H\ -\/\ Copas\ \ }}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ \ S\ -\/\ Espadas\ \ }}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ \ D\ -\/\ Ouros\ \ }}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ C\ -\/\ Paus}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00091\ \ \ \ \ e-\/>naipes[0]\ =\ \textcolor{charliteral}{'H'};}
+\DoxyCodeLine{00092\ \ \ \ \ e-\/>naipes[1]\ =\ \textcolor{charliteral}{'S'};}
+\DoxyCodeLine{00093\ \ \ \ \ e-\/>naipes[2]\ =\ \textcolor{charliteral}{'D'};}
+\DoxyCodeLine{00094\ \ \ \ \ e-\/>naipes[3]\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \}}
+
+\end{DoxyCode}
+\Hypertarget{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}\index{gamestate.h@{gamestate.h}!inicializa\_pilhas@{inicializa\_pilhas}}
+\index{inicializa\_pilhas@{inicializa\_pilhas}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_pilhas()}{inicializa\_pilhas()}}
+{\footnotesize\ttfamily \label{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b} 
+void inicializa\+\_\+pilhas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00052}{52}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\_carta;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_pilha;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ e-\/>total\_pilhas;\ i++)\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ max\_pilha\ =\ e-\/>def\_jogo-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[i].\doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{num\_cartas}};\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ max\_pilha;\ j++)\{}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Seleciona\ uma\ carta\ aleatória\ }}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ indice\_carta\ =\ rand()\ \%\ (e-\/>tamanho\_baralho);\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Atribui\ a\ carta\ à\ pilha\ }}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].pilha[j]\ =\ e-\/>baralho[indice\_carta];\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Acrescenta\ 1\ ao\ tamanho\ da\ pilha\ }}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].tamanho\_pilha\ ++;\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ a\ carta\ do\ baralho,\ trocando-\/a\ com\ a\ última\ e\ diminuindo\ o\ tamanho}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>baralho[indice\_carta]\ =\ e-\/>baralho[e-\/>tamanho\_baralho\ -\/\ 1];}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ (e-\/>tamanho\_baralho)-\/-\/;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}
+\Hypertarget{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}\index{gamestate.h@{gamestate.h}!set\_pilhas@{set\_pilhas}}
+\index{set\_pilhas@{set\_pilhas}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{set\_pilhas()}{set\_pilhas()}}
+{\footnotesize\ttfamily \label{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66} 
+void set\+\_\+pilhas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_init_pilha}{Init\+Pilha}}}]{d}{\+[$\,$]\+, }\item[{int}]{total\+\_\+inits}{, }\item[{\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}} \texorpdfstring{$\ast$}{*}}]{pilhas}{}\end{DoxyParamCaption})}
+
+
+
+Set the pilhas object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \\
+\hline
+{\em total\+\_\+inits} & \\
+\hline
+{\em pilhas} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00042}{42}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ total\_inits;\ i++)\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *nova\_pilha\ =\ malloc(32\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));\ \textcolor{comment}{//\ Número\ arbitrário\ para\ ser\ o\ máximo\ de\ cartas\ por\ pilha\ }}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ pilhas[i].nome\_tipo\ =\ d[i].\doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{nome\_tipo}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ pilhas[i].tamanho\_pilha\ =\ 0;\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ pilhas[i].pilha\ =\ nova\_pilha;\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{gamestate_8h_af1beb390d1a79b122359d975ce737c14}\index{gamestate.h@{gamestate.h}!setGameState@{setGameState}}
+\index{setGameState@{setGameState}!gamestate.h@{gamestate.h}}
+\doxysubsubsection{\texorpdfstring{setGameState()}{setGameState()}}
+{\footnotesize\ttfamily \label{gamestate_8h_af1beb390d1a79b122359d975ce737c14} 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} set\+Game\+State (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{d}{}\end{DoxyParamCaption})}
+
+
+
+Set the Game State object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_estado_jogo}{Estado\+Jogo} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{gamestate_8c_source_l00009}{9}} of file \doxymbox{\hyperlink{gamestate_8c_source}{gamestate.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;\ }
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}{inicializa\_naipes}}(\&e);\ }
+\DoxyCodeLine{00013\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{inicializa\_jogAtual}}(\&e);}
+\DoxyCodeLine{00014\ \ \ \ \ e.tamanho\_historial\ =\ 0;\ }
+\DoxyCodeLine{00015\ \ \ \ \ e.def\_jogo\ =\ d;\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ Inicilizando\ os\ baralhos\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ tamanho\_baralho\ =\ 52\ *\ (d-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}});}
+\DoxyCodeLine{00019\ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *baralho\ =\ malloc(tamanho\_baralho\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));\ \textcolor{comment}{//\ Aloca\ a\ memória\ do\ array\ do\ baralho\ }}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}{inicializa\_baralhos}}(baralho,\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}},\ e.naipes);\ }
+\DoxyCodeLine{00022\ \ \ \ \ e.tamanho\_baralho\ =\ tamanho\_baralho;}
+\DoxyCodeLine{00023\ \ \ \ \ e.baralho\ =\ baralho;\ }
+\DoxyCodeLine{00024\ \ \ \ \ print\_baralho\_grid(\&e);\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ Inicilizando\ as\ pilhas\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilhas\ =\ malloc(d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}));\ \textcolor{comment}{//\ Aloca\ a\ memória\ do\ array\ das\ pilhas\ }}
+\DoxyCodeLine{00029\ \ \ \ \ e.total\_pilhas\ =\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}};\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}{set\_pilhas}}(d-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}},\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}},pilhas);}
+\DoxyCodeLine{00032\ \ \ \ \ e.pilhas\ =\ pilhas;\ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}{inicializa\_pilhas}}(\&e);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ print\_baralho\_grid(\&e);}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ e;\ }
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}

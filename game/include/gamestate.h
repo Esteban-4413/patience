@@ -1,3 +1,13 @@
+/**
+ * @file gamestate.h
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2026-05-24
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
@@ -58,19 +68,53 @@ typedef struct{
 
 
 
-
+/**
+ * @brief Set the Game State object
+ * 
+ * @param d 
+ * @return EstadoJogo 
+ */
 EstadoJogo setGameState(DefJogo *d); 
 
+/**
+ * @brief 
+ * 
+ * @param e 
+ */
 void inicializa_naipes(EstadoJogo *e);
+
+/**
+ * @brief 
+ * 
+ * @param e 
+ */
 void inicializa_jogAtual(EstadoJogo *e); 
+
+/**
+ * @brief Set the pilhas object
+ * 
+ * @param d 
+ * @param total_inits 
+ * @param pilhas 
+ */
 void set_pilhas (InitPilha d[], int total_inits, PILHA *pilhas); 
+
+/**
+ * @brief 
+ * 
+ * @param baralho 
+ * @param num_baralhos 
+ * @param naipes 
+ */
 void inicializa_baralhos(CARTAS *baralho, int num_baralhos, char naipes[4]);
+
+/**
+ * @brief 
+ * 
+ * @param e 
+ */
 void inicializa_pilhas(EstadoJogo *e); 
 
-
-// ---------------------- AUXILIAR ----------------------
-void print_baralho_grid(EstadoJogo *e); 
-void print_pilhas(EstadoJogo *e);
 
 
 #endif //PATIENCE_GAMESTATE_H

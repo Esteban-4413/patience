@@ -1,0 +1,153 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/utils.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/utils.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{utils_8h_a66ab0a2ef907de8058bd46126bf9cd8c}{aux\+\_\+string}} (char \texorpdfstring{$\ast$}{*}str, char c)
+\begin{DoxyCompactList}\small\item\em Encontra a primeira ocorrência de um carácter numa string. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\+\_\+strings}} (char a\+[$\,$]\+, char b\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Compara duas strings de forma lexicográfica (semelhante ao strcmp). \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\+\_\+string}} (char \texorpdfstring{$\ast$}{*}dest, char source\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Copia o conteúdo de uma string para outra (semelhante ao strcpy). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{utils_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8h_a66ab0a2ef907de8058bd46126bf9cd8c}\index{utils.h@{utils.h}!aux\_string@{aux\_string}}
+\index{aux\_string@{aux\_string}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{aux\_string()}{aux\_string()}}
+{\footnotesize\ttfamily \label{utils_8h_a66ab0a2ef907de8058bd46126bf9cd8c} 
+char \texorpdfstring{$\ast$}{*} aux\+\_\+string (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Encontra a primeira ocorrência de um carácter numa string. 
+
+Percorre a string até encontrar o carácter especificado ou atingir o final da string (\textquotesingle{}\textbackslash{}0\textquotesingle{}). É particularmente útil para detetar o início de comentários (como o \textquotesingle{}\#\textquotesingle{}) durante o parsing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A string onde a procura será realizada. \\
+\hline
+{\em c} & O carácter a procurar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char\texorpdfstring{$\ast$}{*} Ponteiro para a primeira ocorrência do carácter, ou NULL se não existir.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+processa\+\_\+linha() 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{utils_8c_source_l00004}{4}} of file \doxymbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00005\ \ \ \ \ \textcolor{keywordtype}{char}\ *r;}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ \ str[i]\ !=\ c\ \&\&\ str[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ i\ ++);}
+\DoxyCodeLine{00008\ \ \ \ \ (str[i]\ ==\ \textcolor{charliteral}{'\(\backslash\)0'})\ ?\ (r\ =\ NULL)\ :\ (r\ =\ str\ +\ i);}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keywordflow}{return}\ r;\ }
+\DoxyCodeLine{00010\ \}}
+
+\end{DoxyCode}
+\Hypertarget{utils_8h_a79468114e08269c978541c300c1b24a8}\index{utils.h@{utils.h}!comp\_strings@{comp\_strings}}
+\index{comp\_strings@{comp\_strings}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{comp\_strings()}{comp\_strings()}}
+{\footnotesize\ttfamily \label{utils_8h_a79468114e08269c978541c300c1b24a8} 
+int comp\+\_\+strings (\begin{DoxyParamCaption}\item[{char}]{a}{\+[$\,$]\+, }\item[{char}]{b}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Compara duas strings de forma lexicográfica (semelhante ao strcmp). 
+
+Compara os caracteres de ambas as strings sequencialmente até encontrar uma diferença ou chegar ao final. Utilizada para identificar os comandos lidos da DSL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Primeira string a comparar. \\
+\hline
+{\em b} & Segunda string a comparar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 0 se as strings forem exatamentes iguais. Um valor \texorpdfstring{$<$}{<} 0 se a \texorpdfstring{$<$}{<} b, ou um valor \texorpdfstring{$>$}{>} 0 se a \texorpdfstring{$>$}{>} b.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+what\+\_\+command() 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{utils_8c_source_l00013}{13}} of file \doxymbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{while}(\ *a\ ==\ *b\ \&\&\ *a)\{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ a\ ++;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ b\ ++;}
+\DoxyCodeLine{00017\ \ \ \ \ \}\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{return}\ (*a\ -\/\ *b);}
+\DoxyCodeLine{00019\ \}}
+
+\end{DoxyCode}
+\Hypertarget{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}\index{utils.h@{utils.h}!copia\_string@{copia\_string}}
+\index{copia\_string@{copia\_string}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{copia\_string()}{copia\_string()}}
+{\footnotesize\ttfamily \label{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35} 
+char \texorpdfstring{$\ast$}{*} copia\+\_\+string (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{dest}{, }\item[{char}]{source}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Copia o conteúdo de uma string para outra (semelhante ao strcpy). 
+
+Copia os caracteres da string de origem para o buffer de destino, garantindo que o carácter nulo de terminação (\textquotesingle{}\textbackslash{}0\textquotesingle{}) é devidamente incluído no final.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest} & O buffer de destino onde a cópia será guardada. \\
+\hline
+{\em source} & A string original que será copiada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char\texorpdfstring{$\ast$}{*} Ponteiro para a string de destino (dest).
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+lista\+\_\+ficheiros() 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{utils_8c_source_l00021}{21}} of file \doxymbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ source[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'};\ i\ ++)\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ dest[i]\ =\ source[i];}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ dest[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{return}\ dest;}
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}

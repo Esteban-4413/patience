@@ -1,0 +1,192 @@
+\doxysection{gamestate.\+c}
+\hypertarget{gamestate_8c_source}{}\label{gamestate_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/gamestate.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/gamestate.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00009}\doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{00009}}\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ \doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{setGameState}}(\doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *d)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00010}00010\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00011}00011\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00012}00012\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}{inicializa\_naipes}}(\&e);\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00013}00013\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{inicializa\_jogAtual}}(\&e);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00014}00014\ \ \ \ \ e.tamanho\_historial\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00015}00015\ \ \ \ \ e.def\_jogo\ =\ d;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ Inicilizando\ os\ baralhos\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ tamanho\_baralho\ =\ 52\ *\ (d-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *baralho\ =\ malloc(tamanho\_baralho\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));\ \textcolor{comment}{//\ Aloca\ a\ memória\ do\ array\ do\ baralho\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00021}00021\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}{inicializa\_baralhos}}(baralho,\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}},\ e.naipes);\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00022}00022\ \ \ \ \ e.tamanho\_baralho\ =\ tamanho\_baralho;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00023}00023\ \ \ \ \ e.baralho\ =\ baralho;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00024}00024\ \ \ \ \ print\_baralho\_grid(\&e);\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ Inicilizando\ as\ pilhas\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00028}00028\ \ \ \ \ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilhas\ =\ malloc(d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}));\ \textcolor{comment}{//\ Aloca\ a\ memória\ do\ array\ das\ pilhas\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00029}00029\ \ \ \ \ e.total\_pilhas\ =\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}};\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00031}00031\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}{set\_pilhas}}(d-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}},\ d-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}},pilhas);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00032}00032\ \ \ \ \ e.pilhas\ =\ pilhas;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}{inicializa\_pilhas}}(\&e);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00035}00035\ \ \ \ \ print\_baralho\_grid(\&e);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00036}00036\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ e;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00042}\doxymbox{\hyperlink{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}{00042}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gamestate_8h_aaa849be8e2335ad9fcbd0628ace45a66}{set\_pilhas}}\ (\doxymbox{\hyperlink{struct_init_pilha}{InitPilha}}\ d[],\ \textcolor{keywordtype}{int}\ total\_inits,\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilhas)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00043}00043\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ total\_inits;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *nova\_pilha\ =\ malloc(32\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));\ \textcolor{comment}{//\ Número\ arbitrário\ para\ ser\ o\ máximo\ de\ cartas\ por\ pilha\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ pilhas[i].nome\_tipo\ =\ d[i].\doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{nome\_tipo}};\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ pilhas[i].tamanho\_pilha\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ pilhas[i].pilha\ =\ nova\_pilha;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00052}\doxymbox{\hyperlink{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}{00052}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gamestate_8h_aa5f55393d5dfdd58acd6037b02443a1b}{inicializa\_pilhas}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00053}00053\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\_carta;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_pilha;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ e-\/>total\_pilhas;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ max\_pilha\ =\ e-\/>def\_jogo-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[i].\doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{num\_cartas}};\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ max\_pilha;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Seleciona\ uma\ carta\ aleatória\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ indice\_carta\ =\ rand()\ \%\ (e-\/>tamanho\_baralho);\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Atribui\ a\ carta\ à\ pilha\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].pilha[j]\ =\ e-\/>baralho[indice\_carta];\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Acrescenta\ 1\ ao\ tamanho\ da\ pilha\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].tamanho\_pilha\ ++;\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ a\ carta\ do\ baralho,\ trocando-\/a\ com\ a\ última\ e\ diminuindo\ o\ tamanho}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>baralho[indice\_carta]\ =\ e-\/>baralho[e-\/>tamanho\_baralho\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ (e-\/>tamanho\_baralho)-\/-\/;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00082}\doxymbox{\hyperlink{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}{00082}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gamestate_8h_a52793a7a8a56fbd2c1a68f80f30fe748}{inicializa\_naipes}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00083}00083\ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ Inicialização\ dos\ naipes}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00085}00085\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ H\ -\/\ Copas\ \ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ S\ -\/\ Espadas\ \ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00088}00088\ \textcolor{comment}{\ \ \ \ \ D\ -\/\ Ouros\ \ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00089}00089\ \textcolor{comment}{\ \ \ \ \ C\ -\/\ Paus}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00091}00091\ \ \ \ \ e-\/>naipes[0]\ =\ \textcolor{charliteral}{'H'};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00092}00092\ \ \ \ \ e-\/>naipes[1]\ =\ \textcolor{charliteral}{'S'};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00093}00093\ \ \ \ \ e-\/>naipes[2]\ =\ \textcolor{charliteral}{'D'};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00094}00094\ \ \ \ \ e-\/>naipes[3]\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00098}\doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{00098}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{inicializa\_jogAtual}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00099}00099\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ (-\/1);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00100}00100\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ (-\/1);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00101}00101\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/2;\ \textcolor{comment}{//número\ que\ não\ corresponde\ a\ nenhuma\ das\ condições\ definidas\ }}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00102}00102\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00105}\doxymbox{\hyperlink{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}{00105}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{gamestate_8h_a1d99ff9f286ad9bcc673b94e6b05a520}{inicializa\_baralhos}}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *baralho,\ \textcolor{keywordtype}{int}\ num\_baralhos,\ \textcolor{keywordtype}{char}\ naipes[4])\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00106}00106\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{while}\ (num\_baralhos\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Para\ cada\ naipe,\ percorre\ as\ cartas\ com\ valores\ de\ 1\ a\ 13.}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <=\ 13;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baralho[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ j;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ baralho[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ naipes[i];}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indice++;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ num\_baralhos-\/-\/;}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00120}00120\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00126}00126\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ AUXILIAR\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00127}00127\ \textcolor{keywordtype}{void}\ print\_baralho\_grid(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ ==\ NULL\ ||\ e-\/>baralho\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro:\ Baralho\ não\ inicializado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00133}00133\ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/\ Exibição\ do\ Baralho\ (Total:\ \%zu\ cartas)\ -\/-\/-\/\(\backslash\)n"{}},\ e-\/>tamanho\_baralho);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00135}00135\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ e-\/>tamanho\_baralho;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Imprime\ a\ carta\ (ex:\ [10C]\ para\ 10\ de\ Copas)}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ o\ valor\ for\ 1,\ imprime\ 'A',\ se\ for\ 11\ 'J',\ etc.\ (opcional)}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[\%2d\%c]\ "{}},\ e-\/>baralho[i].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ e-\/>baralho[i].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ o\ próximo\ índice\ for\ múltiplo\ de\ 10,\ salta\ uma\ linha}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((i\ +\ 1)\ \%\ 10\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Garante\ que\ termina\ com\ uma\ linha\ nova\ se\ o\ total\ não\ for\ múltiplo\ de\ 10}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>tamanho\_baralho\ \%\ 10\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00148}00148\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00150}00150\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00151}00151\ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00152}00152\ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00155}00155\ \textcolor{keywordtype}{void}\ print\_pilhas(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ ==\ NULL\ ||\ e-\/>pilhas\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Erro:\ Pilhas\ não\ inicializadas.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00161}00161\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n-\/-\/-\/\ ESTADO\ DAS\ PILHAS\ -\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00163}00163\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ e-\/>total\_pilhas;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Imprime\ o\ índice\ e\ o\ nome\ do\ tipo\ (ex:\ Pilha\ 0\ [TAB]:)}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Pilha\ \%d\ [\%s]:\ "{}},\ i,\ e-\/>pilhas[i].nome\_tipo);}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>pilhas[i].tamanho\_pilha\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[Vazia]"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ e-\/>pilhas[i].tamanho\_pilha;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c\ =\ e-\/>pilhas[i].pilha[j];}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Formatação\ simples:\ [ValorNaipe]}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ preferires\ o\ 'A'\ em\ vez\ de\ 1,\ podes\ usar\ uma\ função\ auxiliar}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}[\%d\%c]\ "{}},\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adiciona\ um\ separador\ visual\ entre\ as\ cartas,\ menos\ na\ última}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ e-\/>pilhas[i].tamanho\_pilha\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}|\ "{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00184}00184\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00185}00185\ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{gamestate_8c_source_l00186}00186\ \}}
+
+\end{DoxyCode}

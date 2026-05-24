@@ -1,0 +1,39 @@
+\doxysection{saveload.\+h}
+\hypertarget{saveload_8h_source}{}\label{saveload_8h_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/saveload.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/saveload.h}}
+\doxymbox{\hyperlink{saveload_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00010}00010\ \textcolor{preprocessor}{\#ifndef\ SAVELOAD\_H}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{loader_8h}{../include/loader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamedef_8h}{../include/gamedef.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00020}00020\ \textcolor{preprocessor}{\#define\ SAVELOAD\_H}}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00032}00032\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\_carta}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00048}00048\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\_game}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \textcolor{keywordtype}{char}\ *ficheiro\_save,\ \textcolor{keywordtype}{char}\ *nome\_paciencia\_original);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00067}00067\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ \doxymbox{\hyperlink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\_game}}(\textcolor{keywordtype}{char}\ *ficheiro\_save,\ \textcolor{keywordtype}{char}\ *pasta\_paciencias);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00080}00080\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\_linha\_pilha}}(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilha);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00095}00095\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\_pilha}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilha);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00112}00112\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ \doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\_estado\_inicial}}(FILE\ *f,\ \textcolor{keywordtype}{char}\ *pasta\_paciencias);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00126}00126\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\_pilhas}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e);}
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{saveload_8h_source_l00129}00129\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

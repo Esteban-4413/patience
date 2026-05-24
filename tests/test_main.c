@@ -45,20 +45,4 @@ int main(){
         CU_add_test(pSuiteGame, "Test Segundo Clique - Mesma Pilha", test_jogAtual_segClick_mesma_pilha);
         CU_add_test(pSuiteGame, "Test Segundo Clique - Validacao", test_jogAtual_segClick_validacao);
     }
-    
-    /*
-    
-
-    // 4. Suite Move
-    CU_pSuite pSuiteActions = CU_add_suite("Suite_Move", NULL, NULL);
-    if (pSuiteActions != NULL) {
-        CU_add_test(pSuiteActions, "Valida Origem", testar_valida_jogada_origem);
-        CU_add_test(pSuiteActions, "Tam. Sequencia", testar_tamanho_sequencia);
-    }
-    
-    */
-    
-    CU_basic_run_tests();
-    CU_cleanup_registry();
-    return CU_get_error();
 }

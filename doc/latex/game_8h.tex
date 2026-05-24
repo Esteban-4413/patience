@@ -1,0 +1,462 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+game.h File Reference}
+\hypertarget{game_8h}{}\label{game_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/game.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/game.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{game_8h_ab1444ddc9e82fa767ee0ac827f9f5b76}{loop\+\_\+principal}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}janelas, int jogando)
+\begin{DoxyCompactList}\small\item\em O ciclo principal (loop) de execução do jogo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a4e3c5a0ee582620f8577b5715af9eb57}{processa\+\_\+rato}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Processa os cliques do rato feitos pelo utilizador. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a999b10b4c472a1283a033180dfca2f14}{next\+\_\+step}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Lógica intermédia para processar o próximo passo do jogador. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a88f1b14df0d431340de27a2e1332b6e6}{na\+Pilha}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da next\+\_\+step A partir da informação que o click foi em uma das pilhas, inicia o processo de construir e preencher a Jogada Atual com as informações. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_ab304c3316db419f5f0a9217845952c9a}{define\+\_\+jog\+Atual}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Preenche a Jogada Atual. Onde a flag da jog\+\_\+\+Atual indica em que estado está a jogada. (Se a flag for -\/2, a jogada acabou de ser inicializada, se for 0, já recebeu o primeiro click e está a espera do segundo, se for 1, já recebeu o segundo click e a jogada é válida e, por fim, se for -\/1, a jogada é inválida). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_abc854d060fac273176564476209eedfa}{jog\+Atual\+\_\+seg\+Click}} (int r, \doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}e)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da define\+\_\+jog\+Atual. Define no caso da jog\+\_\+atual está com a flag= 0, ou seja acabou de receber o 2º click Preenche o parâmetro da jog\+\_\+atual chamado chegada, com a pilha que foi detetado o click e depois busca verificar se a jogada é possível, passando a atribuir a devida flag a jogada. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_a384c1b314bf834d9cf6956a63f96d13c}{verifica\+\_\+vitoria}} (\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}estado)
+\begin{DoxyCompactList}\small\item\em Percorre o array dos win, para verificar se as pilhas descritas tem o número de cartas exigitas para a condição de vitória. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_a86942e3e4b0103f8b605a2906f3baf2b}{existe\+\_\+save}} (char \texorpdfstring{$\ast$}{*}ficheiro)
+\begin{DoxyCompactList}\small\item\em Verifica se um determinado ficheiro de save existe no disco. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \doxymbox{\hyperlink{game_8h_ad5000db9627290d814871996150318e7}{menu}} (char \texorpdfstring{$\ast$}{*}pasta, char \texorpdfstring{$\ast$}{*}save)
+\begin{DoxyCompactList}\small\item\em Gere o menu de arranque e inicializa o estado base do jogo. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_aaf9064d94137eac1ce81d030cbb488d0}{input\+\_\+menu}} (void)
+\begin{DoxyCompactList}\small\item\em Pede e valida a escolha do utilizador no menu inicial de retoma de jogo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8h_ab304c3316db419f5f0a9217845952c9a}\index{game.h@{game.h}!define\_jogAtual@{define\_jogAtual}}
+\index{define\_jogAtual@{define\_jogAtual}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{define\_jogAtual()}{define\_jogAtual()}}
+{\footnotesize\ttfamily \label{game_8h_ab304c3316db419f5f0a9217845952c9a} 
+void define\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Preenche a Jogada Atual. Onde a flag da jog\+\_\+\+Atual indica em que estado está a jogada. (Se a flag for -\/2, a jogada acabou de ser inicializada, se for 0, já recebeu o primeiro click e está a espera do segundo, se for 1, já recebeu o segundo click e a jogada é válida e, por fim, se for -\/1, a jogada é inválida). 
+
+
+\begin{DoxyItemize}
+\item Primeiro click corresponde ao click de onde queremos remover a(s) carta(s) enquanto o segundo click corresponde a pilha para onde queremos mover essa(s) carta(s).
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New e). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00074}{74}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{if}(e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ -\/2)\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ r;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ num\_carta;\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ e-\/>pilhas[r].tamanho\_pilha\ -\/\ num\_carta;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//mvprintw(2,\ 60\ ,\ "{}COLUNA\ :\ \ \%d\ \ \ \ \ \ .\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{},\ num\_carta);}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_carta\ >=\ 0\ )\ \{\ \textcolor{comment}{//\ \&\&\ Valida\ tamanho\ da\ sequencia\ é\ válido\ }}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 0;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 0)\ \doxymbox{\hyperlink{game_8h_abc854d060fac273176564476209eedfa}{jogAtual\_segClick}}(r,\ e);}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a86942e3e4b0103f8b605a2906f3baf2b}\index{game.h@{game.h}!existe\_save@{existe\_save}}
+\index{existe\_save@{existe\_save}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{existe\_save()}{existe\_save()}}
+{\footnotesize\ttfamily \label{game_8h_a86942e3e4b0103f8b605a2906f3baf2b} 
+int existe\+\_\+save (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{ficheiro}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se um determinado ficheiro de save existe no disco. 
+
+Tenta abrir o ficheiro em modo de leitura ("{}r"{}). É utilizado no arranque do programa para decidir se o menu de retoma de jogo deve ser apresentado ao utilizador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ficheiro} & Caminho ou nome do ficheiro de save (ex:\+ "{}save.\+txt"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 se o ficheiro existir e puder ser lido, 0 caso contrário.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_ad5000db9627290d814871996150318e7}{menu()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00115}{115}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ FILE\ *f\ =\ fopen(ficheiro,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}(f\ ==\ NULL)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00118\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00120\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_aaf9064d94137eac1ce81d030cbb488d0}\index{game.h@{game.h}!input\_menu@{input\_menu}}
+\index{input\_menu@{input\_menu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{input\_menu()}{input\_menu()}}
+{\footnotesize\ttfamily \label{game_8h_aaf9064d94137eac1ce81d030cbb488d0} 
+int input\+\_\+menu (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Pede e valida a escolha do utilizador no menu inicial de retoma de jogo. 
+
+Apresenta as opções (1 -\/ Continuar, 2 -\/ Novo Jogo) no terminal e utiliza um ciclo blindado (com fgets e sscanf) para garantir que o utilizador insere uma opção estritamente válida, rejeitando letras ou outros números sem bloquear o programa
+
+\begin{DoxyReturn}{Returns}
+int A escolha validada do utilizador (garantidamente 1 ou 2).
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_ad5000db9627290d814871996150318e7}{menu()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00128}{128}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Encontrei\ um\ jogo\ guardado\(\backslash\)n1\ -\/\ Continuar\(\backslash\)n2\ -\/\ Novo\ Jogo\(\backslash\)n"{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{int}\ op\ =\ 0;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{char}\ buf[64];}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ buul\ =\ 0;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{while}\ (!buul)\{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fgets(buf,\ \textcolor{keyword}{sizeof}(buf),\ stdin)\ !=\ NULL)\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(sscanf(buf,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&op)\ ==\ 1\ \&\&\ (op\ ==\ 1\ ||\ op\ ==\ 2))\ buul\ =\ 1;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ printf(\textcolor{stringliteral}{"{}Número\ invalido.\ Tenta\ outra\ vez\ man"{}});}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{return}\ op;}
+\DoxyCodeLine{00140\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_abc854d060fac273176564476209eedfa}\index{game.h@{game.h}!jogAtual\_segClick@{jogAtual\_segClick}}
+\index{jogAtual\_segClick@{jogAtual\_segClick}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{jogAtual\_segClick()}{jogAtual\_segClick()}}
+{\footnotesize\ttfamily \label{game_8h_abc854d060fac273176564476209eedfa} 
+void jog\+Atual\+\_\+seg\+Click (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da define\+\_\+jog\+Atual. Define no caso da jog\+\_\+atual está com a flag= 0, ou seja acabou de receber o 2º click Preenche o parâmetro da jog\+\_\+atual chamado chegada, com a pilha que foi detetado o click e depois busca verificar se a jogada é possível, passando a atribuir a devida flag a jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New e). \\
+\hline
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00090}{90}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ r;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ v\ =\ valida\_jogada(e,\ e-\/>jog\_atual);\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}})\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 1;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (v)\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 1;\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordflow}{else}\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/1;\ }
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ab1444ddc9e82fa767ee0ac827f9f5b76}\index{game.h@{game.h}!loop\_principal@{loop\_principal}}
+\index{loop\_principal@{loop\_principal}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{loop\_principal()}{loop\_principal()}}
+{\footnotesize\ttfamily \label{game_8h_ab1444ddc9e82fa767ee0ac827f9f5b76} 
+void loop\+\_\+principal (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{janelas}{, }\item[{int}]{jogando}{}\end{DoxyParamCaption})}
+
+
+
+O ciclo principal (loop) de execução do jogo. 
+
+Mantém o jogo a correr de forma contínua, à espera de input do utilizador (cliques ou teclas), atualizando o ecrã sempre que uma ação é validada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em janelas} & Ponteiro para a estrutura que contém as janelas ncurses. \\
+\hline
+{\em jogando} & Variável de controlo (flag) que mantém o loop ativo (ex:\+ 1 para jogar, 0 para sair). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00010}{10}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordflow}{while}\ (jogando)\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ch\ =\ getch();\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{game_8h_a384c1b314bf834d9cf6956a63f96d13c}{verifica\_vitoria}}(e))\{\ mvprintw(0,60,\textcolor{stringliteral}{"{}Vitória!"{}});\ jogando\ =\ 0;\}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ch\ ==\ \textcolor{charliteral}{'q'})\ jogando\ =\ 0;\ \textcolor{comment}{//\ Condição\ de\ saida\ do\ EstadoJogo,\ clicar\ no\ "{}q"{}}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ch\ ==\ KEY\_MOUSE)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{game_8h_a4e3c5a0ee582620f8577b5715af9eb57}{processa\_rato}}(e,\ p);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ad5000db9627290d814871996150318e7}\index{game.h@{game.h}!menu@{menu}}
+\index{menu@{menu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily \label{game_8h_ad5000db9627290d814871996150318e7} 
+\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} menu (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{pasta}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{save}{}\end{DoxyParamCaption})}
+
+
+
+Gere o menu de arranque e inicializa o estado base do jogo. 
+
+Se existir um ficheiro de save, interage com o utilizador para decidir se pretende continuar a partida (opção 1) ou começar um jogo novo (opção 2). Dependendo da escolha, carrega o estado do ficheiro ou invoca o loader para selecionar uma nova paciência.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pasta} & Caminho para a pasta que contém as definições dos jogos (ex:\+ "{}paciencias"{}). \\
+\hline
+{\em save} & Caminho para o ficheiro de save a verificar/\+carregar (ex:\+ "{}save.\+txt"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_estado_jogo}{Estado\+Jogo} A estrutura do jogo totalmente inicializada e pronta a ser jogada.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+main()
+
+\doxylink{game_8h_a86942e3e4b0103f8b605a2906f3baf2b}{existe\+\_\+save()} 
+
+\doxylink{game_8h_aaf9064d94137eac1ce81d030cbb488d0}{input\+\_\+menu()} 
+
+\doxylink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\+\_\+game()} 
+
+\doxylink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{set\+Game\+State()} 
+
+escolhe\+\_\+paciencia() 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00122}{122}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;}
+\DoxyCodeLine{00124\ \ \ \ \ (\doxymbox{\hyperlink{game_8h_a86942e3e4b0103f8b605a2906f3baf2b}{existe\_save}}(save)\ \&\&\ \doxymbox{\hyperlink{game_8h_aaf9064d94137eac1ce81d030cbb488d0}{input\_menu}}()\ ==\ 1)\ ?\ (e\ =\ \doxymbox{\hyperlink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\_game}}(save,\ pasta))\ :\ (e\ =\ \doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{setGameState}}(escolhe\_paciencia(pasta)));}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ e;}
+\DoxyCodeLine{00126\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a88f1b14df0d431340de27a2e1332b6e6}\index{game.h@{game.h}!naPilha@{naPilha}}
+\index{naPilha@{naPilha}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{naPilha()}{naPilha()}}
+{\footnotesize\ttfamily \label{game_8h_a88f1b14df0d431340de27a2e1332b6e6} 
+void na\+Pilha (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da next\+\_\+step A partir da informação que o click foi em uma das pilhas, inicia o processo de construir e preencher a Jogada Atual com as informações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New e). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00052}{52}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}(e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 1\ ||\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ -\/1)\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{gamestate_8h_aa7e2aa35b24ccc786872feb6d76988c0}{inicializa\_jogAtual}}(e);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{game_8h_ab304c3316db419f5f0a9217845952c9a}{define\_jogAtual}}(r,\ num\_carta,\ e);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ pilha\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ chegada\ =\ e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ \ ==\ 1\ \&\&\ pilha\ !=\ chegada)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ joga(e,\ e-\/>jog\_atual);\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f}{registar\_jogada}}(e);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{move_8h_a27cc09e840eea54cb5f38d51b2c570ec}{movAutos}}(e);\ \ \textcolor{comment}{//\ MOVIMENTOS\ AUTOMATICOS\ }}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \}\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \doxymbox{\hyperlink{display_8h_a5010ecb49d66526bc88246844964b9b1}{update\_pilha}}(e,p);}
+\DoxyCodeLine{00068\ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ refresh();\ \ }
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a999b10b4c472a1283a033180dfca2f14}\index{game.h@{game.h}!next\_step@{next\_step}}
+\index{next\_step@{next\_step}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{next\_step()}{next\_step()}}
+{\footnotesize\ttfamily \label{game_8h_a999b10b4c472a1283a033180dfca2f14} 
+void next\+\_\+step (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Lógica intermédia para processar o próximo passo do jogador. 
+
+Avalia o contexto da jogada após um clique numa pilha e decide o que deve acontecer a seguir (ex:\+ se o movimento avança para validação).
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New e). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00031}{31}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Click\ em\ alguma\ das\ pilhas\ }}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ >=\ 0\ \&\&\ r\ <=\ e-\/>total\_pilhas\ -\/1)\{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{game_8h_a88f1b14df0d431340de27a2e1332b6e6}{naPilha}}(r,\ num\_carta,\ e,\ p);\ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Click\ nos\ botões\ }}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (r\ ==\ e-\/>total\_pilhas)\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7}{undo}}(e);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Atualiza\ o\ print\ de\ todas\ as\ pilhas\ }}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{display_8h_a35eb3f28968375d9948ea5bb789b9488}{printPilhas}}(e,\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a0fcd9f22442b9fe1a7ae2d27c21730a5}{end\_pilhas}},\ p-\/>total\_pilhas);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (r\ ==\ e-\/>total\_pilhas\ +\ 1)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\_game}}(e,\ \textcolor{stringliteral}{"{}save.txt"{}},\ e-\/>def\_jogo-\/>\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ mvprintw(0,\ 60,\ \textcolor{stringliteral}{"{}\ Jogo\ guardado\ em\ 'save.txt'"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a4e3c5a0ee582620f8577b5715af9eb57}\index{game.h@{game.h}!processa\_rato@{processa\_rato}}
+\index{processa\_rato@{processa\_rato}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{processa\_rato()}{processa\_rato()}}
+{\footnotesize\ttfamily \label{game_8h_a4e3c5a0ee582620f8577b5715af9eb57} 
+void processa\+\_\+rato (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{e}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Processa os cliques do rato feitos pelo utilizador. 
+
+Analisa as coordenadas de onde o utilizador clicou, determina se foi numa pilha, no baralho ou num botão, e invoca a ação correspondente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para a estrutura que guarda todas as janelas (\doxylink{struct_p_o_i_n_t_e_r_s}{POINTERS}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00022}{22}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_carta;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Verifica\ a\ existencia\ de\ um\ click}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \doxymbox{\hyperlink{input_8h_aef8558ab33bc841ff5e519c5412bf5d6}{verifica\_click}}(e,\ p,\ \&num\_carta);}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{game_8h_a999b10b4c472a1283a033180dfca2f14}{next\_step}}(r,\ num\_carta,\ e,\ p);}
+\DoxyCodeLine{00027\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a384c1b314bf834d9cf6956a63f96d13c}\index{game.h@{game.h}!verifica\_vitoria@{verifica\_vitoria}}
+\index{verifica\_vitoria@{verifica\_vitoria}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{verifica\_vitoria()}{verifica\_vitoria()}}
+{\footnotesize\ttfamily \label{game_8h_a384c1b314bf834d9cf6956a63f96d13c} 
+int verifica\+\_\+vitoria (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_estado_jogo}{Estado\+Jogo}} \texorpdfstring{$\ast$}{*}}]{estado}{}\end{DoxyParamCaption})}
+
+
+
+Percorre o array dos win, para verificar se as pilhas descritas tem o número de cartas exigitas para a condição de vitória. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em estado} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00100}{100}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado-\/>def\_jogo-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}};\ i++)\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_victory_condition}{VictoryCondition}}\ vict\ =\ estado-\/>def\_jogo-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}[i];}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado-\/>total\_pilhas;\ j++)\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ pilha\ =\ estado-\/>pilhas[j];}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(strcmp(pilha.nome\_tipo,\ vict.\doxymbox{\hyperlink{struct_victory_condition_af5d351e78113b7017fa74cc91573d744}{nome\_tipo}})\ ==\ 0)\{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(pilha.tamanho\_pilha\ !=\ vict.\doxymbox{\hyperlink{struct_victory_condition_a0edd3d08ec17653008d31914e332af22}{num\_cartas}})\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00112\ \}}
+
+\end{DoxyCode}

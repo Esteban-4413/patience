@@ -1,0 +1,411 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+parser.h File Reference}
+\hypertarget{parser_8h}{}\label{parser_8h}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/parser.h@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/include/parser.h}}
+{\ttfamily \+\#include "{}gamedef.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda}{load\+\_\+paciencia}} (char \texorpdfstring{$\ast$}{*}ficheiro)
+\begin{DoxyCompactList}\small\item\em Abre e lê um ficheiro de texto (.paciencia) para carregar as regras do jogo. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}{incializa\+\_\+estado}} (void)
+\begin{DoxyCompactList}\small\item\em Aloca memória e inicializa a estrutura principal de regras do jogo. Prepara uma nova estrutura \doxylink{struct_def_jogo}{Def\+Jogo}, colocando todos os contadores a zero (total\+\_\+tipos, total\+\_\+movs, etc.) e os respetivos ponteiros a NULL para garantir que a memória não tem "{}lixo"{} antes de o ficheiro começar a ser lido. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command}} (char \texorpdfstring{$\ast$}{*}comando, char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Identifica o comando lido do ficheiro e guarda a informação na estrutura \doxylink{struct_def_jogo}{Def\+Jogo}. Compara a string do comando ("{}\+JOGO"{}, "{}\+BARALHOS"{}, "{}\+TIPO"{}, "{}\+MOV"{}, "{}\+AUTO"{}, "{}\+INIT"{}, "{}\+WIN"{}) e utiliza o sscanf para extrair os argumentos do resto do buffer. Realoca a memória dos arrays correspondentes (ex:\+ est-\/\texorpdfstring{$>$}{>}movs, est-\/\texorpdfstring{$>$}{>}inits) consoante for necessário. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_ae63614d43d038583780c03af9776dc86}{cmd\+\_\+tipo}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Processa o comando "{}\+TIPO"{} e adiciona a informação ao estado do jogo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_a1e25d4ea7ba396b344cd9d80fc92b70b}{cmd\+\_\+init}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Processa o comando "{}\+INIT"{} e adiciona a configuração inicial ao estado. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_ac6bcbf667ff13bf19b4bee14faf6e4f2}{cmd\+\_\+auto}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Processa o comando "{}\+AUTO"{} e adiciona um movimento automático às regras. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_a6697e0a364b8a176177c7e790cfc81dc}{cmd\+\_\+win}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Processa o comando "{}\+WIN"{} e define uma condição de vitória. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{parser_8h_a5c936eaeaef5594a2d8c0104430d059e}{cmd\+\_\+mov}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Processa o comando "{}\+MOV"{} e adiciona uma regra de movimento válida. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{parser_8h_ab400c0c1319b4c7ba16e74a621d9d207}{processa\+\_\+linha}} (char \texorpdfstring{$\ast$}{*}buffer, \doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}est)
+\begin{DoxyCompactList}\small\item\em Analisa uma linha lida do ficheiro, remove os comentários e extrai o comando principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/05-\/24
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{parser_8h_source}{parser.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{parser_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{parser_8h_ac6bcbf667ff13bf19b4bee14faf6e4f2}\index{parser.h@{parser.h}!cmd\_auto@{cmd\_auto}}
+\index{cmd\_auto@{cmd\_auto}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_auto()}{cmd\_auto()}}
+{\footnotesize\ttfamily \label{parser_8h_ac6bcbf667ff13bf19b4bee14faf6e4f2} 
+void cmd\+\_\+auto (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Processa o comando "{}\+AUTO"{} e adiciona um movimento automático às regras. 
+
+Realoca a memória do array de movimentos automáticos e guarda a origem, o destino e as flags.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa do comando. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo (\doxylink{struct_def_jogo}{Def\+Jogo}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00093}{93}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}++;}
+\DoxyCodeLine{00095\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_movimento}{Movimento}}));}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}-\/1;}
+\DoxyCodeLine{00098\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\_origem}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\_destino}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}[idx].\doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}});}
+\DoxyCodeLine{00099\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a1e25d4ea7ba396b344cd9d80fc92b70b}\index{parser.h@{parser.h}!cmd\_init@{cmd\_init}}
+\index{cmd\_init@{cmd\_init}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_init()}{cmd\_init()}}
+{\footnotesize\ttfamily \label{parser_8h_a1e25d4ea7ba396b344cd9d80fc92b70b} 
+void cmd\+\_\+init (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Processa o comando "{}\+INIT"{} e adiciona a configuração inicial ao estado. 
+
+Aumenta o contador de inits, realoca a memória do array e guarda o tipo da pilha e o número de cartas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa do comando. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo (\doxylink{struct_def_jogo}{Def\+Jogo}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00101}{101}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}++;}
+\DoxyCodeLine{00103\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_init_pilha}{InitPilha}}));}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}-\/1;}
+\DoxyCodeLine{00106\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%d"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[idx].\doxymbox{\hyperlink{struct_init_pilha_a393bcb2a662410948103e55ed3b95505}{nome\_tipo}},\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}[idx].\doxymbox{\hyperlink{struct_init_pilha_a3adbfee93b3210e1be4542f1c0cd8d19}{num\_cartas}});}
+\DoxyCodeLine{00107\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a5c936eaeaef5594a2d8c0104430d059e}\index{parser.h@{parser.h}!cmd\_mov@{cmd\_mov}}
+\index{cmd\_mov@{cmd\_mov}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_mov()}{cmd\_mov()}}
+{\footnotesize\ttfamily \label{parser_8h_a5c936eaeaef5594a2d8c0104430d059e} 
+void cmd\+\_\+mov (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Processa o comando "{}\+MOV"{} e adiciona uma regra de movimento válida. 
+
+Realoca o array de movimentos válidos e regista a pilha de origem, a pilha de destino e as restrições (flags).
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa do comando. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo (\doxylink{struct_def_jogo}{Def\+Jogo}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00085}{85}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}++;}
+\DoxyCodeLine{00087\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_movimento}{Movimento}}));}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}-\/1;}
+\DoxyCodeLine{00090\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_a5e9abdbea164353c1c0a1808b087c185}{pilha\_origem}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_aebcc962b84b1cf1cbfa840f1b324ff63}{pilha\_destino}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}[idx].\doxymbox{\hyperlink{struct_movimento_ad79d05e64ec92402d9f5966532b03ede}{flags}});}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_ae63614d43d038583780c03af9776dc86}\index{parser.h@{parser.h}!cmd\_tipo@{cmd\_tipo}}
+\index{cmd\_tipo@{cmd\_tipo}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_tipo()}{cmd\_tipo()}}
+{\footnotesize\ttfamily \label{parser_8h_ae63614d43d038583780c03af9776dc86} 
+void cmd\+\_\+tipo (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Processa o comando "{}\+TIPO"{} e adiciona a informação ao estado do jogo. 
+
+Aumenta o contador de tipos, realoca a memória do array de tipos e guarda o nome e as flags.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa do comando. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo (\doxylink{struct_def_jogo}{Def\+Jogo}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00077}{77}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}++;}
+\DoxyCodeLine{00079\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_tipo_pilha}{TipoPilha}}));}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ -\/\ 1;}
+\DoxyCodeLine{00082\ \ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%s"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}[idx].\doxymbox{\hyperlink{struct_tipo_pilha_a0fcad6fabf6dd4c660f0da297de2220e}{nome\_tipo}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}[idx].\doxymbox{\hyperlink{struct_tipo_pilha_a12ee872ef50a67a4d4f5a0faf942fdd6}{flags}});}
+\DoxyCodeLine{00083\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a6697e0a364b8a176177c7e790cfc81dc}\index{parser.h@{parser.h}!cmd\_win@{cmd\_win}}
+\index{cmd\_win@{cmd\_win}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{cmd\_win()}{cmd\_win()}}
+{\footnotesize\ttfamily \label{parser_8h_a6697e0a364b8a176177c7e790cfc81dc} 
+void cmd\+\_\+win (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Processa o comando "{}\+WIN"{} e define uma condição de vitória. 
+
+Realoca o array de condições de vitória e guarda a pilha alvo e a quantidade de cartas necessária.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa do comando. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo (\doxylink{struct_def_jogo}{Def\+Jogo}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00109}{109}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}++;}
+\DoxyCodeLine{00111\ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}\ =\ realloc(est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}},\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_victory_condition}{VictoryCondition}}));}
+\DoxyCodeLine{00112\ \ \ \ \textcolor{keywordtype}{char}\ cmd[32];}
+\DoxyCodeLine{00113\ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ -\/\ 1;}
+\DoxyCodeLine{00114\ \ \ \ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s\ \%d"{}},\ cmd,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}[idx].\doxymbox{\hyperlink{struct_victory_condition_af5d351e78113b7017fa74cc91573d744}{nome\_tipo}},\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}[idx].\doxymbox{\hyperlink{struct_victory_condition_a0edd3d08ec17653008d31914e332af22}{num\_cartas}});\ }
+\DoxyCodeLine{00115\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}\index{parser.h@{parser.h}!incializa\_estado@{incializa\_estado}}
+\index{incializa\_estado@{incializa\_estado}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{incializa\_estado()}{incializa\_estado()}}
+{\footnotesize\ttfamily \label{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa} 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} incializa\+\_\+estado (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Aloca memória e inicializa a estrutura principal de regras do jogo. Prepara uma nova estrutura \doxylink{struct_def_jogo}{Def\+Jogo}, colocando todos os contadores a zero (total\+\_\+tipos, total\+\_\+movs, etc.) e os respetivos ponteiros a NULL para garantir que a memória não tem "{}lixo"{} antes de o ficheiro começar a ser lido. 
+
+\begin{DoxyReturn}{Returns}
+Def\+Jogo\texorpdfstring{$\ast$}{*} Ponteiro para a nova estrutura inicializada. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda}{load\+\_\+paciencia()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *est\ =\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}));\ \textcolor{comment}{//\ Adicionei\ (Fernanda)\ isso\ para\ converter\ para\ um\ pointer.}}
+\DoxyCodeLine{00041\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}}[0]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}\ =\ NULL;}
+\DoxyCodeLine{00044\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\_tipos}}\ =\ 0;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\_wins}}\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}\ =\ NULL;}
+\DoxyCodeLine{00049\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\_movs}}\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}\ =\ NULL;}
+\DoxyCodeLine{00052\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\_autos}}\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\_inits}}\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}\ =\ NULL;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}\ =\ NULL;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ est;}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda}\index{parser.h@{parser.h}!load\_paciencia@{load\_paciencia}}
+\index{load\_paciencia@{load\_paciencia}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{load\_paciencia()}{load\_paciencia()}}
+{\footnotesize\ttfamily \label{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda} 
+\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*} load\+\_\+paciencia (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{ficheiro}{}\end{DoxyParamCaption})}
+
+
+
+Abre e lê um ficheiro de texto (.paciencia) para carregar as regras do jogo. 
+
+Lê o ficheiro linha a linha, ignora os comentários (tudo o que estiver à direita de \textquotesingle{}\#\textquotesingle{}) e utiliza a função what\+\_\+command para interpretar e guardar cada instrução lida.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ficheiro} & Caminho para o ficheiro de texto que contém a DSL da paciência (ex:\+ "{}paciencias/\+golf.\+paciencia"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Def\+Jogo\texorpdfstring{$\ast$}{*} Ponteiro para a estrutura que contém todas as definições estruturais e regras do jogo.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+inicializa\+\_\+estado() 
+
+\doxylink{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}{what\+\_\+command()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00009}{9}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *estado\ =\ \doxymbox{\hyperlink{parser_8h_a7e65ae5ff6d49e8e5e8f59321d2774aa}{incializa\_estado}}();}
+\DoxyCodeLine{00011\ \ \ \ \ FILE\ *\ paciencia\ =\ fopen(ficheiro,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[255];}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{if}(paciencia\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}nao\ existe"{}});\ \textcolor{keywordflow}{return}\ estado;\}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(fgets(buffer,\ 255,\ paciencia)\ !=\ NULL)\ processa\_linha(buffer,\ estado);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ fclose(paciencia);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ estado;}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{return}\ estado;}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_ab400c0c1319b4c7ba16e74a621d9d207}\index{parser.h@{parser.h}!processa\_linha@{processa\_linha}}
+\index{processa\_linha@{processa\_linha}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{processa\_linha()}{processa\_linha()}}
+{\footnotesize\ttfamily \label{parser_8h_ab400c0c1319b4c7ba16e74a621d9d207} 
+int processa\+\_\+linha (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Analisa uma linha lida do ficheiro, remove os comentários e extrai o comando principal. 
+
+Procura o carácter \textquotesingle{}\#\textquotesingle{} para ignorar comentários. De seguida, extrai a primeira palavra da linha (se existir) e envia-\/a para a função what\+\_\+command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & String com a linha completa acabada de ler do ficheiro. \\
+\hline
+{\em est} & Ponteiro para o estado do jogo a ser configurado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna 1 após o processamento da linha.
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\doxylink{parser_8h_a4f205ae49070b8d31f9d22fe8c2a1dda}{load\+\_\+paciencia()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00026}{26}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ *comentario\ =\ \doxymbox{\hyperlink{utils_8h_a66ab0a2ef907de8058bd46126bf9cd8c}{aux\_string}}(buffer,\ \textcolor{charliteral}{'\#'});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (comentario\ !=\ NULL)\ *comentario\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ vamo'\ identificar\ o\ comando\ }}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}\ comando[32];}
+\DoxyCodeLine{00032\ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ sscanf\ devolve\ um\ int\ que\ é\ a\ quantidade\ de\ elementos\ que\ consiguio\ ler.}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Neste\ caso\ só\ interessa\ se\ conseguio\ ler\ a\ primeira\ string\ ou\ não\ (nesse\ caso\ devolve\ 0).}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s"{}},\ comando)\ ==\ 1)\ what\_command(comando,\ buffer,\ est);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\textcolor{comment}{//\ sscanf\ lê\ uma\ string\ e\ extrai\ as\ palavras,\ muito\ fixe.}}
+\DoxyCodeLine{00037\ \}}
+
+\end{DoxyCode}
+\Hypertarget{parser_8h_a52634631dbb44f0ee321e21f602d0e2e}\index{parser.h@{parser.h}!what\_command@{what\_command}}
+\index{what\_command@{what\_command}!parser.h@{parser.h}}
+\doxysubsubsection{\texorpdfstring{what\_command()}{what\_command()}}
+{\footnotesize\ttfamily \label{parser_8h_a52634631dbb44f0ee321e21f602d0e2e} 
+void what\+\_\+command (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{comando}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{\doxymbox{\hyperlink{struct_def_jogo}{Def\+Jogo}} \texorpdfstring{$\ast$}{*}}]{est}{}\end{DoxyParamCaption})}
+
+
+
+Identifica o comando lido do ficheiro e guarda a informação na estrutura \doxylink{struct_def_jogo}{Def\+Jogo}. Compara a string do comando ("{}\+JOGO"{}, "{}\+BARALHOS"{}, "{}\+TIPO"{}, "{}\+MOV"{}, "{}\+AUTO"{}, "{}\+INIT"{}, "{}\+WIN"{}) e utiliza o sscanf para extrair os argumentos do resto do buffer. Realoca a memória dos arrays correspondentes (ex:\+ est-\/\texorpdfstring{$>$}{>}movs, est-\/\texorpdfstring{$>$}{>}inits) consoante for necessário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comando} & String que contém a primeira palavra (o comando) da linha atual. \\
+\hline
+{\em buffer} & String com a linha completa lida do ficheiro de texto. \\
+\hline
+{\em est} & Ponteiro para a definição do jogo que está a ser preenchida. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{parser_8c_source_l00061}{61}} of file \doxymbox{\hyperlink{parser_8c_source}{parser.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}JOGO"{}})\ ==\ 0)\ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%s"{}},\ comando,\ est-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}});}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}BARALHOS"{}})\ ==\ 0)\ sscanf(buffer,\ \textcolor{stringliteral}{"{}\%s\ \%d"{}},\ comando,\ \&est-\/>\doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\_baralhos}});}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}TIPO"{}})\ ==\ 0)\ cmd\_tipo(buffer,\ est);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}MOV"{}})\ ==\ 0)\ cmd\_mov(buffer,\ est);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}AUTO"{}})\ ==\ 0)\ cmd\_auto(buffer,\ est);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}INIT"{}})\ ==\ 0)\ cmd\_init(buffer,\ est);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{utils_8h_a79468114e08269c978541c300c1b24a8}{comp\_strings}}(comando,\ \textcolor{stringliteral}{"{}WIN"{}})\ ==\ 0)\ cmd\_win(buffer,\ est);}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}

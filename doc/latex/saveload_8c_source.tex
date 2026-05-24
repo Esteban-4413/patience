@@ -1,0 +1,107 @@
+\doxysection{saveload.\+c}
+\hypertarget{saveload_8c_source}{}\label{saveload_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/saveload.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/saveload.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{loader_8h}{../include/loader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamedef_8h}{../include/gamedef.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{saveload_8h}{../include/saveload.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00014}\doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{00014}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\_carta}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{char}\ var\_str[4];\ \textcolor{comment}{//\ arr\ para\ guardar\ "{}A"{},\ "{}10"{}\ etc}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{card_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(var\_str,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00019}00019\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\%s\%c"{}},\ var\_str,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00023}\doxymbox{\hyperlink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{00023}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_aa09209c6ca1e8d7e933b2a10adc6ed33}{save\_game}}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e,\ \textcolor{keywordtype}{char}\ *ficheiro\_save,\ \textcolor{keywordtype}{char}\ *nome\_paciencia\_original)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00024}00024\ \ \ \ \ FILE\ *f\ =\ fopen(ficheiro\_save,\ \textcolor{stringliteral}{"{}w"{}});\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{if}(f\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}erro\ a\ criar\ o\ ficheiro\ save"{}});\ \textcolor{keywordflow}{return};\}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00027}00027\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ nome\_paciencia\_original);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ e-\/>total\_pilhas;\ i\ ++)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(e-\/>pilhas[i].tamanho\_pilha\ ==\ 0)\ fprintf(f,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\_pilha}}(f,\ \&e-\/>pilhas[i]);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00034}00034\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00037}\doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{00037}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_a83b8e589cfbc3c0f06e652bd863f7ac7}{escreve\_pilha}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilha)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ pilha-\/>tamanho\_pilha;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{saveload_8h_ad85744cc29fce63633984f5fc07b4076}{escreve\_carta}}(f,\ pilha-\/>pilha[j]);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ pilha-\/>tamanho\_pilha\ -\/\ 1)\ fprintf(f,\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00043}00043\ \ \ \ \ fprintf(f,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00047}\doxymbox{\hyperlink{saveload_8h_a0a1de54191df80858f419c83194b2369}{00047}}\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ \doxymbox{\hyperlink{saveload_8h_a0a1de54191df80858f419c83194b2369}{load\_game}}(\textcolor{keywordtype}{char}\ *ficheiro\_save,\ \textcolor{keywordtype}{char}\ *pasta\_paciencias)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00048}00048\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00049}00049\ \ \ \ \ e.total\_pilhas\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00050}00050\ \ \ \ \ e.def\_jogo\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00052}00052\ \ \ \ \ FILE\ *f\ =\ fopen(ficheiro\_save,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}(f\ ==\ NULL)\ \{printf(\textcolor{stringliteral}{"{}erro\ ao\ carregar\ o\ ficherio\ save"{}});\ \textcolor{keywordflow}{return}\ e;\}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00055}00055\ \ \ \ \ e\ =\ \doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\_estado\_inicial}}(f,\ pasta\_paciencias);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\_pilhas}}(f,\ \&e);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00057}00057\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ e;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00061}\doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{00061}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_adf2129be3fac5b397759bde15c667288}{carrega\_pilhas}}(FILE\ *f,\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[128];}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{int}\ eof\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ e-\/>total\_pilhas\ \&\&\ !eof)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ f)\ ==\ NULL)\ eof\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(buffer);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(len\ >\ 0\ \&\&\ buffer[len-\/1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ buffer[len-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ e-\/>pilhas[i].tamanho\_pilha\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(buffer[0]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})\ \doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\_linha\_pilha}}(buffer,\ \&e-\/>pilhas[i]);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00077}\doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{00077}}\ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ \doxymbox{\hyperlink{saveload_8h_aa0fc97c82ae5761d41c7efb052f710a7}{carrega\_estado\_inicial}}(FILE\ *f,\ \textcolor{keywordtype}{char}\ *pasta\_paciencias)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[128];}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{char}\ ruta[256];}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00080}00080\ \ \ \ \ fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ f);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordtype}{int}\ len\ =\ strlen(buffer);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}(len\ >\ 0\ \&\&\ buffer[len-\/1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ buffer[len-\/1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00083}00083\ \ \ \ \ sprintf(ruta,\ \textcolor{stringliteral}{"{}\%s/\%s"{}},\ pasta\_paciencias,\ buffer);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *regras\ =\ load\_paciencia(ruta);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00085}00085\ \ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(regras-\/>\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{gamestate_8h_af1beb390d1a79b122359d975ce737c14}{setGameState}}(regras);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00089}\doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{00089}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{saveload_8h_a4dfa4bd6b3effff340ac54a53a1b0eb4}{parse\_linha\_pilha}}(\textcolor{keywordtype}{char}\ *buffer,\ \doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}\ *pilha)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{char}\ token[4];}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{int}\ leidos;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00093}00093\ \ \ \ \ pilha-\/>tamanho\_pilha\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{while}\ (sscanf(buffer\ +\ pos,\ \textcolor{stringliteral}{"{}\%s\%n"{}},\ token,\ \&leidos)\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c\ =\ \doxymbox{\hyperlink{card_8h_a08e86eee8e53bc70c9e944de584160e6}{le\_carta}}(token);}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ pilha-\/>pilha[pilha-\/>tamanho\_pilha]\ =\ c;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ pilha-\/>tamanho\_pilha++;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ pos\ +=\ leidos;}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{saveload_8c_source_l00101}00101\ }
+
+\end{DoxyCode}

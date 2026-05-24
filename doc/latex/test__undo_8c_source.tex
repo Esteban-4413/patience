@@ -1,0 +1,127 @@
+\doxysection{test\+\_\+undo.\+c}
+\hypertarget{test__undo_8c_source}{}\label{test__undo_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/tests/test\_undo.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/tests/test\_undo.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <CUnit/CUnit.h>}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../game/include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{undo_8h}{../game/include/undo.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../game/include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00008}00008\ \textcolor{keywordtype}{void}\ test\_registar\_jogada\_vazio(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00009}00009\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00010}00010\ \ \ \ \ e.tamanho\_historial\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Jogada\ fictícia\ }}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00013}00013\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00014}00014\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00015}00015\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00016}00016\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f}{registar\_jogada}}(\&e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ na\ posição\ do\ historial\ foi\ passada\ a\ jogada\ corretamente}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00021}00021\ \ \ \ \ CU\_ASSERT\_EQUAL(e.tamanho\_historial,\ 1);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00022}00022\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ 2);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00023}00023\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ 4);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00024}00024\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}},\ 5);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00025}00025\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}},\ 1);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00028}00028\ \textcolor{keywordtype}{void}\ test\_registrar\_jogada\_cheio(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00029}00029\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00030}00030\ \ \ \ \ e.tamanho\_historial\ =\ \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}};\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Opcional:\ Vamos\ criar\ uma\ jogada\ antiga\ no\ índice\ 1\ para\ testar\ o\ "{}empurrão"{}}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00033}00033\ \ \ \ \ e.historial[1].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00034}00034\ \ \ \ \ e.historial[1].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00035}00035\ \ \ \ \ e.historial[1].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00036}00036\ \ \ \ \ e.historial[1].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Nova\ jogada\ fictícia\ que\ vai\ entrar}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00039}00039\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00040}00040\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00041}00041\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00042}00042\ \ \ \ \ e.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00044}00044\ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a6f6a2fcfe81214550abf8d1052aab92f}{registar\_jogada}}(\&e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ O\ tamanho\ final\ tem\ de\ continuar\ a\ ser\ MAX\_UNDO}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00047}00047\ \ \ \ \ CU\_ASSERT\_EQUAL(e.tamanho\_historial,\ \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}});}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ CORREÇÃO:\ A\ nova\ jogada\ tem\ de\ estar\ no\ FIM\ do\ historial\ (índice\ MAX\_UNDO\ -\/\ 1)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ ultimo\_indice\ =\ \doxymbox{\hyperlink{gamestate_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00051}00051\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[ultimo\_indice].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ 5);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00052}00052\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[ultimo\_indice].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ 10);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00053}00053\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[ultimo\_indice].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}},\ 8);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00054}00054\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[ultimo\_indice].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}},\ 5);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Extra\ de\ Segurança:\ Verificar\ se\ a\ antiga\ jogada\ do\ índice\ 1\ foi\ parar\ ao\ índice\ 0}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00057}00057\ \ \ \ \ CU\_ASSERT\_EQUAL(e.historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ 1);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00061}00061\ \textcolor{keywordtype}{void}\ test\_undo\_histVazio(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00062}00062\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00063}00063\ \ \ \ \ e.tamanho\_historial\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00065}00065\ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7}{undo}}(\&e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00067}00067\ \ \ \ \ CU\_ASSERT\_EQUAL(e.tamanho\_historial,\ 0);\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00070}00070\ \textcolor{keywordtype}{void}\ test\_undo\_Carta(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ 1.\ Alocar\ o\ Estado\ do\ Jogo}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00072}00072\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ *e\ =\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}));}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ 2.\ Alocar\ o\ array\ de\ pilhas\ (vamos\ simular\ que\ o\ jogo\ tem\ pelo\ menos\ 2\ pilhas:\ origem\ 0\ e\ chegada\ 1)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00076}00076\ \ \ \ \ e-\/>total\_pilhas\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00077}00077\ \ \ \ \ e-\/>pilhas\ =\ malloc(2\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_p_i_l_h_a}{PILHA}}));}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>pilhas\ ==\ NULL)\ \{\ free(e);\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ 3.\ Alocar\ espaço\ para\ as\ cartas\ dentro\ de\ cada\ pilha\ (ex:\ máximo\ de\ 10\ cartas\ para\ o\ teste)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00081}00081\ \ \ \ \ e-\/>pilhas[0].pilha\ =\ malloc(10\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00082}00082\ \ \ \ \ e-\/>pilhas[1].pilha\ =\ malloc(10\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}));}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (e-\/>pilhas[0].pilha\ ==\ NULL\ ||\ e-\/>pilhas[1].pilha\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ free(e-\/>pilhas[0].pilha);\ free(e-\/>pilhas[1].pilha);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ free(e-\/>pilhas);\ free(e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ 4.\ Configurar\ os\ tamanhos\ falsos\ pós-\/jogada}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00090}00090\ \ \ \ \ e-\/>pilhas[0].tamanho\_pilha\ =\ 4;\ \textcolor{comment}{//\ Origem\ (tinha\ 5,\ agora\ tem\ 4)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00091}00091\ \ \ \ \ e-\/>pilhas[1].tamanho\_pilha\ =\ 2;\ \textcolor{comment}{//\ Chegada\ (tinha\ 1,\ agora\ tem\ 2)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00092}00092\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Colocar\ a\ carta\ a\ ser\ devolvida\ no\ topo\ da\ chegada\ (índice\ 1)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00094}00094\ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00095}00095\ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 5;\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00096}00096\ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00097}00097\ \ \ \ \ e-\/>pilhas[1].pilha[1]\ =\ c;\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ 5.\ Configurar\ o\ Historial\ simulando\ a\ jogada}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00100}00100\ \ \ \ \ e-\/>tamanho\_historial\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00101}00101\ \ \ \ \ e-\/>historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 0;\ \ \ \ \ \ \ \textcolor{comment}{//\ Origem}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00102}00102\ \ \ \ \ e-\/>historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 1;\ \ \ \ \ \textcolor{comment}{//\ Chegada}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00103}00103\ \ \ \ \ e-\/>historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 4;\ \ \ \ \ \ \textcolor{comment}{//\ Ia\ voltar\ para\ a\ posição\ 4\ da\ origem}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00104}00104\ \ \ \ \ e-\/>historial[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ carta\ movida}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ Executar\ a\ função}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00107}00107\ \ \ \ \ \doxymbox{\hyperlink{undo_8h_a55fb70c58e2d368b755d9f0820ceacf7}{undo}}(e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ 6.\ Asserções\ (Validações)}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00110}00110\ \ \ \ \ CU\_ASSERT\_EQUAL(e-\/>tamanho\_historial,\ 0);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00111}00111\ \ \ \ \ CU\_ASSERT\_EQUAL(e-\/>pilhas[0].tamanho\_pilha,\ 5);\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00112}00112\ \ \ \ \ CU\_ASSERT\_EQUAL(e-\/>pilhas[1].tamanho\_pilha,\ 1);\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00113}00113\ \ \ \ \ CU\_ASSERT\_EQUAL(e-\/>pilhas[0].pilha[4].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}},\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00114}00114\ \ \ \ \ CU\_ASSERT\_EQUAL(e-\/>pilhas[0].pilha[4].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ 7.\ Libertar\ toda\ a\ memória\ alocada}}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00117}00117\ \ \ \ \ free(e-\/>pilhas[0].pilha);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00118}00118\ \ \ \ \ free(e-\/>pilhas[1].pilha);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00119}00119\ \ \ \ \ free(e-\/>pilhas);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00120}00120\ \ \ \ \ free(e);}
+\DoxyCodeLine{\Hypertarget{test__undo_8c_source_l00121}00121\ \}}
+
+\end{DoxyCode}

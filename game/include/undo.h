@@ -1,7 +1,12 @@
-//
-// Created by Esteban Yepez Orozco on 10/05/2026.
-//
-
+/**
+ * @file undo.h
+ * @brief Lógica do botão undo
+ * @version 0.1
+ * @date 2026-05-24
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef UNDO_H
 #define UNDO_H
 

@@ -1,0 +1,76 @@
+\doxysection{loader.\+c}
+\hypertarget{loader_8c_source}{}\label{loader_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/dsl/loader.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/dsl/loader.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{loader_8h}{../include/loader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{utils_8h}{../include/utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00011}\doxymbox{\hyperlink{loader_8h_a06cd846bb09e0f26dbf5597d8e04ec10}{00011}}\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}*\ escolhe\_paciencia(\textcolor{keywordtype}{char}\ *pasta)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00012}00012\ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *r;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00013}00013\ \ \ \ \ DIR\ *d\ =\ opendir(pasta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00015}00015\ \ \ \ \textcolor{keywordflow}{if}\ (d\ ==\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00016}00016\ \ \ \ \ printf(\textcolor{stringliteral}{"{}'\%s'...?...?...?...?...?...?...?...?...?...?...?...?\ não\ existe\(\backslash\)n\ "{}},\ pasta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *vazio\ =\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}));}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00018}00018\ \ \ \ \ vazio-\/>\doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}}[0]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00020}00020\ \ \ \ \ r\ =\ vazio;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00022}00022\ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00023}00023\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00024}00024\ \ \ \ \textcolor{keywordtype}{char}\ ficheiros[50][256];\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00025}00025\ \ \ \ \textcolor{keywordtype}{int}\ conta\ =\ lista\_ficheiros(d,\ ficheiros);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00028}00028\ \ \ \ \textcolor{keywordtype}{int}\ escolha\ =\ input\_escolha(conta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00029}00029\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00031}00031\ \ \ \ r\ =\ carrega\_escolha(pasta,\ ficheiros,\ escolha);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00032}00032\ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00035}\doxymbox{\hyperlink{loader_8h_aed678a7adb8a5020968083eced4aca48}{00035}}\ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}*\ carrega\_escolha(\textcolor{keywordtype}{char}\ *pasta,\ \textcolor{keywordtype}{char}\ ficheiros[][256],\ \textcolor{keywordtype}{int}\ escolha)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00036}00036\ \ \ \ \textcolor{keywordtype}{char}\ ruta[256];}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00037}00037\ \ \ \ sprintf(ruta,\ \textcolor{stringliteral}{"{}\%s/\%s"{}},\ pasta,\ ficheiros[escolha-\/1]);\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00038}00038\ \ \ \ \doxymbox{\hyperlink{struct_def_jogo}{DefJogo}}\ *j\ =\ load\_paciencia(ruta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00039}00039\ \ \ \ printf(\textcolor{stringliteral}{"{}pessima\ escolha\ mas\ pronto\ vou\ carrega-\/la\ por\ você:\ \%s..\(\backslash\)n"{}},\ ruta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00040}00040\ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(j-\/>\doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\_paciencia}},\ ficheiros[escolha-\/1]);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00041}00041\ \ \ \ \textcolor{keywordflow}{return}\ j;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00045}\doxymbox{\hyperlink{loader_8h_a51d7b15f989bb93894914e0784eec2aa}{00045}}\ \textcolor{keywordtype}{int}\ lista\_ficheiros(DIR\ *d,\ \textcolor{keywordtype}{char}\ ficheiros[][256])\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{struct\ }dirent\ *entrada;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{int}\ conta\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{while}\ ((entrada\ =\ readdir(d))\ !=\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(entrada-\/>d\_name[0]\ !=\ \textcolor{charliteral}{'.'})\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{utils_8h_a9d3d3eba1da9b5f2ceb067f146444c35}{copia\_string}}(ficheiros[conta],\ entrada-\/>d\_name);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d.\ \%s\(\backslash\)n"{}},\ conta+1,\ entrada-\/>d\_name);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ conta++;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ conta;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00058}\doxymbox{\hyperlink{loader_8h_a2300fe406799b886fe88d599379bf0a1}{00058}}\ \textcolor{keywordtype}{int}\ input\_escolha(\textcolor{keywordtype}{int}\ conta)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00059}00059\ \ \ \ \textcolor{keywordtype}{int}\ escolha\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00060}00060\ \ \ \ \textcolor{keywordtype}{char}\ buff[128];}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00061}00061\ \ \ \ \textcolor{keywordtype}{int}\ buul\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00062}00062\ \ \ \ printf(\textcolor{stringliteral}{"{}Qual\ é\ o\ jogo\ que\ você\ quer\ jogar?\(\backslash\)n\ Digite\ o\ número\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00063}00063\ \ \ \ \textcolor{keywordflow}{while}(!buul)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}(fgets(buff,\ \textcolor{keyword}{sizeof}(buff),\ stdin)\ !=\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(sscanf(buff,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&escolha)\ ==\ 1\ \&\&\ escolha\ >=\ 1\ \&\&\ escolha\ <=conta)\ buul\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ printf(\textcolor{stringliteral}{"{}Número\ invalido.\ Tenta\ outra\ vez\ men\ (1\ a\ \%d)\(\backslash\)n"{}},\ conta);}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00068}00068\ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00069}00069\ \ \ \ \textcolor{keywordflow}{return}\ escolha;}
+\DoxyCodeLine{\Hypertarget{loader_8c_source_l00070}00070\ \}}
+
+\end{DoxyCode}

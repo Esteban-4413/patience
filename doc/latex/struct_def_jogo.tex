@@ -1,0 +1,189 @@
+\doxysection{Def\+Jogo Struct Reference}
+\hypertarget{struct_def_jogo}{}\label{struct_def_jogo}\index{DefJogo@{DefJogo}}
+
+
+Estrutura principal que armazena todas as regras e configurações de uma paciência.  
+
+
+
+
+{\ttfamily \+\#include $<$gamedef.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \doxymbox{\hyperlink{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}{nome}} \+[64]\+
+\item 
+char \doxymbox{\hyperlink{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}{nome\+\_\+paciencia}} \+[64]\+
+\item 
+int \doxymbox{\hyperlink{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}{num\+\_\+baralhos}}
+\item 
+\doxymbox{\hyperlink{struct_tipo_pilha}{Tipo\+Pilha}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}{tipos}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_def_jogo_a156538796402403d09cd6d86a8040667}{total\+\_\+tipos}}
+\item 
+\doxymbox{\hyperlink{struct_movimento}{Movimento}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_def_jogo_a232d7f62e684247571ca4353594db759}{movs}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}{total\+\_\+movs}}
+\item 
+\doxymbox{\hyperlink{struct_movimento}{Movimento}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}{autos}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}{total\+\_\+autos}}
+\item 
+\doxymbox{\hyperlink{struct_init_pilha}{Init\+Pilha}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}{inits}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}{total\+\_\+inits}}
+\item 
+\doxymbox{\hyperlink{struct_victory_condition}{Victory\+Condition}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}{wins}}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}{total\+\_\+wins}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estrutura principal que armazena todas as regras e configurações de uma paciência. 
+
+Esta estrutura é construída pelo parser (\doxylink{parser_8c_source}{parser.\+c}) ao ler o ficheiro {\ttfamily .paciencia} Contém o "{}\+ADN"{} completo do jogo, incluindo os arrays dinâmicos com todas as regras válidas. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00070}{70}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_def_jogo_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d}\index{DefJogo@{DefJogo}!autos@{autos}}
+\index{autos@{autos}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{autos}{autos}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a4fbb028b8d77148b859f2fde69af8c5d} 
+\doxymbox{\hyperlink{struct_movimento}{Movimento}}\texorpdfstring{$\ast$}{*} Def\+Jogo::\+autos}
+
+Array dinâmico com as regras de movimentos automáticos. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00082}{82}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844}\index{DefJogo@{DefJogo}!inits@{inits}}
+\index{inits@{inits}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{inits}{inits}}
+{\footnotesize\ttfamily \label{struct_def_jogo_ad6e91297110971e4f0b0d2c2df2e8844} 
+\doxymbox{\hyperlink{struct_init_pilha}{Init\+Pilha}}\texorpdfstring{$\ast$}{*} Def\+Jogo::\+inits}
+
+Array dinâmico com as instruções de inicialização de pilhas. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00085}{85}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a232d7f62e684247571ca4353594db759}\index{DefJogo@{DefJogo}!movs@{movs}}
+\index{movs@{movs}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{movs}{movs}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a232d7f62e684247571ca4353594db759} 
+\doxymbox{\hyperlink{struct_movimento}{Movimento}}\texorpdfstring{$\ast$}{*} Def\+Jogo::\+movs}
+
+Array dinâmico com as regras de movimentos manuais permitidos. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00079}{79}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc}\index{DefJogo@{DefJogo}!nome@{nome}}
+\index{nome@{nome}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{nome}{nome}}
+{\footnotesize\ttfamily \label{struct_def_jogo_adc76d5e840d21a81574ef05f06fd5cbc} 
+char Def\+Jogo::\+nome\+[64]\+}
+
+Nome de exibição do jogo (ex:\+ "{}\+Golf"{}). 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82}\index{DefJogo@{DefJogo}!nome\_paciencia@{nome\_paciencia}}
+\index{nome\_paciencia@{nome\_paciencia}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{nome\_paciencia}{nome\_paciencia}}
+{\footnotesize\ttfamily \label{struct_def_jogo_aadcc974d76b249f45f67f4004d0ecd82} 
+char Def\+Jogo::\+nome\+\_\+paciencia\+[64]\+}
+
+Nome exato do ficheiro original lido (ex:\+ "{}golf.\+paciencia"{}). 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45}\index{DefJogo@{DefJogo}!num\_baralhos@{num\_baralhos}}
+\index{num\_baralhos@{num\_baralhos}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{num\_baralhos}{num\_baralhos}}
+{\footnotesize\ttfamily \label{struct_def_jogo_ab1a85f87d3b6742c1706f30f2c72ad45} 
+int Def\+Jogo::\+num\+\_\+baralhos}
+
+Quantidade de baralhos (de 52 cartas) usados nesta paciência. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b}\index{DefJogo@{DefJogo}!tipos@{tipos}}
+\index{tipos@{tipos}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{tipos}{tipos}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a900fbf9c8b4f41e048f1d4cc153ea21b} 
+\doxymbox{\hyperlink{struct_tipo_pilha}{Tipo\+Pilha}}\texorpdfstring{$\ast$}{*} Def\+Jogo::\+tipos}
+
+Array dinâmico com os tipos de pilhas definidos no jogo. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00076}{76}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f}\index{DefJogo@{DefJogo}!total\_autos@{total\_autos}}
+\index{total\_autos@{total\_autos}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{total\_autos}{total\_autos}}
+{\footnotesize\ttfamily \label{struct_def_jogo_ad7064baebac3d27475fac95b9499c50f} 
+size\+\_\+t Def\+Jogo::\+total\+\_\+autos}
+
+Número total de regras automáticas. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00083}{83}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55}\index{DefJogo@{DefJogo}!total\_inits@{total\_inits}}
+\index{total\_inits@{total\_inits}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{total\_inits}{total\_inits}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a61e6cf6dcac7eacd6acf86b956c61d55} 
+size\+\_\+t Def\+Jogo::\+total\+\_\+inits}
+
+Número total de pilhas a criar no tabuleiro inicial. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00086}{86}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0}\index{DefJogo@{DefJogo}!total\_movs@{total\_movs}}
+\index{total\_movs@{total\_movs}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{total\_movs}{total\_movs}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a3a3a0fa848727183f600ad69814998c0} 
+size\+\_\+t Def\+Jogo::\+total\+\_\+movs}
+
+Número total de regras de movimento. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00080}{80}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a156538796402403d09cd6d86a8040667}\index{DefJogo@{DefJogo}!total\_tipos@{total\_tipos}}
+\index{total\_tipos@{total\_tipos}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{total\_tipos}{total\_tipos}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a156538796402403d09cd6d86a8040667} 
+size\+\_\+t Def\+Jogo::\+total\+\_\+tipos}
+
+Número total de tipos de pilhas guardados no array. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00077}{77}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956}\index{DefJogo@{DefJogo}!total\_wins@{total\_wins}}
+\index{total\_wins@{total\_wins}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{total\_wins}{total\_wins}}
+{\footnotesize\ttfamily \label{struct_def_jogo_a758556b5f10b95e3acfb9e998d4ee956} 
+size\+\_\+t Def\+Jogo::\+total\+\_\+wins}
+
+Número total de condições de vitória. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00089}{89}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+\Hypertarget{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3}\index{DefJogo@{DefJogo}!wins@{wins}}
+\index{wins@{wins}!DefJogo@{DefJogo}}
+\doxysubsubsection{\texorpdfstring{wins}{wins}}
+{\footnotesize\ttfamily \label{struct_def_jogo_ab1c0d69f6d6fe9ce66d24b642f3aaac3} 
+\doxymbox{\hyperlink{struct_victory_condition}{Victory\+Condition}}\texorpdfstring{$\ast$}{*} Def\+Jogo::\+wins}
+
+Array dinâmico com as condições necessárias para vencer. 
+
+Definition at line \doxymbox{\hyperlink{gamedef_8h_source_l00088}{88}} of file \doxymbox{\hyperlink{gamedef_8h_source}{gamedef.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+\+Users/\+estebanyepezorozco/\+vault/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase3/\+patience/\+game/\+include/\+\doxymbox{\hyperlink{gamedef_8h}{gamedef.\+h}}\end{DoxyCompactItemize}

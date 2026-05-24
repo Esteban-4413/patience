@@ -1,0 +1,39 @@
+\doxysection{main.\+c}
+\hypertarget{main_8c_source}{}\label{main_8c_source}\index{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/main.c@{/Users/estebanyepezorozco/vault/universidade/1ano/2semestre/LPII/project/fase3/patience/game/src/main.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <locale.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamedef_8h}{../include/gamedef.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{parser_8h}{../include/parser.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{gamestate_8h}{../include/gamestate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{card_8h}{../include/card.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{display_8h}{../include/display.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{game_8h}{../include/game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{loader_8h}{../include/loader.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{saveload_8h}{../include/saveload.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00014}00014\ \textcolor{keywordtype}{int}\ main()\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00016}00016\ \ \ \ \ \doxymbox{\hyperlink{struct_estado_jogo}{EstadoJogo}}\ e\ =\ \doxymbox{\hyperlink{game_8h_ad5000db9627290d814871996150318e7}{menu}}(\textcolor{stringliteral}{"{}paciencias"{}},\ \textcolor{stringliteral}{"{}save.txt"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ janelas;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ codificação\ de\ caracteres}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020\ \ \ \ \ setlocale(LC\_ALL,\ \textcolor{stringliteral}{"{}"{}});\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Função\ do\ aux\_main\ -\/\ ativa\ as\ configurações\ gerais\ do\ Ncurses\ }}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{display_8h_a898a19b23e6f24ad630671b91a1b7959}{ativaNcurses}}();\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{display_8h_a7012c9a58b70149fc7ae69edb39f32fc}{setPointers}}(\&e,\ \&janelas);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ jogando\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{game_8h_ab1444ddc9e82fa767ee0ac827f9f5b76}{loop\_principal}}(\&e,\ \&janelas,\ jogando);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028\ \ \ \ \ endwin();}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033\ }
+
+\end{DoxyCode}
