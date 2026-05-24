@@ -1,7 +1,7 @@
-jogo: parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o game/src/main.c
+jogo: parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o saveload.o game/src/main.c
 	gcc -Wall -g $^ -o $@ -lncursesw
 
-mac: parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o game/src/main.c
+mac: parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o saveload.o game/src/main.c
 	gcc -Wall -g $^ -o jogo -lncurses
 
 parser.o: game/dsl/parser.c
@@ -34,6 +34,9 @@ display.o: game/ui/display.c
 input.o: game/ui/input.c
 	gcc -Wall -g $^ -c -o $@
 
+saveload.o: game/src/saveload.c
+	gcc -Wall -g $^ -c -o $@
+
 
 # TESTES  
 
@@ -44,4 +47,4 @@ testes: card.o game.o move.o undo.o utils.o display.o input.o gamestate.o $(TEST
 	./test_jogo
 
 clean:
-	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o test_jogo jogo
+	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o saveload.o test_jogo jogo

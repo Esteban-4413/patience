@@ -117,4 +117,11 @@ int existe_save(char *ficheiro);
  */
 EstadoJogo menu(char *pasta, char *save);
 
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
+int input_menu(void); 
+
 #endif // e_H

@@ -120,12 +120,6 @@ int verifica_vitoria(EstadoJogo *estado){
 }
 
 
-// temporal??
-void aux_load_game(EstadoJogo *e, POINTERS *p){
-    *e = load_game("save.txt", "paciencias");
-    printPilhas(e, p->end_pilhas, p->total_pilhas);
-}
-
 int existe_save(char *ficheiro){
     FILE *f = fopen(ficheiro, "r");
     if(f == NULL) return 0;

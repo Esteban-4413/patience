@@ -13,7 +13,7 @@ int valida_jogada(EstadoJogo *estado, JOGADA jogada){
 
         if (strcmp(mov.pilha_origem, origem.nome_tipo) == 0
             &&  strcmp(mov.pilha_destino, destino.nome_tipo) == 0){
-                if (verifica_flags(mov.flags, estado, jogada)) return 1;
+                if (ativa_flags(mov.flags, estado, jogada)) return 1;
         }
     }
     return 0;

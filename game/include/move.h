@@ -23,7 +23,7 @@
 
 int valida_jogada(EstadoJogo *estado, JOGADA jogada);
 int cor(CARTAS carta);
-int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada, int *flag);
+int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada);
 int verifica_pilha_origem_aux2(int flag[20], PILHA *origem, JOGADA jogada, int inicio, int fim, CARTAS topo_origem, CARTAS fundo_origem);
 int verifica_pilha_origem_aux(int flag[20],
                             PILHA *origem,
