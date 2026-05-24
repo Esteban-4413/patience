@@ -22,18 +22,41 @@ DefJogo* escolhe_paciencia(char *pasta){
    }
    
    struct dirent *entrada;
-   int conta = 0;
+   
 
-   char ficheiros[50][256]; //guarda ate 50 nome de ficheiros, ainda pode ser melhor usando malloc (fica para o futuro)
-   while ((entrada = readdir(d)) != NULL){
-    if(entrada->d_name[0] != '.'){
-        copia_string(ficheiros[conta], entrada->d_name);
-        printf("%d. %s\n", conta+1, entrada->d_name);
-        conta++;
+   char ficheiros[50][256]; 
+   int conta = lista_ficheiros(d, ficheiros);
+
+
+   int escolha = input_escolha(conta);
+   
+
+   r = carrega_escolha(pasta, ficheiros, escolha);
+   return r;
+}
+
+DefJogo* carrega_escolha(char *pasta, char ficheiros[][256], int escolha){
+   char ruta[256];
+   sprintf(ruta, "%s/%s", pasta, ficheiros[escolha-1]); 
+   printf("pessima escolha mas pronto vou carrega-la por você: %s..\n", ruta);
+   return load_paciencia(ruta);
+}
+
+
+int lista_ficheiros(DIR *d, char ficheiros[][256]){
+    struct dirent *entrada;
+    int conta = 0;
+    while ((entrada = readdir(d)) != NULL){
+        if(entrada->d_name[0] != '.'){
+            copia_string(ficheiros[conta], entrada->d_name);
+            printf("%d. %s\n", conta+1, entrada->d_name);
+            conta++;
+        }
     }
-   }
-   closedir(d);
+    return conta;
+}
 
+int input_escolha(int conta){
    int escolha = 0;
    char buff[128];
    int buul = 0;
@@ -44,10 +67,5 @@ DefJogo* escolhe_paciencia(char *pasta){
         else printf("Número invalido. Tenta outra vez men (1 a %d)\n", conta);
     }
    }
-
-   char ruta[256];
-   sprintf(ruta, "%s/%s", pasta, ficheiros[escolha-1]); 
-   r = load_paciencia(ruta);
-   printf("pessima escolha mas pronto vou carrega-la por você: %s..\n", ruta);
-   return r;
+   return escolha;
 }

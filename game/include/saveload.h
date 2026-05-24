@@ -45,5 +45,11 @@ EstadoJogo load_game(char *ficheiro_save, char *pasta_paciencias);
  */
 void parse_linha_pilha(char *buffer, PILHA *pilha);
 
+void escreve_pilha(FILE *f, PILHA *pilha);
+
+EstadoJogo carrega_estado_inicial(FILE *f, char *pasta_paciencias);
+
+void carrega_pilhas(FILE *f, EstadoJogo *e);
+
 
 #endif 

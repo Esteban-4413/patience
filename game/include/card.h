@@ -30,4 +30,6 @@ void traduzvalor(char *valor, char v);
  */
 CARTAS le_carta(char *str);
 
+int traduz_valor_numerico(char *str, int len);
+
 #endif

@@ -2,8 +2,8 @@
 // Created by Esteban Yepez Orozco on 10/05/2026.
 //
 
-#ifndef PATIENCE_UNDO_H
-#define PATIENCE_UNDO_H
+#ifndef UNDO_H
+#define UNDO_H
 
 #include <ncurses.h>
 #include "../include/gamestate.h"
