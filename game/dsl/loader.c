@@ -21,9 +21,6 @@ DefJogo* escolhe_paciencia(char *pasta){
     return r;
    }
    
-   struct dirent *entrada;
-   
-
    char ficheiros[50][256]; 
    int conta = lista_ficheiros(d, ficheiros);
 
