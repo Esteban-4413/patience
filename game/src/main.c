@@ -8,6 +8,7 @@
 #include "../include/display.h"
 #include "../include/game.h"
 #include "../include/loader.h"
+#include "../include/saveload.h"
 
 
 int main(){
