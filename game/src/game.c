@@ -9,7 +9,7 @@
 void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
     while (jogando) {
         int ch = getch(); 
-        // if (ganhou_EstadoJogo(e)){ mvprintw(0,60,"Vitória!"); jogando = 0;}
+        if (verifica_vitoria(e)){ mvprintw(0,60,"Vitória!"); jogando = 0;}
         if (ch == 'q') jogando = 0; // Condição de saida do EstadoJogo, clicar no "q"
         else if (ch == KEY_MOUSE) {
             processa_rato(e, p);

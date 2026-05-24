@@ -4,6 +4,7 @@
 #include <ncurses.h>
 #include "../include/display.h"
 #include "../include/utils.h"
+#include "../include/card.h"
 #include "../include/gamedef.h"
 
 
@@ -233,18 +234,11 @@ void wprint_carta(WINDOW *win, int x, int y,  CARTAS c){
 const char* traduzsimbolo(char naipe) {
     switch(naipe) {
 
-        case 'H': return "\xE2\x99\xA5"; // Copas (Retorna o endereco na memoria)
+        case 'H': return "\xE2\x99\xA5"; // Copas 
         case 'S': return "\xE2\x99\xA6"; // Ouros
         case 'D': return "\xE2\x99\xA3"; // Paus
         case 'C': return "\xE2\x99\xA0"; // Espadas
         default:  return "?";
-        /*
-        case 'C': return ""; // Retorna o endereço da string na memória
-        case 'O': return "";
-        case 'P': return "";
-        case 'E': return "";
-        default:  return "";
-      */
     }
 }
 

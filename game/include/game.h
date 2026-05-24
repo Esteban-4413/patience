@@ -82,5 +82,15 @@ void define_jogAtual(int r, int num_carta,  EstadoJogo *e);
  */
 void jogAtual_segClick(int r, EstadoJogo *e);
 
+/**
+ * @brief Percorre o array dos win, para verificar se as pilhas descritas 
+ * tem o número de cartas exigitas para a condição de vitória. 
+ * 
+ * @param estado Ponteiro para a estrutura principal do jogo.
+ * @return int Bool 
+ */
+int verifica_vitoria(EstadoJogo *estado);
+
+
 
 #endif // e_H
