@@ -70,7 +70,7 @@ typedef struct{
 
 /**
  * @brief Set the Game State object
- * 
+ * Função que define o estado de jogo
  * @param d 
  * @return EstadoJogo 
  */
@@ -78,21 +78,21 @@ EstadoJogo setGameState(DefJogo *d);
 
 /**
  * @brief 
- * 
+ * Função que inicializa os 4 naipes
  * @param e 
  */
 void inicializa_naipes(EstadoJogo *e);
 
 /**
  * @brief 
- * 
+ * Função que inicializa o jogo atual com todas as suas propriedades
  * @param e 
  */
 void inicializa_jogAtual(EstadoJogo *e); 
 
 /**
  * @brief Set the pilhas object
- * 
+ * Função que prepara as pilhas do jogo
  * @param d 
  * @param total_inits 
  * @param pilhas 
@@ -101,7 +101,7 @@ void set_pilhas (InitPilha d[], int total_inits, PILHA *pilhas);
 
 /**
  * @brief 
- * 
+ * Função que inicializa os baralhos do jogo
  * @param baralho 
  * @param num_baralhos 
  * @param naipes 
@@ -110,7 +110,7 @@ void inicializa_baralhos(CARTAS *baralho, int num_baralhos, char naipes[4]);
 
 /**
  * @brief 
- * 
+ * Função que inicializa as pilhas com as cartas certas
  * @param e 
  */
 void inicializa_pilhas(EstadoJogo *e); 

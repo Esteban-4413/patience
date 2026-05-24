@@ -15,7 +15,7 @@
 
 /**
  * @brief Regista uma jogada no histórico para permitir o "Desfazer" (Undo).
- * 
+ *
  * @param e Ponteiro para o estado atual do jogo.
  */
 void registar_jogada(EstadoJogo *e);
