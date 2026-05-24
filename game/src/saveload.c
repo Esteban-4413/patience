@@ -82,6 +82,7 @@ EstadoJogo carrega_estado_inicial(FILE *f, char *pasta_paciencias){
     if(len > 0 && buffer[len-1] == '\n') buffer[len-1] = '\0';
     sprintf(ruta, "%s/%s", pasta_paciencias, buffer);
     DefJogo *regras = load_paciencia(ruta);
+    copia_string(regras->nome_paciencia, buffer);
     return setGameState(regras);
 }
 

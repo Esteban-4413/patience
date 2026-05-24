@@ -47,4 +47,4 @@ testes: card.o game.o move.o undo.o utils.o display.o input.o gamestate.o $(TEST
 	./test_jogo
 
 clean:
-	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o saveload.o test_jogo jogo
+	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o saveload.o test_jogo jogo save.txt
