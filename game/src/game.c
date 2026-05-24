@@ -63,9 +63,9 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
     if (e->jog_atual.flag  == 1 && pilha != chegada) {
         joga(e, e->jog_atual); 
         registar_jogada(e);
-            // MOVIMENTOS AUTOMATICOS 
+        movAutos(e);  // MOVIMENTOS AUTOMATICOS 
                 
-        } 
+    } 
             
     update_pilha(e,p);
   
@@ -73,11 +73,6 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
     refresh();  
 }
 
-void print_jogAtual(EstadoJogo *e){
-    mvprintw(2,110, "PILHA: %d || COLUNA: %d    ", e->jog_atual.pilha, e->jog_atual.coluna);
-    mvprintw(3,110, "N: %d || CHEGADA: %d     ", e->jog_atual.n, e->jog_atual.chegada);
-    mvprintw(4,110, "FLAG: %d    ", e->jog_atual.flag);
-}
 
 void define_jogAtual(int r, int num_carta, EstadoJogo *e){
     if(e->jog_atual.flag == -2){

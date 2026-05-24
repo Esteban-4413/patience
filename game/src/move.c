@@ -140,3 +140,39 @@ void joga(EstadoJogo *estado, JOGADA jogada){
 
 //condicao de vitoria
 //movimentos automaticos
+
+void movAutos (EstadoJogo *e){
+    Movimento *mov = e->def_jogo->autos;
+    int total_movs = e->def_jogo->total_movs; 
+
+    int flags[20];
+    JOGADA *jog = malloc(sizeof(JOGADA));
+    
+    for (int i = 0; i < total_movs; i++){ // Percorre todos os movimentos automáticos
+        int r = loop(e, jog, mov[i]);  
+        jog->flag = r;
+        joga(e, *jog); 
+    }
+    
+}
+
+int loop(EstadoJogo *e, JOGADA *jog, Movimento mov){
+    char nome_tipoO = mov.pilha_origem;
+    char nome_tipoD = mov.pilha_destino; 
+    int r = 2; 
+
+
+    for(int i = 0; i < e->total_pilhas && (!comp_strings(e->pilhas[i].nome_tipo, nome_tipoO)); i++){ // Percorre as pilhas p/ Origem
+        jog->pilha= i;
+        for(int j = 0; j < e->pilhas[i].tamanho_pilha; j++){ //Percorre as colunas de cada pilha 
+            jog->coluna = j;
+            jog->n = e->pilhas[i].tamanho_pilha - j;
+            for (int k = 0; k < e->total_pilhas && (!comp_strings(e->pilhas[i].nome_tipo, nome_tipoD)); k++){ // Percorre as pilhas p/ Destino
+                jog->chegada = k; 
+                r = ativa_flags(mov.flags, e, *jog); 
+                if (r) return 1; 
+            }
+        }
+    }
+    return (-1); 
+}

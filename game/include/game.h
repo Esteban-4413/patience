@@ -11,8 +11,6 @@
 #define e_H
 
 
-void print_jogAtual(EstadoJogo *e);
-
 
 /**
  * @brief O ciclo principal (loop) de execução do jogo.

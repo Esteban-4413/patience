@@ -44,5 +44,23 @@ int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem)
 int verifica_pilha_destino(int flag[20], PILHA *destino, CARTAS topo_origem);
 void joga(EstadoJogo *estado, JOGADA jogada); 
 
+/**
+ * @brief Auxiliar do movAutos, que percorre as pilhas, 
+ * as as colunas, para verificar a jogada. 
+ * 
+ * @param e Ponteiro para a estrutura principal do jogo.
+ * @param jog Pointer da jogada a ser preenchida.
+ * @param mov Movimento AUTO que está a ser verificado. 
+ * @return int Return o valor para a flag da jogada.
+ */
+int loop(EstadoJogo *e, JOGADA *jog, Movimento mov); 
+
+/**
+ * @brief Função que verifica os movimentos automáticos.
+ * 
+ * @param e Ponteiro para a estrutura principal do jogo.
+ */
+void movAutos (EstadoJogo *e); 
+
 #endif
 
