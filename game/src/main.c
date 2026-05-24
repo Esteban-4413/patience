@@ -11,12 +11,9 @@
 
 
 int main(){
-    DefJogo *jogo = escolhe_paciencia("paciencias");
 
-    EstadoJogo e = setGameState(jogo);
-    print_pilhas(&e);
-    printf("Total pilhas: %d\n", e.total_pilhas);
-    printf("Total inits: %zu\n", jogo->total_inits);
+    EstadoJogo e = menu("paciencias", "save.txt");
+
     POINTERS janelas;
     // codificação de caracteres
     setlocale(LC_ALL, ""); 

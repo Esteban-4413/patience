@@ -124,6 +124,42 @@ int verifica_vitoria(EstadoJogo *estado){
     return 1;
 }
 
+
+// temporal??
 void aux_load_game(EstadoJogo *e, POINTERS *p){
-    EstadoJogo novo_estado = load_game("save.txt", "paciencias");
+    *e = load_game("save.txt", "paciencias");
+    printPilhas(e, p->end_pilhas, p->total_pilhas);
+}
+
+int existe_save(char *ficheiro){
+    FILE *f = fopen(ficheiro, "r");
+    if(f == NULL) return 0;
+    fclose(f);
+    return 1;
+}
+
+EstadoJogo menu(char *pasta, char *save){
+    EstadoJogo e;
+    if(existe_save(save)){
+        printf("Encontrei um jogo guardado\n1 - Continuar\n2 - Novo Jogo\n");
+        int op = 0;
+        char buf[64];
+        int buul = 0;
+        while (!buul){
+            if(fgets(buf, sizeof(buf), stdin) != NULL){
+                if(sscanf(buf, "%d", &op) == 1 && (op == 1 || op == 2)) buul = 1;
+                else printf("Número invalido. Tenta outra vez man");
+            }
+        }
+        if(op == 1) e = load_game(save, pasta);
+        else
+        {
+            DefJogo *jogo = escolhe_paciencia(pasta);
+            e = setGameState(jogo);
+        }
+    } else {
+        DefJogo *jogo = escolhe_paciencia(pasta);
+        e = setGameState(jogo);
+    }
+    return e; 
 }

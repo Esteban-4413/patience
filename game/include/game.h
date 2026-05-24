@@ -1,3 +1,12 @@
+/**
+ * @file game.h
+ * @brief 
+ * @version 0.1
+ * @date 2026-05-24
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #ifndef e_H
 #define e_H
 
@@ -91,6 +100,21 @@ void jogAtual_segClick(int r, EstadoJogo *e);
  */
 int verifica_vitoria(EstadoJogo *estado);
 
+/**
+ * @brief 
+ * 
+ * @param ficheiro 
+ * @return int 
+ */
+int existe_save(char *ficheiro);
 
+/**
+ * @brief 
+ * 
+ * @param pasta 
+ * @param save 
+ * @return EstadoJogo 
+ */
+EstadoJogo menu(char *pasta, char *save);
 
 #endif // e_H
