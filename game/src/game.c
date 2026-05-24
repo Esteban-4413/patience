@@ -31,8 +31,6 @@ void processa_rato(EstadoJogo *e, POINTERS *p){
 void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){  
     // Click em alguma das pilhas 
     if (r >= 0 && r <= e->total_pilhas -1){
-        print_jogAtual(e);
-
         naPilha(r, num_carta, e, p);  
         
     }
@@ -56,7 +54,6 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
             inicializa_jogAtual(e);
         }
     define_jogAtual(r, num_carta, e);
-                print_jogAtual(e);
 
     int pilha = e->jog_atual.pilha;
     int chegada = e->jog_atual.chegada; 

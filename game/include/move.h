@@ -21,8 +21,11 @@
 #include "../include/loader.h"
 #include "../include/saveload.h"
 
+/*Função que verifica se a jogada é válida, consoante as flags que existem*/
 int valida_jogada(EstadoJogo *estado, JOGADA jogada);
+/* Função que retorna a cor de uma carta (0 para Preto, 1 para Vermelho) */
 int cor(CARTAS carta);
+/* Função que identifica as flags presentes e ativam os elementos certos no array flag*/
 int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada);
 int verifica_pilha_origem_aux2(int flag[20], PILHA *origem, JOGADA jogada, int inicio, int fim, CARTAS topo_origem, CARTAS fundo_origem);
 int verifica_pilha_origem_aux(int flag[20],
@@ -32,6 +35,8 @@ int verifica_pilha_origem_aux(int flag[20],
                             int fim,
                             CARTAS topo_origem,
                             CARTAS fundo_origem);
+/* Função que verifica se as condições das flags que se relacionam à pilha
+    de origem estão a ser cumpridas*/
 int verifica_pilha_origem(int flag[20],
                         PILHA *origem,
                         JOGADA jogada,
@@ -41,7 +46,10 @@ int verifica_pilha_origem(int flag[20],
                         CARTAS fundo_origem);
 int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem);
 int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem);
+/* Função que verifica se as condições das flags que se relacionam à pilha
+    de destino estão a ser cumpridas*/
 int verifica_pilha_destino(int flag[20], PILHA *destino, CARTAS topo_origem);
+/* Função que executa a jogada*/
 void joga(EstadoJogo *estado, JOGADA jogada); 
 
 /**

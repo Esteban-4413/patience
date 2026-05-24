@@ -19,11 +19,11 @@ int valida_jogada(EstadoJogo *estado, JOGADA jogada){
     return 0;
 }
 
-// Função que retorna a cor de uma carta (0 para Preto, 1 para Vermelho)
 int cor(CARTAS carta){
     if (carta.naipe == 'C' || carta.naipe == 'O') return 1;
     return 0;
 }
+
 
 int verifica_pilha_origem_aux2(int flag[20], PILHA *origem, JOGADA jogada, int inicio, int fim, CARTAS topo_origem, CARTAS fundo_origem){
     for(int i = inicio; i < fim; i++){
@@ -49,6 +49,7 @@ int verifica_pilha_origem_aux(int flag[20],
     }
     return verifica_pilha_origem_aux2(flag, origem, jogada, inicio, fim, topo_origem, fundo_origem);
 }
+
 int verifica_pilha_origem(int flag[20],
                          PILHA *origem,
                          JOGADA jogada,
@@ -75,6 +76,7 @@ int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem
             (flag[5]  && topo_origem.valor != topo_destino.valor + 1) ||
             (flag[14] && cor(topo_origem) == cor(topo_destino)));
 }
+
 int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem){
     CARTAS topo_destino = destino->pilha[destino->tamanho_pilha - 1];    
     
@@ -84,6 +86,7 @@ int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem)
               (flag[12] && cor(topo_origem) != cor(topo_destino)) ||
               !verifica_pilha_destino_aux2(flag, destino, topo_origem));
 }
+
 int verifica_pilha_destino(int flag[20],
                          PILHA *destino,
                          CARTAS topo_origem){
@@ -116,7 +119,6 @@ int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
             && verifica_pilha_destino(flag, destino, topo_origem));
 }
 
-
 void joga(EstadoJogo *estado, JOGADA jogada){
     PILHA *origem = &(estado->pilhas[jogada.pilha]);
     int tamanho_origem = origem->tamanho_pilha;
@@ -133,13 +135,6 @@ void joga(EstadoJogo *estado, JOGADA jogada){
     }
 
 }
-
-//tratar do caso em que destino->tamanho_pilha = 0 AFINAL JA ESTAVA FEITO
-//int fim pode ser escrito de maneira mais simples (é sempre o topo da pilha) FEITO
-//memmove não é preciso FEITO
-
-//condicao de vitoria
-//movimentos automaticos
 
 void movAutos (EstadoJogo *e){
     Movimento *mov = e->def_jogo->autos;
