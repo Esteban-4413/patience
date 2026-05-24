@@ -15,7 +15,6 @@ void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
         else if (ch == KEY_MOUSE) {
             processa_rato(e, p);
         }
-        else if (ch == 'l' || ch == 'L') aux_load_game(e, p);
     }
 }
 
@@ -49,11 +48,7 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
     else if (r == e->total_pilhas + 1){
         save_game(e, "save.txt", e->def_jogo->nome_paciencia);
         mvprintw(0, 60, " Jogo guardado em 'save.txt'");
-    }
-
-    // else if (r == e->total_pilhas +1) savegame();
-    
-    
+    }    
 }
 
 void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
@@ -140,26 +135,20 @@ int existe_save(char *ficheiro){
 
 EstadoJogo menu(char *pasta, char *save){
     EstadoJogo e;
-    if(existe_save(save)){
-        printf("Encontrei um jogo guardado\n1 - Continuar\n2 - Novo Jogo\n");
-        int op = 0;
-        char buf[64];
-        int buul = 0;
-        while (!buul){
-            if(fgets(buf, sizeof(buf), stdin) != NULL){
-                if(sscanf(buf, "%d", &op) == 1 && (op == 1 || op == 2)) buul = 1;
-                else printf("Número invalido. Tenta outra vez man");
-            }
+    (existe_save(save) && input_menu() == 1) ? (e = load_game(save, pasta)) : (e = setGameState(escolhe_paciencia(pasta)));
+    return e;
+}
+
+int input_menu(void){
+    printf("Encontrei um jogo guardado\n1 - Continuar\n2 - Novo Jogo\n");
+    int op = 0;
+    char buf[64];
+    int buul = 0;
+    while (!buul){
+        if(fgets(buf, sizeof(buf), stdin) != NULL){
+            if(sscanf(buf, "%d", &op) == 1 && (op == 1 || op == 2)) buul = 1;
+            else printf("Número invalido. Tenta outra vez man");
         }
-        if(op == 1) e = load_game(save, pasta);
-        else
-        {
-            DefJogo *jogo = escolhe_paciencia(pasta);
-            e = setGameState(jogo);
-        }
-    } else {
-        DefJogo *jogo = escolhe_paciencia(pasta);
-        e = setGameState(jogo);
     }
-    return e; 
+    return op;
 }
