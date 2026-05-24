@@ -1,6 +1,10 @@
 
+
+#include <stdio.h>
+#include <stdlib.h>
 #include "../include/card.h"
 #include "string.h"
+#include "../include/utils.h"
 
 
 void traduzvalor(char *valor, char v){
