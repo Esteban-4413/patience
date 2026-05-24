@@ -71,14 +71,14 @@ int verifica_pilha_origem(int flag[20],
 int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem){
     CARTAS topo_destino = destino->pilha[destino->tamanho_pilha - 1];
 
-    return !((flag[4]  && topo_origem.valor != topo_destino.valor - 1) ||
+    return ((flag[4]  && topo_origem.valor != topo_destino.valor - 1) ||
             (flag[5]  && topo_origem.valor != topo_destino.valor + 1) ||
             (flag[14] && cor(topo_origem) == cor(topo_destino)));
 }
 int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem){
     CARTAS topo_destino = destino->pilha[destino->tamanho_pilha - 1];    
     
-    return !((flag[6]  && abs(topo_origem.valor - topo_destino.valor) != 1) ||
+    return  ((flag[6]  && abs(topo_origem.valor - topo_destino.valor) != 1) ||
              (flag[8]  && topo_origem.naipe != topo_destino.naipe) ||
              (flag[10] && topo_origem.naipe == topo_destino.naipe) ||
              (flag[12] && cor(topo_origem) != cor(topo_destino)) ||
@@ -92,7 +92,7 @@ int verifica_pilha_destino(int flag[20],
     if(flag[15]){
         if (destino->tamanho_pilha != 0) return 0;
     }
-    return !(flag[4] || flag[5] || flag[6] || flag[8]
+    return (flag[4] || flag[5] || flag[6] || flag[8]
         || flag[10] || flag[12] || flag[14] || verifica_pilha_destino_aux(flag, destino, topo_origem));
 }
 
