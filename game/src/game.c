@@ -4,6 +4,7 @@
 #include "../include/game.h"
 #include "../include/undo.h"
 #include "../include/move.h"
+#include "../include/saveload.h"
 
 
 void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
@@ -14,6 +15,7 @@ void loop_principal(EstadoJogo *e, POINTERS *p, int jogando){
         else if (ch == KEY_MOUSE) {
             processa_rato(e, p);
         }
+        else if (ch == 'l' || ch == 'L') aux_load_game(e, p);
     }
 }
 
@@ -42,6 +44,11 @@ void next_step (int r, int num_carta, EstadoJogo *e, POINTERS *p){
         // Atualiza o print de todas as pilhas 
         printPilhas(e, p->end_pilhas, p->total_pilhas);
 
+    }
+
+    else if (r == e->total_pilhas + 1){
+        save_game(e, "save.txt", e->def_jogo->nome_paciencia);
+        mvprintw(0, 60, " Jogo guardado em 'save.txt'");
     }
 
     // else if (r == e->total_pilhas +1) savegame();
@@ -115,4 +122,8 @@ int verifica_vitoria(EstadoJogo *estado){
         }
     }
     return 1;
+}
+
+void aux_load_game(EstadoJogo *e, POINTERS *p){
+    EstadoJogo novo_estado = load_game("save.txt", "paciencias");
 }

@@ -26,8 +26,8 @@ typedef struct {
 
 typedef struct {
 
-    char nome[64]; // nome do jogo
-    char nome_paciencia[64];
+    char nome[64]; // nome do jogo, ex: Golf
+    char nome_paciencia[64]; // nome da paciencia ex: "golf.paciencia"
     int num_baralhos;
 
     TipoPilha *tipos;

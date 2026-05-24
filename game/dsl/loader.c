@@ -38,8 +38,10 @@ DefJogo* escolhe_paciencia(char *pasta){
 DefJogo* carrega_escolha(char *pasta, char ficheiros[][256], int escolha){
    char ruta[256];
    sprintf(ruta, "%s/%s", pasta, ficheiros[escolha-1]); 
+   DefJogo *j = load_paciencia(ruta);
    printf("pessima escolha mas pronto vou carrega-la por você: %s..\n", ruta);
-   return load_paciencia(ruta);
+   copia_string(j->nome_paciencia, ficheiros[escolha-1]);
+   return j;
 }
 
 
