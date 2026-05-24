@@ -34,5 +34,14 @@ display.o: game/ui/display.c
 input.o: game/ui/input.c
 	gcc -Wall -g $^ -c -o $@
 
+
+# TESTES  
+
+TEST_FILES = tests/test_main.c tests/test_cards.c tests/test_game.c tests/test_move.c tests/test_undo.c 
+
+testes: card.o game.o move.o undo.o utils.o display.o input.o gamestate.o $(TEST_FILES)
+	gcc -Wall -g $^ -o test_jogo -lncurses -I/opt/homebrew/include -L/opt/homebrew/lib -lcunit
+	./test_jogo
+
 clean:
-	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o jogo
+	-rm -f parser.o utils.o gamestate.o card.o game.o move.o undo.o display.o input.o loader.o test_jogo jogo

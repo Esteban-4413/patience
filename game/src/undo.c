@@ -1,8 +1,6 @@
 
 #include "../include/undo.h"
 
-/*                              Falta a função joga para terminar o teste do undo                                  */
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NÃO TESTADO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void registar_jogada(EstadoJogo *e){
    
@@ -23,8 +21,6 @@ void registar_jogada(EstadoJogo *e){
 
     (e->tamanho_historial)++;
 }
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ PARCIALMENTE TESTADO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void undo(EstadoJogo *e){
 
