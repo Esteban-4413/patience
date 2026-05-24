@@ -102,3 +102,17 @@ void jogAtual_segClick(int r, EstadoJogo *e){
     else e->jog_atual.flag = -1; 
     
 }
+
+int verifica_vitoria(EstadoJogo *estado){
+    for(int i = 0; i < estado->def_jogo->total_wins; i++){
+        VictoryCondition vict = estado->def_jogo->wins[i];
+        
+        for(int j = 0; j < estado->total_pilhas; j++){
+            PILHA pilha = estado->pilhas[j];
+            if(strcmp(pilha.nome_tipo, vict.nome_tipo) == 0){
+                if(pilha.tamanho_pilha != vict.num_cartas) return 0;
+            }
+        }
+    }
+    return 1;
+}
