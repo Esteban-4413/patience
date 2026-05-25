@@ -60,7 +60,7 @@ void naPilha(int r, int num_carta, EstadoJogo *e, POINTERS *p){
     if (e->jog_atual.flag  == 1 && pilha != chegada) {
         joga(e, e->jog_atual); 
         registar_jogada(e);
-        movAutos(e);  // MOVIMENTOS AUTOMATICOS 
+        //movAutos(e);  // MOVIMENTOS AUTOMATICOS 
                 
     } 
             

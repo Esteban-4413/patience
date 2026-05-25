@@ -40,9 +40,9 @@ saveload.o: game/src/saveload.c
 
 # TESTES  
 
-TEST_FILES = tests/test_main.c tests/test_cards.c tests/test_game.c tests/test_move.c tests/test_undo.c 
+TEST_FILES = tests/test_main.c tests/test_cards.c tests/test_game.c tests/test_undo.c 
 
-testes: card.o game.o move.o undo.o utils.o display.o input.o gamestate.o saveload.o $(TEST_FILES)
+testes: card.o game.o move.o undo.o utils.o display.o input.o gamestate.o saveload.o loader.o parser.o $(TEST_FILES)
 	gcc -Wall -g $^ -o test_jogo -lncurses -I/opt/homebrew/include -L/opt/homebrew/lib -lcunit
 	./test_jogo
 

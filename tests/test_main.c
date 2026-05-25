@@ -45,4 +45,8 @@ int main(){
         CU_add_test(pSuiteGame, "Test Segundo Clique - Mesma Pilha", test_jogAtual_segClick_mesma_pilha);
         CU_add_test(pSuiteGame, "Test Segundo Clique - Validacao", test_jogAtual_segClick_validacao);
     }
+
+    CU_basic_run_tests();
+    CU_cleanup_registry();
+    return CU_get_error();
 }
