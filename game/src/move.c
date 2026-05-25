@@ -136,6 +136,7 @@ void joga(EstadoJogo *estado, JOGADA jogada){
 
 }
 
+
 void movAutos (EstadoJogo *e){
     Movimento *mov = e->def_jogo->autos;
     int total_movs = e->def_jogo->total_movs; 
@@ -151,9 +152,11 @@ void movAutos (EstadoJogo *e){
     
 }
 
+
+
 int loop(EstadoJogo *e, JOGADA *jog, Movimento mov){
-    char nome_tipoO = mov.pilha_origem;
-    char nome_tipoD = mov.pilha_destino; 
+    char *nome_tipoO = mov.pilha_origem;
+    char *nome_tipoD = mov.pilha_destino; 
     int r = 2; 
 
 
@@ -171,3 +174,4 @@ int loop(EstadoJogo *e, JOGADA *jog, Movimento mov){
     }
     return (-1); 
 }
+

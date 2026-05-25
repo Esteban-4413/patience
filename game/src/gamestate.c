@@ -21,7 +21,7 @@ EstadoJogo setGameState(DefJogo *d){
     inicializa_baralhos(baralho, d->num_baralhos, e.naipes); 
     e.tamanho_baralho = tamanho_baralho;
     e.baralho = baralho; 
-    print_baralho_grid(&e); 
+    //print_baralho_grid(&e); 
 
     // ----- Inicilizando as pilhas -----
 
@@ -32,7 +32,7 @@ EstadoJogo setGameState(DefJogo *d){
     e.pilhas = pilhas; 
     inicializa_pilhas(&e);
 
-    print_baralho_grid(&e);
+    //print_baralho_grid(&e);
     
 
     return e; 
@@ -122,7 +122,7 @@ void inicializa_baralhos(CARTAS *baralho, int num_baralhos, char naipes[4]){
 
 
 
-
+/*
 // ---------------------- AUXILIAR ----------------------
 void print_baralho_grid(EstadoJogo *e) {
     if (e == NULL || e->baralho == NULL) {
@@ -150,7 +150,7 @@ void print_baralho_grid(EstadoJogo *e) {
     
     printf("----------------------------------------------\n");
 }
-
+*/
 
 void print_pilhas(EstadoJogo *e) {
     if (e == NULL || e->pilhas == NULL) {
