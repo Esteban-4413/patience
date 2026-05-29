@@ -77,6 +77,14 @@ typedef struct{
 EstadoJogo setGameState(DefJogo *d); 
 
 /**
+ * @brief Inicializa o(s) baralho(s).
+ * 
+ * @param d 
+ * @param e 
+ */
+void set_baralho(DefJogo * d, EstadoJogo *e);
+
+/**
  * @brief 
  * Função que inicializa os 4 naipes
  * @param e 

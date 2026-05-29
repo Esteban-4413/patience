@@ -15,12 +15,7 @@ EstadoJogo setGameState(DefJogo *d){
     e.def_jogo = d; 
 
     // ----- Inicilizando os baralhos -----
-    int tamanho_baralho = 52 * (d->num_baralhos);
-    CARTAS *baralho = malloc(tamanho_baralho * sizeof(CARTAS)); // Aloca a memória do array do baralho 
-
-    inicializa_baralhos(baralho, d->num_baralhos, e.naipes); 
-    e.tamanho_baralho = tamanho_baralho;
-    e.baralho = baralho; 
+    set_baralho(d, &e);
     //print_baralho_grid(&e); 
 
     // ----- Inicilizando as pilhas -----
@@ -38,6 +33,14 @@ EstadoJogo setGameState(DefJogo *d){
     return e; 
 }
 
+void set_baralho(DefJogo * d, EstadoJogo *e){
+    int tamanho_baralho = 52 * (d->num_baralhos);
+    CARTAS *baralho = malloc(tamanho_baralho * sizeof(CARTAS)); // Aloca a memória do array do baralho 
+
+    inicializa_baralhos(baralho, d->num_baralhos, e->naipes); 
+    e->tamanho_baralho = tamanho_baralho;
+    e->baralho = baralho; 
+}
 
 void set_pilhas (InitPilha d[], int total_inits, PILHA *pilhas){
      
@@ -72,11 +75,6 @@ void inicializa_pilhas(EstadoJogo *e){
         }
     }
 }
-
-
-
-
-
 
 
 void inicializa_naipes(EstadoJogo *e){
@@ -150,7 +148,7 @@ void print_baralho_grid(EstadoJogo *e) {
     
     printf("----------------------------------------------\n");
 }
-*/
+
 
 void print_pilhas(EstadoJogo *e) {
     if (e == NULL || e->pilhas == NULL) {
@@ -184,3 +182,5 @@ void print_pilhas(EstadoJogo *e) {
     }
     printf("-------------------------\n");
 }
+
+*/

@@ -53,10 +53,33 @@ int verifica_pilha_destino(int flag[20], PILHA *destino, CARTAS topo_origem);
 void joga(EstadoJogo *estado, JOGADA jogada); 
 
 
+/**
+ * @brief Auxiliar da movAutos que vai buscar movimentos automáticos 
+ * válidos existentes; 
+ 
+ * 
+ * @param e  Pointer para o estado do jogo.
+ * @param jog Pointer da jogada do movAutos.
+ * @param mov Movimento que queremos tratar. 
+ * @return int (Bool) 
+ */
+int search_auto_valido(EstadoJogo *e, JOGADA *jog, Movimento mov);
+/**
+ * @brief Auxiliar da search_auto_valido, que coniste no loop de procura 
+ * de um destino válido para a jogada. 
+ * 
+ * @param e Pointer para o estado do jogo.
+ * @param jog Pointer da jogada do movAutos.
+ * @param mov Movimento que queremos tratar. 
+ * @param found Pointer da flag da movAutos.
+ */
+void aux_search_auto(EstadoJogo *e, JOGADA *jog, Movimento mov, int *found);
 
-int loop(EstadoJogo *e, JOGADA *jog, Movimento mov); 
-
-
+/**
+ * @brief Função que vai verificar os movimentos automáticos 
+ * 
+ * @param e Pointer para o estado do jogo.
+ */
 void movAutos (EstadoJogo *e); 
 
 
