@@ -71,29 +71,27 @@ int verifica_pilha_origem(int flag[20],
     return verifica_pilha_origem_aux(flag, origem, jogada, inicio, fim, topo_origem, fundo_origem);
 }
 
-int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem, int inicio){
+int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem){
     CARTAS topo_destino = destino->pilha[destino->tamanho_pilha - 1];
-    CARTAS fundo_origem = destino->pilha[inicio];
 
-    return !((flag[4]  && fundo_origem.valor != topo_destino.valor - 1) || // <: valor inferior ao destino
+    return !((flag[4]  && topo_origem.valor != topo_destino.valor - 1) || // <: valor inferior ao destino
             (flag[5]  && topo_origem.valor != topo_destino.valor + 1) || // >: valor superior ao destino
             (flag[14] && cor(topo_origem) == cor(topo_destino))); // D: cor diferente do destino
 }
 
-int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem, int inicio){
+int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem){
     CARTAS topo_destino = destino->pilha[destino->tamanho_pilha - 1];    
     
     return  !((flag[6]  && abs(topo_origem.valor - topo_destino.valor) != 1) || // ~: valor superior ou inferior
               (flag[8]  && topo_origem.naipe != topo_destino.naipe) || // M: mesmo naipe que o destino
               (flag[10] && topo_origem.naipe == topo_destino.naipe) || // X: naipe diferente do destino
               (flag[12] && cor(topo_origem) != cor(topo_destino)) || // C: mesma cor que o destino
-              !verifica_pilha_destino_aux2(flag, destino, topo_origem, inicio));
+              !verifica_pilha_destino_aux2(flag, destino, topo_origem));
 }
 
 int verifica_pilha_destino(int flag[20],
                          PILHA *destino,
-                         CARTAS topo_origem,
-                         int inicio){
+                         CARTAS topo_origem){
     if(destino->tamanho_pilha == 0){
         if (flag[4]||flag[5]||flag[6]||flag[8]||flag[10]||flag[12]||flag[14]) return 0;
         return 1;
@@ -101,7 +99,7 @@ int verifica_pilha_destino(int flag[20],
 
     if(flag[15]) return 0; // V: destino vazio aceita o movimento
 
-    return verifica_pilha_destino_aux(flag, destino, topo_origem, inicio);
+    return verifica_pilha_destino_aux(flag, destino, topo_origem);
 }
 
 int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
@@ -122,7 +120,7 @@ int ativa_flags(char flags[32], EstadoJogo *estado, JOGADA jogada){
     
 
     return(verifica_pilha_origem(flag, origem, jogada, inicio, fim, topo_origem, fundo_origem)
-            && verifica_pilha_destino(flag, destino, topo_origem, inicio));
+            && verifica_pilha_destino(flag, destino, topo_origem));
 }
 
 void joga(EstadoJogo *estado, JOGADA jogada){
