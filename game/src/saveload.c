@@ -4,7 +4,6 @@
 #include <dirent.h>
 #include "../include/utils.h"
 #include "../include/parser.h"
-#include "../include/loader.h"
 #include "../include/gamestate.h"
 #include "../include/gamedef.h"
 #include "../include/saveload.h"
@@ -26,7 +25,7 @@ void save_game(EstadoJogo *e, char *ficheiro_save, char *nome_paciencia_original
 
     fprintf(f, "%s\n", nome_paciencia_original);
 
-    size_t i, j;
+    size_t i;
     for(i = 0; i < e->total_pilhas; i ++){
         if(e->pilhas[i].tamanho_pilha == 0) fprintf(f, "\n");
         else escreve_pilha(f, &e->pilhas[i]);
