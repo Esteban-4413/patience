@@ -44,11 +44,11 @@ int verifica_pilha_origem(int flag[20],
                         int fim,
                         CARTAS topo_origem,
                         CARTAS fundo_origem);
-int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem);
-int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem);
+int verifica_pilha_destino_aux2(int flag[20], PILHA *destino, CARTAS topo_origem, int inicio);
+int verifica_pilha_destino_aux(int flag[20], PILHA *destino, CARTAS topo_origem, int inicio);
 /* Função que verifica se as condições das flags que se relacionam à pilha
     de destino estão a ser cumpridas*/
-int verifica_pilha_destino(int flag[20], PILHA *destino, CARTAS topo_origem);
+int verifica_pilha_destino(int flag[20], PILHA *destino, CARTAS topo_origem, int inicio);
 /* Função que executa a jogada*/
 void joga(EstadoJogo *estado, JOGADA jogada); 
 
